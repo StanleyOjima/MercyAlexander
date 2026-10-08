@@ -1511,16 +1511,17 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 .ab__portrait--photo .ab__badge { position: absolute; right: -10px; bottom: -10px; width: 40px; height: 40px; border-radius: 11px; background: #ec6836; box-shadow: 0 0 0 4px #fffcf7; display: inline-flex; align-items: center; justify-content: center; }
 .ab__portrait--photo .ab__badge svg { width: 20px; height: 20px; fill: #fff; }
 
-/* round 14: contrast. White only for large type on orange; anything smaller is ink */
-.intro .lede { color: var(--ink); }
-.room .note { color: var(--ink); background: rgba(255, 250, 244, 0.92); box-shadow: none; border-color: transparent; }
-.room .note:hover { background: #fffaf4; }
-.room .note__dot { background: #ec6836; color: #fff; }
-@media (max-width: 600px) { .stx__cell--lead dt { font-size: 24px !important; line-height: 1.2 !important; } }
 
 .sc__tabs.seg .seg__opt.is-on, .sc__mtabs.seg .seg__opt[aria-selected="true"] { color: var(--ink); font-weight: 620; }
 
 .frame--r img { object-position: 42% 30% !important; }
+@media (min-width: 961px) { .frame--r { right: clamp(28px, 4.2vw, 72px) !important; width: clamp(220px, 21vw, 310px) !important; } }
+
+/* round 16: phone tabs size to their words, so the longest label has the same breathing room as the others */
+@media (max-width: 860px) {
+  .sc__mtabs.seg .seg__opt { flex: 1 1 auto !important; padding: 0 16px !important; font-size: 13px !important; letter-spacing: -0.01em; }
+}
+@media (max-width: 380px) { .sc__mtabs.seg .seg__opt { padding: 0 11px !important; font-size: 12.5px !important; } }
 </style>
 </head>
 <body>
