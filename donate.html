@@ -1584,6 +1584,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
   /* Scroll reveal: held back until in view (only when the script is running) */
   html.mo .rv { opacity: 0; }
 }
+.ft__col .ft__mail { overflow-wrap: normal; word-break: normal; }
 .mainnav a[aria-current="page"] { background: var(--cream); }
 .ap-h2 { margin-top: 20px; font-family: "Fraunces", Georgia, serif; font-weight: 400; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: clamp(36px, 3.9vw, 58px); line-height: 1.04; letter-spacing: -0.03em; color: var(--ink); }
 /* Opening: the homepage orange, dots and rising light, with three photographs standing on the floor */
@@ -1635,6 +1636,70 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 /* About call to action: a little more air between the lines */
 .pg-about .cta2 .cta__text { margin-top: 24px; max-width: 30em; margin-left: auto; margin-right: auto; }
 .pg-about .cta2 .cta__actions { margin-top: 36px; }
+/* =========================================================
+   SPLIT OPENING (Donate, Contact): headline and a cream card on the left, one photograph on the floor on the right
+   ========================================================= */
+/* Opening: the headline and the account card on the left, one photograph standing on the floor on the right */
+.sh-hero { position: relative; isolation: isolate; overflow: hidden; background: #ec6836; color: #fff;
+  padding: calc(var(--inset) + var(--navh) + clamp(40px, 6vh, 72px)) var(--margin) 0; }
+.sh-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 236, 214, 0.2) 1.1px, transparent 1.6px) 0 0 / 9px 9px;
+  -webkit-mask-image: linear-gradient(180deg, transparent 8%, rgba(0, 0, 0, 0.55) 45%, #000 100%); mask-image: linear-gradient(180deg, transparent 8%, rgba(0, 0, 0, 0.55) 45%, #000 100%); }
+.sh-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(40% 36% at 74% 104%, rgba(252, 226, 160, 0.85) 0%, rgba(248, 190, 120, 0.5) 40%, rgba(236, 104, 54, 0) 100%); }
+.sh-hero__in { max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 88px); align-items: end; }
+.sh-hero__text { padding-bottom: clamp(56px, 7vw, 104px); }
+.sh-title { margin-top: 26px; max-width: 14em; font-family: "Fraunces", Georgia, serif; font-weight: 380; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0;
+  font-size: clamp(40px, 4.6vw, 68px); line-height: 1.02; letter-spacing: -0.035em; color: #fff; text-wrap: balance; }
+.sh-lede { margin-top: 18px; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.45; color: #fff; }
+
+/* The account card: one clear place to read and copy the details */
+.sh-card { margin-top: clamp(28px, 3vw, 40px); max-width: 600px; padding: clamp(22px, 2.4vw, 32px); border-radius: 26px; background: #fffcf7; color: var(--ink); box-shadow: 0 40px 80px -40px rgba(90, 24, 0, 0.55); }
+.sh-card__top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.sh-card__k { font-size: 15px; font-weight: 560; color: var(--clay); }
+.sh-card__num { margin-top: 8px; font-family: "Geist", "Inter", sans-serif; font-weight: 500; font-size: clamp(46px, 5.4vw, 80px); line-height: 1; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--ink); }
+.sh-btn { flex: none; display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px 0 20px; border: 0; border-radius: 999px; background: #ec6836; font: inherit; font-size: 15px; font-weight: 620; color: var(--ink); cursor: pointer; transition: box-shadow 0.25s var(--ease); }
+.sh-btn:hover { box-shadow: 0 0 0 5px rgba(236, 104, 54, 0.2); }
+.sh-btn:focus-visible { outline: 2px solid var(--ember-deep); outline-offset: 3px; }
+.sh-ic { width: 18px; height: 18px; }
+.sh-ic--done { display: none; }
+.sh-btn.is-done .sh-ic--copy { display: none; }
+.sh-btn.is-done .sh-ic--done { display: block; }
+.sh-card__rows { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); margin: clamp(20px, 2vw, 26px) 0 0; padding-top: clamp(18px, 1.8vw, 22px); border-top: 1px solid #f1e1d1; }
+.sh-card__rows > div + div { padding-left: 22px; border-left: 1px solid #f1e1d1; }
+.sh-card__rows dt { font-size: 14px; font-weight: 560; color: var(--clay); }
+.sh-card__rows dd { margin: 6px 0 0; font-family: "Fraunces", Georgia, serif; font-weight: 400; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.15; letter-spacing: -0.015em; color: var(--ink); }
+.sh-sent { margin-top: 22px; }
+.sh-hero__ph { margin: 0; height: clamp(440px, 46vw, 660px); border-radius: 26px 26px 0 0; overflow: hidden; background: #b4470c; box-shadow: 0 30px 60px -30px rgba(90, 24, 0, 0.5); }
+.sh-hero__ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+@media (max-width: 1100px) {
+  .sh-hero__in { grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); }
+}
+@media (max-width: 960px) {
+  .sh-hero__in { grid-template-columns: 1fr; gap: 0; }
+  .sh-hero__text { padding-bottom: 44px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .sh-title { margin-left: auto; margin-right: auto; }
+  .sh-card { width: 100%; text-align: left; }
+  .sh-hero__ph { height: clamp(260px, 46vw, 420px); }
+}
+@media (max-width: 600px) {
+  .sh-hero { padding-top: calc(var(--inset) + var(--navh) + 28px); }
+  .sh-title { margin-top: 20px; font-size: clamp(34px, 9.6vw, 40px); }
+  .sh-lede { margin-top: 12px; font-size: 16.5px; }
+  .sh-card { margin-top: 24px; padding: 20px 18px 18px; border-radius: 22px; }
+  .sh-card__k { font-size: 14px; }
+  .sh-card__num { margin-top: 10px; font-size: clamp(40px, 12.4vw, 54px); }
+  .sh-btn { height: 44px; padding: 0 14px 0 16px; font-size: 14.5px; }
+  .sh-card__rows { grid-template-columns: 1fr; margin-top: 18px; padding-top: 0; }
+  .sh-card__rows > div { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 13px 0; }
+  .sh-card__rows > div + div { padding-left: 0; border-left: 0; border-top: 1px solid #f1e1d1; padding-bottom: 0; }
+  .sh-card__rows dt { flex: none; font-size: 13.5px; }
+  .sh-card__rows dd { margin: 0; font-size: 18px; text-align: right; }
+  .sh-sent { margin-top: 18px; }
+  .sh-hero__text { padding-bottom: 36px; }
+  .sh-hero__ph { height: 240px; border-radius: 20px 20px 0 0; }
+}
 
 /* =========================================================
    CONTACT PAGE
@@ -1736,43 +1801,48 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 .cm-done__t { margin-top: 22px; font-family: "Fraunces", Georgia, serif; font-weight: 400; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: clamp(34px, 3.4vw, 46px); line-height: 1.05; letter-spacing: -0.03em; color: var(--ink); }
 .cm-done__p { margin-top: 16px; max-width: 32em; font-size: 17px; line-height: 1.6; color: var(--clay); }
 .cm-again { margin-top: 28px; border: 0; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
+
+/* Opening: the shared centred opening, with three quick ways to reach us */
+.cq { list-style: none; margin: 34px auto 0; padding: 0; max-width: 1040px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 0.85fr); gap: 12px; text-align: left; }
+.cq__t { display: flex; align-items: center; gap: 14px; height: 100%; padding: 16px 18px; border-radius: 20px; background: #fffcf7; color: var(--ink); text-decoration: none; box-shadow: 0 24px 48px -30px rgba(90, 24, 0, 0.6); transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease); }
+.cq__t:hover { transform: translateY(-2px); box-shadow: 0 0 0 5px rgba(255, 250, 244, 0.25), 0 24px 48px -30px rgba(90, 24, 0, 0.6); }
+.cq__t:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.cq__ic { flex: none; width: 46px; height: 46px; border-radius: 14px; background: #ec6836; color: #fff; display: inline-flex; align-items: center; justify-content: center; }
+.cq__ic svg { width: 22px; height: 22px; }
+.cq__b { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.cq__k { font-size: 13.5px; font-weight: 560; color: var(--clay); }
+.cq__v { font-size: 15.5px; font-weight: 650; line-height: 1.3; color: var(--ink); overflow-wrap: anywhere; }
+.cq__v--num { font-family: "Geist", "Inter", sans-serif; font-size: 20px; font-weight: 500; letter-spacing: -0.02em; white-space: nowrap; }
+.cq-msg { margin-top: 22px; }
+
+/* Form: the third step asks the question that fits the topic; errors sit under each field */
+.cm-step__k .cm-step__q { width: auto; height: auto; flex: initial; border-radius: 0; background: none; color: inherit; font: inherit; display: inline; }
+.cm-topic-hint { margin-top: 14px; padding: 12px 16px; border-radius: 14px; background: #fff3e8; font-size: 14.5px; line-height: 1.5; color: var(--clay); }
+.cm-topic-hint a { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(236, 104, 54, 0.6); text-underline-offset: 3px; }
+.cm-topic-hint[hidden] { display: none; }
+.cm-ferr { font-size: 13.5px; font-weight: 600; color: #9a3a08; }
+.cm-ferr[hidden] { display: none; }
+
+@media (max-width: 960px) {
+  .cq { grid-template-columns: 1fr; max-width: 460px; }
+  .cq__v { overflow-wrap: normal; }
+}
+@media (max-width: 600px) {
+  .cq { margin-top: 26px; gap: 10px; }
+  .cq__t { padding: 14px 16px; border-radius: 18px; }
+  .cq__ic { width: 42px; height: 42px; border-radius: 12px; }
+  .cq__v { font-size: clamp(14px, 4vw, 15.5px); }
+  .cq-msg { margin-top: 18px; }
+}
+
+/* Date fields: keep them the same size and alignment as every other field, including on iPhone */
+.cm-f input[type="date"] { -webkit-appearance: none; appearance: none; display: block; width: 100%; min-width: 0; max-width: 100%; min-height: 58px; text-align: left; line-height: 1.3; background-color: #fffcf7; color: var(--ink); }
+.cm-f input[type="date"]::-webkit-date-and-time-value { text-align: left; margin: 0; }
+.cm-f input[type="date"]::-webkit-calendar-picker-indicator { opacity: 0.55; cursor: pointer; }
+.cm-f, .cm-grid > * { min-width: 0; }
 /* =========================================================
    DONATE PAGE
    ========================================================= */
-
-/* Opening: the headline and the account card on the left, one photograph standing on the floor on the right */
-.dn-hero { position: relative; isolation: isolate; overflow: hidden; background: #ec6836; color: #fff;
-  padding: calc(var(--inset) + var(--navh) + clamp(40px, 6vh, 72px)) var(--margin) 0; }
-.dn-hero::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: radial-gradient(circle, rgba(255, 236, 214, 0.2) 1.1px, transparent 1.6px) 0 0 / 9px 9px;
-  -webkit-mask-image: linear-gradient(180deg, transparent 8%, rgba(0, 0, 0, 0.55) 45%, #000 100%); mask-image: linear-gradient(180deg, transparent 8%, rgba(0, 0, 0, 0.55) 45%, #000 100%); }
-.dn-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: radial-gradient(40% 36% at 74% 104%, rgba(252, 226, 160, 0.85) 0%, rgba(248, 190, 120, 0.5) 40%, rgba(236, 104, 54, 0) 100%); }
-.dn-hero__in { max-width: 1360px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 88px); align-items: end; }
-.dn-hero__text { padding-bottom: clamp(56px, 7vw, 104px); }
-.dn-title { margin-top: 26px; max-width: 14em; font-family: "Fraunces", Georgia, serif; font-weight: 380; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0;
-  font-size: clamp(40px, 4.6vw, 68px); line-height: 1.02; letter-spacing: -0.035em; color: #fff; text-wrap: balance; }
-.dn-lede { margin-top: 18px; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.45; color: #fff; }
-
-/* The account card: one clear place to read and copy the details */
-.dn-acct { margin-top: clamp(28px, 3vw, 40px); max-width: 600px; padding: clamp(22px, 2.4vw, 32px); border-radius: 26px; background: #fffcf7; color: var(--ink); box-shadow: 0 40px 80px -40px rgba(90, 24, 0, 0.55); }
-.dn-acct__top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.dn-acct__k { font-size: 15px; font-weight: 560; color: var(--clay); }
-.dn-acct__num { margin-top: 8px; font-family: "Geist", "Inter", sans-serif; font-weight: 500; font-size: clamp(46px, 5.4vw, 80px); line-height: 1; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--ink); }
-.dn-copy { flex: none; display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px 0 20px; border: 0; border-radius: 999px; background: #ec6836; font: inherit; font-size: 15px; font-weight: 620; color: var(--ink); cursor: pointer; transition: box-shadow 0.25s var(--ease); }
-.dn-copy:hover { box-shadow: 0 0 0 5px rgba(236, 104, 54, 0.2); }
-.dn-copy:focus-visible { outline: 2px solid var(--ember-deep); outline-offset: 3px; }
-.dn-ic { width: 18px; height: 18px; }
-.dn-ic--done { display: none; }
-.dn-copy.is-done .dn-ic--copy { display: none; }
-.dn-copy.is-done .dn-ic--done { display: block; }
-.dn-acct__rows { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); margin: clamp(20px, 2vw, 26px) 0 0; padding-top: clamp(18px, 1.8vw, 22px); border-top: 1px solid #f1e1d1; }
-.dn-acct__rows > div + div { padding-left: 22px; border-left: 1px solid #f1e1d1; }
-.dn-acct__rows dt { font-size: 14px; font-weight: 560; color: var(--clay); }
-.dn-acct__rows dd { margin: 6px 0 0; font-family: "Fraunces", Georgia, serif; font-weight: 400; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.15; letter-spacing: -0.015em; color: var(--ink); }
-.dn-sent { margin-top: 22px; }
-.dn-hero__ph { margin: 0; height: clamp(440px, 46vw, 660px); border-radius: 26px 26px 0 0; overflow: hidden; background: #b4470c; box-shadow: 0 30px 60px -30px rgba(90, 24, 0, 0.5); }
-.dn-hero__ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* Where it goes: three programmes as quiet rows beside the heading */
 .dn-where { padding: clamp(88px, 9vw, 140px) var(--margin); }
@@ -1807,35 +1877,46 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 .dn-check input:focus-visible + .dn-check__box { outline: 2px solid var(--ember-deep); outline-offset: 3px; }
 .pg-donate .cta2 .note { height: 52px; }
 
-@media (max-width: 1100px) {
-  .dn-hero__in { grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); }
+
+/* Account card: one action to copy everything at once */
+.dn-card-foot { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; margin-top: clamp(16px, 1.8vw, 22px); padding-top: clamp(16px, 1.8vw, 20px); border-top: 1px solid #f1e1d1; }
+.dn-card-foot__note { font-size: 13.5px; color: var(--clay); }
+
+/* Your gift: the amount reads like the account number, the date is one tap */
+.dn-form .dn-amt input { height: 72px; padding-left: 52px; font-family: "Geist", "Inter", sans-serif; font-size: 32px; font-weight: 500; letter-spacing: -0.03em; }
+.dn-form .dn-amt__cur { left: 20px; font-size: 26px; font-weight: 500; color: var(--clay); }
+.dn-when { margin-top: 22px; }
+.dn-when__k { display: block; font-size: 14px; font-weight: 600; color: var(--ink); }
+.dn-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.dn-chip { position: relative; cursor: pointer; }
+.dn-chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.dn-chip span { display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: 999px; background: #f8ede1; font-size: 15px; font-weight: 600; color: var(--ink); transition: background-color 0.2s, color 0.2s; }
+.dn-chip:hover span { background: #f6dcc6; }
+.dn-chip input:checked + span { background: #ec6836; color: #fff; }
+.dn-chip input:focus-visible + span { outline: 2px solid var(--ember-deep); outline-offset: 3px; }
+.dn-date { margin-top: 12px; max-width: 320px; }
+.dn-date[hidden] { display: none; }
+
+/* A note, only if they want one */
+.dn-addnote { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; padding: 10px 0; border: 0; background: none; font: inherit; font-size: 15.5px; font-weight: 600; color: var(--ink); cursor: pointer; }
+.dn-addnote span { width: 26px; height: 26px; border-radius: 999px; background: #f8ede1; color: var(--ember-deep); display: inline-flex; align-items: center; justify-content: center; font-size: 18px; line-height: 1; }
+.dn-addnote:hover span { background: #f6dcc6; }
+.dn-addnote:focus-visible { outline: 2px solid var(--ember-deep); outline-offset: 3px; border-radius: 8px; }
+.dn-addnote .dn-opt { font-weight: 400; }
+.dn-note { margin-top: 6px; }
+.dn-note[hidden] { display: none; }
+@media (max-width: 600px) {
+  .dn-form .dn-amt input { height: 64px; font-size: 28px; }
+  .dn-chip span { padding: 0 16px; font-size: 14.5px; }
+  .dn-date { max-width: none; }
 }
+
 @media (max-width: 960px) {
   .dn-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .dn-hero__in { grid-template-columns: 1fr; gap: 0; }
-  .dn-hero__text { padding-bottom: 44px; text-align: center; display: flex; flex-direction: column; align-items: center; }
-  .dn-title { margin-left: auto; margin-right: auto; }
-  .dn-acct { width: 100%; text-align: left; }
-  .dn-hero__ph { height: clamp(260px, 46vw, 420px); }
   .dn-where__in { grid-template-columns: 1fr; gap: 36px; }
   .dn-where__head { position: static; }
 }
 @media (max-width: 600px) {
-  .dn-hero { padding-top: calc(var(--inset) + var(--navh) + 28px); }
-  .dn-title { margin-top: 20px; font-size: clamp(34px, 9.6vw, 40px); }
-  .dn-lede { margin-top: 12px; font-size: 16.5px; }
-  .dn-acct { margin-top: 24px; padding: 20px 18px 18px; border-radius: 22px; }
-  .dn-acct__k { font-size: 14px; }
-  .dn-acct__num { margin-top: 10px; font-size: clamp(40px, 12.4vw, 54px); }
-  .dn-copy { height: 44px; padding: 0 14px 0 16px; font-size: 14.5px; }
-  .dn-acct__rows { grid-template-columns: 1fr; margin-top: 18px; padding-top: 0; }
-  .dn-acct__rows > div { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 13px 0; }
-  .dn-acct__rows > div + div { padding-left: 0; border-left: 0; border-top: 1px solid #f1e1d1; padding-bottom: 0; }
-  .dn-acct__rows dt { flex: none; font-size: 13.5px; }
-  .dn-acct__rows dd { margin: 0; font-size: 18px; text-align: right; }
-  .dn-sent { margin-top: 18px; }
-  .dn-hero__text { padding-bottom: 36px; }
-  .dn-hero__ph { height: 240px; border-radius: 20px 20px 0 0; }
   .dn-where__list li { grid-template-columns: 96px minmax(0, 1fr); gap: 16px; align-items: start; padding: 18px 0; }
   .dn-where__list figure { aspect-ratio: 1; border-radius: 14px; }
   .dn-where__list h3 { font-size: 22px; }
@@ -1843,6 +1924,16 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
   .dn-tiles .cm-t:last-child { grid-column: auto; }
   .pg-donate .cta2 .cta__actions { flex-direction: column; }
 }
+.dn-form .dn-amt { max-width: 460px; }
+
+/* Small pill action inside the account card */
+.ct-act { flex: none; display: inline-flex; align-items: center; gap: 7px; height: 40px; padding: 0 16px; border: 0; border-radius: 999px; background: #f8ede1; font: inherit; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; cursor: pointer; transition: background-color 0.2s; }
+.ct-act:hover { background: #f6dcc6; }
+.ct-act:focus-visible { outline: 2px solid var(--ember-deep); outline-offset: 3px; }
+.ct-act .sh-ic { width: 15px; height: 15px; }
+.ct-act.is-done { background: #ec6836; }
+.ct-act.is-done .sh-ic--copy { display: none; }
+.ct-act.is-done .sh-ic--done { display: block; }
 /* MOBILE: shared phone rhythm, loaded after every page's own CSS */
 @media (max-width: 600px) {
   /* section rhythm: tighter, consistent vertical spacing on phones */
@@ -1918,34 +2009,38 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 </header>
 
 <main id="main">
-  <section class="dn-hero" id="top" aria-labelledby="dn-title">
-    <div class="dn-hero__in">
-      <div class="dn-hero__text">
+  <section class="sh-hero" id="top" aria-labelledby="sh-title">
+    <div class="sh-hero__in">
+      <div class="sh-hero__text">
         <p class="gx-pill ap-rise" style="--d:0">Donate</p>
-        <h1 class="dn-title ap-rise" style="--d:1" id="dn-title">Every gift becomes school fees, food or care.</h1>
-        <p class="dn-lede ap-rise" style="--d:2">Give any amount by bank transfer.</p>
+        <h1 class="sh-title ap-rise" style="--d:1" id="sh-title">Every gift becomes school fees, food or care.</h1>
+        <p class="sh-lede ap-rise" style="--d:2">Give any amount by bank transfer.</p>
 
         <!--
           DONATION ACCOUNT
           SAMPLE details for design only. Replace all three before the site goes live.
           Spaces in the account number are for reading; the copy button copies the digits only.
         -->
-        <div class="dn-acct ap-rise" style="--d:3">
-          <div class="dn-acct__top">
-            <p class="dn-acct__k" id="acct-k">Account number</p>
-            <button type="button" class="dn-copy" aria-describedby="acct-k"><span class="dn-copy__t">Copy</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="dn-ic dn-ic--copy"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6.5A2.5 2.5 0 0 0 13.5 4h-7A2.5 2.5 0 0 0 4 6.5v7A2.5 2.5 0 0 0 6.5 16H8"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="dn-ic dn-ic--done"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+        <div class="sh-card ap-rise" style="--d:3">
+          <div class="sh-card__top">
+            <p class="sh-card__k" id="acct-k">Account number</p>
+            <button type="button" class="sh-btn" aria-describedby="acct-k"><span class="sh-btn__t">Copy</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="sh-ic sh-ic--copy"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6.5A2.5 2.5 0 0 0 13.5 4h-7A2.5 2.5 0 0 0 4 6.5v7A2.5 2.5 0 0 0 6.5 16H8"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="sh-ic sh-ic--done"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
           </div>
-          <p class="dn-acct__num" data-acct>0123 456 789</p>
-          <dl class="dn-acct__rows">
+          <p class="sh-card__num" data-acct>0123 456 789</p>
+          <dl class="sh-card__rows" data-acct-rows>
             <div><dt>Account name</dt><dd>Mercy Alexander Foundation</dd></div>
             <div><dt>Bank</dt><dd>Sample Bank Plc</dd></div>
           </dl>
+          <div class="dn-card-foot">
+            <button type="button" class="ct-act dn-copyall"><span class="ct-act__t">Copy all details</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="sh-ic sh-ic--copy"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6.5A2.5 2.5 0 0 0 13.5 4h-7A2.5 2.5 0 0 0 4 6.5v7A2.5 2.5 0 0 0 6.5 16H8"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="sh-ic sh-ic--done"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+            <span class="dn-card-foot__note">Paste them into your banking app</span>
+          </div>
           <p class="sr-only" role="status" aria-live="polite" data-copy-status></p>
         </div>
 
-        <a class="note dn-sent ap-rise" style="--d:4" href="#tell-us">Sent a gift? Tell us it was you <span class="note__dot" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="note sh-sent ap-rise" style="--d:4" href="#tell-us">Sent a gift? Tell us it was you <span class="note__dot" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
       </div>
-      <figure class="dn-hero__ph ap-ph">
+      <figure class="sh-hero__ph ap-ph">
         <img src="/img/lv-scholar-boy.webp" alt="A Foundation volunteer hands a new school bag and books to a boy in uniform on a scholarship day." style="object-position: 9% 40%">
       </figure>
     </div>
@@ -1979,7 +2074,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
     <div class="cm__head">
       <p class="ow__eyebrow cm__eyebrow"><span aria-hidden="true"></span>After you give</p>
       <h2 class="ap-h2" id="tell-title">Tell us it was you.</h2>
-      <p class="cm__sub">A transfer reaches us with very little detail. This takes a minute, and tells us who to thank and where your gift should go.</p>
+      <p class="cm__sub">A transfer reaches us with very little detail. Three quick steps tell us who to thank and where your gift should go.</p>
     </div>
     <form class="cm-form dn-form" novalidate>
       <fieldset class="cm-step">
@@ -1994,27 +2089,33 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 
       <fieldset class="cm-step">
         <legend class="cm-step__k"><span>2</span>Your gift</legend>
-        <div class="cm-grid">
-          <label class="cm-f"><span>Amount sent</span><span class="dn-amt"><span class="dn-amt__cur" aria-hidden="true">&#8358;</span><input name="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="amt-hint" required></span><span class="sr-only" id="amt-hint">In naira</span></label>
-          <label class="cm-f"><span>Date sent</span><input name="date" type="date" required></label>
+        <label class="cm-f"><span>Amount sent</span>
+          <span class="dn-amt"><span class="dn-amt__cur" aria-hidden="true">&#8358;</span><input name="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="0" aria-describedby="amt-hint err-amt" required></span>
+          <span class="sr-only" id="amt-hint">In naira</span><small class="cm-ferr" id="err-amt" hidden>Please add the amount you sent.</small></label>
+        <div class="dn-when" role="group" aria-labelledby="when-k">
+          <span class="dn-when__k" id="when-k">When did you send it?</span>
+          <div class="dn-chips">
+            <label class="dn-chip"><input type="radio" name="when" value="today" checked><span>Today</span></label>
+            <label class="dn-chip"><input type="radio" name="when" value="yesterday"><span>Yesterday</span></label>
+            <label class="dn-chip"><input type="radio" name="when" value="other"><span>Another day</span></label>
+          </div>
+          <label class="cm-f dn-date" hidden><span class="sr-only">Date sent</span><input name="date" type="date" aria-describedby="err-date"><small class="cm-ferr" id="err-date" hidden>Please pick the date you sent it.</small></label>
         </div>
       </fieldset>
 
       <fieldset class="cm-step">
         <legend class="cm-step__k"><span>3</span>About you</legend>
         <div class="cm-grid">
-          <label class="cm-f cm-f--wide"><span>Full name</span><input name="name" type="text" autocomplete="name" required></label>
+          <label class="cm-f cm-f--wide"><span>Full name</span><input name="name" type="text" autocomplete="name" required aria-describedby="err-name"><small class="cm-ferr" id="err-name" hidden>Please add your name, so we know who to thank.</small></label>
           <label class="cm-f"><span>Phone or WhatsApp</span><input name="phone" type="tel" autocomplete="tel"></label>
-          <label class="cm-f"><span>Email</span><input name="email" type="email" autocomplete="email"></label>
-          <p class="dn-hint cm-f--wide">Add a phone number or an email, or both, so we can say thank you.</p>
+          <label class="cm-f"><span>Email</span><input name="email" type="email" autocomplete="email" inputmode="email" aria-describedby="err-email"><small class="cm-ferr" id="err-email" hidden>That email doesn&rsquo;t look quite right.</small></label>
+          <p class="dn-hint cm-f--wide" id="contact-hint">Add a phone number or an email, or both, so we can say thank you.</p>
         </div>
         <label class="dn-check"><input type="checkbox" name="anon"><span class="dn-check__box" aria-hidden="true"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M3 53 C13 57 23 68 30 83 L37 98 C50 64 69 31 98 8 C99 6 97 2 94 3 C66 20 47 45 35 66 C29 55 21 47 13 42 C8 40 1 46 3 53 Z"/></svg></span><span>Keep my gift private. Please don&rsquo;t name me publicly.</span></label>
+        <button type="button" class="dn-addnote" aria-expanded="false" aria-controls="dn-note"><span aria-hidden="true">+</span> Add a note <em class="dn-opt">(optional)</em></button>
+        <label class="cm-f dn-note" id="dn-note" hidden><span class="sr-only">Note</span><textarea name="note" rows="4" placeholder="A gift in someone&rsquo;s memory, a word for a family, or anything you&rsquo;d like us to know."></textarea></label>
       </fieldset>
 
-      <fieldset class="cm-step">
-        <legend class="cm-step__k"><span>4</span>A note <em class="dn-opt">(optional)</em></legend>
-        <label class="cm-f"><span class="sr-only">Note</span><textarea name="note" rows="4" placeholder="A gift in someone&rsquo;s memory, a word for a family, or anything you&rsquo;d like us to know."></textarea></label>
-      </fieldset>
 
       <p class="ct-err" role="alert" hidden></p>
       <input class="cm-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -2066,7 +2167,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
         <p>Visit or call</p>
         <a class="ft__phone" href="tel:+2348127777207">+234 8127 777 207</a>
         <span>No 100 Bola Ahmed Tinubu Rd, Wayobawole, Omonile, KFarm, Iju, Lagos</span>
-        <a class="ft__mail" href="mailto:info@mercyalexanderfoundation.org">info@mercyalexanderfoundation.org</a>
+        <a class="ft__mail" href="mailto:info@mercyalexanderfoundation.org">info@<wbr>mercyalexanderfoundation.org</a>
         <a class="ft__map" href="https://www.google.com/maps/search/?api=1&amp;query=100+Bola+Ahmed+Tinubu+Road+Iju+Lagos" target="_blank" rel="noopener">Get directions <span aria-hidden="true">&nearr;</span><span class="sr-only"> (opens Google Maps in a new tab)</span></a>
       </div>
     </div>
@@ -2204,8 +2305,7 @@ window.mafSend = function (fields) {
 </script>
 <script>
 (function () {
-  /* Copy the account number (digits only) */
-  var copy = document.querySelector(".dn-copy"), status = document.querySelector("[data-copy-status]"), acct = document.querySelector("[data-acct]");
+  var status = document.querySelector("[data-copy-status]"), acct = document.querySelector("[data-acct]");
   function copyText(t) {
     if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t);
     return new Promise(function (ok, no) {
@@ -2213,16 +2313,22 @@ window.mafSend = function (fields) {
       document.body.appendChild(a); a.select(); try { document.execCommand("copy") ? ok() : no(); } catch (e) { no(e); } document.body.removeChild(a);
     });
   }
-  if (copy && acct) {
-    var label = copy.querySelector(".dn-copy__t"), timer;
-    copy.addEventListener("click", function () {
-      copyText(acct.textContent.replace(/\s+/g, "")).then(function () {
-        clearTimeout(timer); copy.classList.add("is-done"); label.textContent = "Copied";
-        if (status) status.textContent = "Account number copied";
-        timer = setTimeout(function () { copy.classList.remove("is-done"); label.textContent = "Copy"; }, 2400);
+  function wire(btn, labelSel, idle, getText, said) {
+    if (!btn) return; var label = btn.querySelector(labelSel), timer;
+    btn.addEventListener("click", function () {
+      copyText(getText()).then(function () {
+        clearTimeout(timer); btn.classList.add("is-done"); label.textContent = "Copied";
+        if (status) status.textContent = said;
+        timer = setTimeout(function () { btn.classList.remove("is-done"); label.textContent = idle; }, 2400);
       });
     });
   }
+  /* Copy the account number (digits only), or all three details at once */
+  wire(document.querySelector(".sh-btn"), ".sh-btn__t", "Copy", function () { return acct.textContent.replace(/\s+/g, ""); }, "Account number copied");
+  wire(document.querySelector(".dn-copyall"), ".ct-act__t", "Copy all details", function () {
+    var rows = [].slice.call(document.querySelectorAll("[data-acct-rows] > div")).map(function (r) { return r.querySelector("dt").textContent + ": " + r.querySelector("dd").textContent.trim(); });
+    return ["Account number: " + acct.textContent.replace(/\s+/g, "")].concat(rows).join("\n");
+  }, "Account details copied");
 
   var f = document.querySelector(".dn-form"); if (!f) return;
   var err = f.querySelector(".ct-err"), done = document.querySelector(".cm-done"), btn = f.querySelector(".cm-send"), blabel = btn.querySelector("span");
@@ -2231,47 +2337,66 @@ window.mafSend = function (fields) {
   var want = new URLSearchParams(location.search).get("for");
   if (want) { var r = f.querySelector('input[name="for"][data-key="' + want.replace(/[^a-z-]/g, "") + '"]'); if (r) r.checked = true; }
 
-  /* Today's date by default, and no future dates */
-  var d = new Date(), iso = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
-  f.date.value = iso; f.date.max = iso;
+  /* When: today, yesterday, or pick a day (no future dates) */
+  function isoOf(dt) { return new Date(dt.getTime() - dt.getTimezoneOffset() * 60000).toISOString().slice(0, 10); }
+  var today = isoOf(new Date()), dateBox = f.querySelector(".dn-date");
+  f.date.max = today;
+  function when() { return (f.querySelector('input[name="when"]:checked') || {}).value || "today"; }
+  function setWhen() { var o = when() === "other"; dateBox.hidden = !o; if (o && !f.date.value) f.date.focus(); }
+  f.querySelectorAll('input[name="when"]').forEach(function (x) { x.addEventListener("change", setWhen); });
+  function sentDate() {
+    if (when() === "today") return today;
+    if (when() === "yesterday") { var y = new Date(); y.setDate(y.getDate() - 1); return isoOf(y); }
+    return f.date.value;
+  }
 
   /* Amount: digits only, shown with thousands separators */
   function amountNum() { return parseFloat(f.amount.value.replace(/[^\d.]/g, "")) || 0; }
   f.amount.addEventListener("input", function () { var c = f.amount.value.replace(/[^\d.,]/g, ""); if (c !== f.amount.value) f.amount.value = c; });
   f.amount.addEventListener("blur", function () { var n = amountNum(); if (n) f.amount.value = n.toLocaleString("en-GB", { maximumFractionDigits: 2 }); });
 
-  function fail(msg, el) { err.textContent = msg; err.hidden = false; if (el) { el.setAttribute("aria-invalid", "true"); el.focus(); } }
+  /* Note: only when they want one */
+  var addNote = f.querySelector(".dn-addnote"), noteBox = f.querySelector(".dn-note");
+  addNote.addEventListener("click", function () { noteBox.hidden = false; addNote.hidden = true; addNote.setAttribute("aria-expanded", "true"); f.note.focus(); });
+
+  /* Errors sit under each field, and clear as soon as the field is fixed */
+  var tried = false;
+  function mark(el, ok, id) { el.setAttribute("aria-invalid", ok ? "false" : "true"); var m = document.getElementById(id); if (m) m.hidden = ok; return ok; }
+  function validate() {
+    var name = f.name.value.trim(), phone = f.phone.value.trim(), email = f.email.value.trim();
+    var a = mark(f.amount, amountNum() > 0, "err-amt");
+    var b = when() !== "other" || mark(f.date, !!f.date.value, "err-date");
+    var c = mark(f.name, !!name, "err-name");
+    var d = mark(f.email, !email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email), "err-email");
+    var reach = !!(phone || email); f.phone.setAttribute("aria-invalid", reach ? "false" : "true");
+    document.getElementById("contact-hint").classList.toggle("cm-ferr", !reach);
+    return a && b && c && d && reach;
+  }
+  [f.amount, f.date, f.name, f.phone, f.email].forEach(function (el) { el.addEventListener("input", function () { if (tried) validate(); }); });
 
   f.addEventListener("submit", function (e) {
-    e.preventDefault();
-    [f.amount, f.date, f.name, f.phone, f.email].forEach(function (el) { el.setAttribute("aria-invalid", "false"); });
-    var amt = amountNum(), name = f.name.value.trim(), phone = f.phone.value.trim(), email = f.email.value.trim();
-    if (!amt) return fail("Please add the amount you sent.", f.amount);
-    if (!f.date.value) return fail("Please add the date you sent it.", f.date);
-    if (!name) return fail("Please add your name, so we know who to thank.", f.name);
-    if (!phone && !email) { f.email.setAttribute("aria-invalid", "true"); return fail("Please add a phone number or an email, so we can say thank you.", f.phone); }
-    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail("That email doesn’t look quite right.", f.email);
+    e.preventDefault(); tried = true;
+    if (!validate()) { err.hidden = true; var bad = f.querySelector('[aria-invalid="true"]'); if (bad) bad.focus(); return; }
     if (f._honey.value) return;
-    err.hidden = true;
-
+    var amt = amountNum(), name = f.name.value.trim(), phone = f.phone.value.trim(), email = f.email.value.trim();
     var dest = (f.querySelector('input[name="for"]:checked') || {}).value || "Wherever it is needed most";
-    var when = new Date(f.date.value + "T12:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+    var whenTxt = new Date(sentDate() + "T12:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
     var amount = "₦" + amt.toLocaleString("en-GB", { maximumFractionDigits: 2 });
     var fields = {
       _subject: "Gift by bank transfer: " + amount + " from " + name,
-      Amount: amount, "Date sent": when, "For": dest, Name: name,
+      Amount: amount, "Date sent": whenTxt, "For": dest, Name: name,
       "Phone or WhatsApp": phone || "Not given", "Keep private": f.anon.checked ? "Yes, please don’t name me publicly" : "No",
       Note: f.note.value.trim() || "None"
     };
     if (email) fields.email = email;
-    btn.disabled = true; blabel.textContent = "Sending…";
+    err.hidden = true; btn.disabled = true; blabel.textContent = "Sending…";
     window.mafSend(fields).then(function () {
       done.querySelector("[data-done-name]").textContent = ", " + name.split(" ")[0];
       f.hidden = true; done.hidden = false; done.focus();
       done.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
-      f.reset(); f.date.value = iso;
+      f.reset(); tried = false; setWhen(); noteBox.hidden = true; addNote.hidden = false; addNote.setAttribute("aria-expanded", "false");
     }).catch(function () {
-      fail("Sorry, that didn’t send. Please try again, or call +234 8127 777 207.");
+      err.textContent = "Your details didn’t send. Please try again, or call +234 8127 777 207."; err.hidden = false;
     }).then(function () { btn.disabled = false; blabel.textContent = "Send gift details"; });
   });
 

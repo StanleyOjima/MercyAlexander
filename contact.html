@@ -1587,6 +1587,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
   /* Scroll reveal: held back until in view (only when the script is running) */
   html.mo .rv { opacity: 0; }
 }
+.ft__col .ft__mail { overflow-wrap: normal; word-break: normal; }
 .mainnav a[aria-current="page"] { background: var(--cream); }
 .ap-h2 { margin-top: 20px; font-family: "Fraunces", Georgia, serif; font-weight: 400; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: clamp(36px, 3.9vw, 58px); line-height: 1.04; letter-spacing: -0.03em; color: var(--ink); }
 /* Opening: the homepage orange, dots and rising light, with three photographs standing on the floor */
@@ -1739,6 +1740,45 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 .cm-done__t { margin-top: 22px; font-family: "Fraunces", Georgia, serif; font-weight: 400; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: clamp(34px, 3.4vw, 46px); line-height: 1.05; letter-spacing: -0.03em; color: var(--ink); }
 .cm-done__p { margin-top: 16px; max-width: 32em; font-size: 17px; line-height: 1.6; color: var(--clay); }
 .cm-again { margin-top: 28px; border: 0; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
+
+/* Opening: the shared centred opening, with three quick ways to reach us */
+.cq { list-style: none; margin: 34px auto 0; padding: 0; max-width: 1040px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 0.85fr); gap: 12px; text-align: left; }
+.cq__t { display: flex; align-items: center; gap: 14px; height: 100%; padding: 16px 18px; border-radius: 20px; background: #fffcf7; color: var(--ink); text-decoration: none; box-shadow: 0 24px 48px -30px rgba(90, 24, 0, 0.6); transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease); }
+.cq__t:hover { transform: translateY(-2px); box-shadow: 0 0 0 5px rgba(255, 250, 244, 0.25), 0 24px 48px -30px rgba(90, 24, 0, 0.6); }
+.cq__t:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.cq__ic { flex: none; width: 46px; height: 46px; border-radius: 14px; background: #ec6836; color: #fff; display: inline-flex; align-items: center; justify-content: center; }
+.cq__ic svg { width: 22px; height: 22px; }
+.cq__b { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.cq__k { font-size: 13.5px; font-weight: 560; color: var(--clay); }
+.cq__v { font-size: 15.5px; font-weight: 650; line-height: 1.3; color: var(--ink); overflow-wrap: anywhere; }
+.cq__v--num { font-family: "Geist", "Inter", sans-serif; font-size: 20px; font-weight: 500; letter-spacing: -0.02em; white-space: nowrap; }
+.cq-msg { margin-top: 22px; }
+
+/* Form: the third step asks the question that fits the topic; errors sit under each field */
+.cm-step__k .cm-step__q { width: auto; height: auto; flex: initial; border-radius: 0; background: none; color: inherit; font: inherit; display: inline; }
+.cm-topic-hint { margin-top: 14px; padding: 12px 16px; border-radius: 14px; background: #fff3e8; font-size: 14.5px; line-height: 1.5; color: var(--clay); }
+.cm-topic-hint a { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: rgba(236, 104, 54, 0.6); text-underline-offset: 3px; }
+.cm-topic-hint[hidden] { display: none; }
+.cm-ferr { font-size: 13.5px; font-weight: 600; color: #9a3a08; }
+.cm-ferr[hidden] { display: none; }
+
+@media (max-width: 960px) {
+  .cq { grid-template-columns: 1fr; max-width: 460px; }
+  .cq__v { overflow-wrap: normal; }
+}
+@media (max-width: 600px) {
+  .cq { margin-top: 26px; gap: 10px; }
+  .cq__t { padding: 14px 16px; border-radius: 18px; }
+  .cq__ic { width: 42px; height: 42px; border-radius: 12px; }
+  .cq__v { font-size: clamp(14px, 4vw, 15.5px); }
+  .cq-msg { margin-top: 18px; }
+}
+
+/* Date fields: keep them the same size and alignment as every other field, including on iPhone */
+.cm-f input[type="date"] { -webkit-appearance: none; appearance: none; display: block; width: 100%; min-width: 0; max-width: 100%; min-height: 58px; text-align: left; line-height: 1.3; background-color: #fffcf7; color: var(--ink); }
+.cm-f input[type="date"]::-webkit-date-and-time-value { text-align: left; margin: 0; }
+.cm-f input[type="date"]::-webkit-calendar-picker-indicator { opacity: 0.55; cursor: pointer; }
+.cm-f, .cm-grid > * { min-width: 0; }
 /* MOBILE: shared phone rhythm, loaded after every page's own CSS */
 @media (max-width: 600px) {
   /* section rhythm: tighter, consistent vertical spacing on phones */
@@ -1819,10 +1859,12 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
       <p class="gx-pill ap-rise" style="--d:0">Contact</p>
       <h1 class="ap-title ap-rise" style="--d:1" id="ct-title">Let&rsquo;s talk.</h1>
       <p class="ap-lede ap-rise" style="--d:2">To give, volunteer, partner with us or tell us about a family who needs help, call us, write to us or come and see us in Iju, Lagos.</p>
-      <div class="cn-actions ap-rise" style="--d:3">
-        <a class="give" href="tel:+2348127777207"><span class="give__label">Call +234 8127 777 207</span><span class="give__chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span></a>
-        <a class="note" href="#message">Send a message <span class="note__dot" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-      </div>
+      <ul class="cq ap-rise" style="--d:3" aria-label="Ways to reach us">
+        <li><a class="cq__t" href="tel:+2348127777207"><span class="cq__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span class="cq__b"><span class="cq__k">Call us</span><span class="cq__v cq__v--num">+234 8127 777 207</span></span></a></li>
+        <li><a class="cq__t" href="mailto:info@mercyalexanderfoundation.org"><span class="cq__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg></span><span class="cq__b"><span class="cq__k">Email us</span><span class="cq__v">info@<wbr>mercyalexanderfoundation.org</span></span></a></li>
+        <li><a class="cq__t" href="#find-us"><span class="cq__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><span class="cq__b"><span class="cq__k">Visit us</span><span class="cq__v">Iju, Lagos</span></span></a></li>
+      </ul>
+      <a class="note cq-msg ap-rise" style="--d:4" href="#message">Or send us a message <span class="note__dot" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
     <div class="ap-hero__photos">
       <figure class="ap-ph ap-ph--1"><img src="/img/lv-outreach.webp" alt="Volunteers in Foundation caps handing a gift bag to a market trader." style="object-position: 65% 40%"></figure>
@@ -1847,20 +1889,21 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
               <label class="cm-t"><input type="radio" name="topic" value="A family in need"><span class="cm-t__box"><span class="cm-t__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M12 17s-3-1.8-3-3.6A1.6 1.6 0 0 1 12 13a1.6 1.6 0 0 1 3 1.4c0 1.8-3 3.6-3 3.6z"/></svg></span><span class="cm-t__l">A family in need</span><span class="cm-t__h">Tell us who</span></span></label>
               <label class="cm-t"><input type="radio" name="topic" value="Something else"><span class="cm-t__box"><span class="cm-t__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></span><span class="cm-t__l">Something else</span><span class="cm-t__h">Anything at all</span></span></label>
         </div>
+        <p class="cm-topic-hint" data-topic-hint>Giving by bank transfer? Our account details are on the <a href="/donate">Donate page</a>.</p>
       </fieldset>
       <fieldset class="cm-step">
         <legend class="cm-step__k"><span>2</span>Your details</legend>
         <div class="cm-grid">
-          <label class="cm-f"><span>Full name</span><input name="name" type="text" autocomplete="name" required></label>
-          <label class="cm-f"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+          <label class="cm-f"><span>Full name</span><input name="name" type="text" autocomplete="name" required aria-describedby="err-name"><small class="cm-ferr" id="err-name" hidden>Please add your name.</small></label>
+          <label class="cm-f"><span>Email</span><input name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="err-email"><small class="cm-ferr" id="err-email" hidden>Please add an email we can reply to.</small></label>
           <label class="cm-f cm-f--wide"><span>Phone <em>(optional)</em></span><input name="phone" type="tel" autocomplete="tel"></label>
         </div>
       </fieldset>
       <fieldset class="cm-step">
-        <legend class="cm-step__k"><span>3</span>Your message</legend>
-        <label class="cm-f"><span class="sr-only">Message</span><textarea name="message" rows="5" placeholder="A few lines is plenty." required></textarea></label>
+        <legend class="cm-step__k"><span>3</span><span class="cm-step__q" data-topic-q>What would you like to give?</span></legend>
+        <label class="cm-f"><span class="sr-only">Message</span><textarea name="message" rows="5" placeholder="For example, school fees for a child, or food for an outreach." required aria-describedby="err-msg"></textarea><small class="cm-ferr" id="err-msg" hidden>Please write a short message.</small></label>
       </fieldset>
-      <p class="ct-err" role="alert" hidden>Please add your name, a valid email and a message.</p>
+      <p class="ct-err" role="alert" hidden></p>
       <input class="cm-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="cm-submit">
         <button class="cm-send" type="submit"><span>Send message</span><span class="cm-send__chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
@@ -1877,7 +1920,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 
   <section class="ct-map" id="find-us" aria-labelledby="map-title">
     <div class="ct-map__head">
-      <div><p class="ow__eyebrow"><span aria-hidden="true"></span>Find us</p><h2 class="ap-h2" id="map-title">Come and see us in Iju.</h2><p class="ct-map__sub">No 100 Bola Ahmed Tinubu Rd, Wayobawole, Omonile, KFarm, Iju, Lagos &middot; <a href="mailto:info@mercyalexanderfoundation.org">info@mercyalexanderfoundation.org</a></p></div>
+      <div><p class="ow__eyebrow"><span aria-hidden="true"></span>Find us</p><h2 class="ap-h2" id="map-title">Come and see us in Iju.</h2><p class="ct-map__sub">No 100 Bola Ahmed Tinubu Rd, Wayobawole, Omonile, KFarm, Iju, Lagos</p></div>
       <a class="sbtn" href="https://www.google.com/maps/search/?api=1&amp;query=100+Bola+Ahmed+Tinubu+Road+Iju+Lagos" target="_blank" rel="noopener">Get directions <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="sr-only"> (opens Google Maps in a new tab)</span></a>
     </div>
     <div class="ct-map__in">
@@ -1925,7 +1968,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
         <p>Visit or call</p>
         <a class="ft__phone" href="tel:+2348127777207">+234 8127 777 207</a>
         <span>No 100 Bola Ahmed Tinubu Rd, Wayobawole, Omonile, KFarm, Iju, Lagos</span>
-        <a class="ft__mail" href="mailto:info@mercyalexanderfoundation.org">info@mercyalexanderfoundation.org</a>
+        <a class="ft__mail" href="mailto:info@mercyalexanderfoundation.org">info@<wbr>mercyalexanderfoundation.org</a>
         <a class="ft__map" href="https://www.google.com/maps/search/?api=1&amp;query=100+Bola+Ahmed+Tinubu+Road+Iju+Lagos" target="_blank" rel="noopener">Get directions <span aria-hidden="true">&nearr;</span><span class="sr-only"> (opens Google Maps in a new tab)</span></a>
       </div>
     </div>
@@ -2063,25 +2106,68 @@ window.mafSend = function (fields) {
 </script>
 <script>
 (function () {
+  /* Copy the email address from the contact card */
+  var status = document.querySelector("[data-copy-status]");
+  function copyText(t) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t);
+    return new Promise(function (ok, no) {
+      var a = document.createElement("textarea"); a.value = t; a.setAttribute("readonly", ""); a.style.position = "fixed"; a.style.opacity = "0";
+      document.body.appendChild(a); a.select(); try { document.execCommand("copy") ? ok() : no(); } catch (e) { no(e); } document.body.removeChild(a);
+    });
+  }
+  document.querySelectorAll(".ct-copy").forEach(function (b) {
+    var t = b.querySelector(".ct-act__t"), timer;
+    b.addEventListener("click", function () {
+      copyText(b.dataset.copy).then(function () {
+        clearTimeout(timer); b.classList.add("is-done"); t.textContent = "Copied";
+        if (status) status.textContent = "Email address copied";
+        timer = setTimeout(function () { b.classList.remove("is-done"); t.textContent = "Copy"; }, 2200);
+      });
+    });
+  });
+
   var f = document.querySelector(".ct-form"); if (!f) return;
   var err = f.querySelector(".ct-err"), btn = f.querySelector(".cm-send"), label = btn.querySelector("span"), done = document.querySelector(".cm-done");
+
+  /* The third step asks the question that fits the topic */
+  var TOPICS = {
+    "Giving": ["What would you like to give?", "For example, school fees for a child, or food for an outreach."],
+    "Volunteering": ["How would you like to help?", "Tell us a little about yourself and when you are free."],
+    "Partnership": ["What do you have in mind?", "Tell us about your organisation and the work you would like to do together."],
+    "A family in need": ["Tell us about the family", "Who they are, where they live and what they need most. You can also call us."],
+    "Something else": ["Your message", "A few lines is plenty."]
+  };
+  var q = f.querySelector("[data-topic-q]"), hint = f.querySelector("[data-topic-hint]");
+  function topic() { return (f.querySelector('input[name="topic"]:checked') || {}).value || "Something else"; }
+  function setTopic() { var t = TOPICS[topic()] || TOPICS["Something else"]; q.textContent = t[0]; f.message.placeholder = t[1]; hint.hidden = topic() !== "Giving"; }
+  f.querySelectorAll('input[name="topic"]').forEach(function (r) { r.addEventListener("change", setTopic); });
+  setTopic();
+
+  /* Errors sit under each field, and clear as soon as the field is fixed */
+  var tried = false;
+  function check(el, ok) { var m = document.getElementById(el.getAttribute("aria-describedby")); el.setAttribute("aria-invalid", ok ? "false" : "true"); if (m) m.hidden = ok; return ok; }
+  function validate() {
+    var a = check(f.name, !!f.name.value.trim());
+    var b = check(f.email, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim()));
+    var c = check(f.message, !!f.message.value.trim());
+    return a && b && c;
+  }
+  [f.name, f.email, f.message].forEach(function (el) { el.addEventListener("input", function () { if (tried) validate(); }); });
+
   f.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var name = f.name.value.trim(), email = f.email.value.trim(), msg = f.message.value.trim(), phone = f.phone.value.trim();
-    var topic = (f.querySelector('input[name="topic"]:checked') || {}).value || "Enquiry";
-    var okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    [[f.name, !!name], [f.email, okEmail], [f.message, !!msg]].forEach(function (p) { p[0].setAttribute("aria-invalid", p[1] ? "false" : "true"); });
-    if (!name || !okEmail || !msg) { err.textContent = "Please add your name, a valid email and a message."; err.hidden = false; (!name ? f.name : !okEmail ? f.email : f.message).focus(); return; }
+    e.preventDefault(); tried = true;
+    if (!validate()) { err.hidden = true; f.querySelector('[aria-invalid="true"]').focus(); return; }
     if (f._honey.value) return;
+    var name = f.name.value.trim(), email = f.email.value.trim(), msg = f.message.value.trim(), phone = f.phone.value.trim(), t = topic();
     err.hidden = true; btn.disabled = true; label.textContent = "Sending…";
-    window.mafSend({ _subject: topic + ": message from " + name, Topic: topic, Name: name, email: email, Phone: phone || "Not given", Message: msg })
+    window.mafSend({ _subject: t + ": message from " + name, Topic: t, Name: name, email: email, Phone: phone || "Not given", Message: msg })
       .then(function () {
         done.querySelector("[data-done-name]").textContent = ", " + name.split(" ")[0];
         f.hidden = true; done.hidden = false; done.focus();
         done.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
-        f.reset();
+        f.reset(); tried = false; setTopic();
       })
-      .catch(function () { err.textContent = "Sorry, your message didn’t send. Please try again, or call +234 8127 777 207."; err.hidden = false; })
+      .catch(function () { err.textContent = "Your message didn’t send. Please try again, or call +234 8127 777 207."; err.hidden = false; })
       .then(function () { btn.disabled = false; label.textContent = "Send message"; });
   });
   if (done) done.querySelector(".cm-again").addEventListener("click", function () { done.hidden = true; f.hidden = false; f.name.focus(); });
