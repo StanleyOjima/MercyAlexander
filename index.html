@@ -1132,8 +1132,8 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 .mt { position: relative; margin: 0; overflow: hidden; border-radius: 18px; background: #e9d7c4; transition: opacity 0.4s, transform 0.4s; }
 .mt img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
 .mt:hover img { transform: scale(1.05); }
-.mt::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(29, 20, 14, 0) 55%, rgba(29, 20, 14, 0.6) 100%); }
-.mt figcaption { position: absolute; z-index: 1; left: 16px; right: 16px; bottom: 14px; color: #fff; }
+.mt::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20, 12, 6, 0) 38%, rgba(20, 12, 6, 0.38) 62%, rgba(20, 12, 6, 0.85) 100%); }
+.mt figcaption { position: absolute; z-index: 1; left: 16px; right: 16px; bottom: 14px; color: #fff; text-shadow: 0 1px 12px rgba(20, 12, 6, 0.4); }
 .mt figcaption b { display: block; font-size: 15px; font-weight: 600; }
 .mt figcaption span { font-size: 12.5px; opacity: 0.85; }
 .mt__play { position: absolute; z-index: 1; left: 50%; top: 50%; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 999px; background: rgba(255, 250, 244, 0.94); color: #ec6836; display: flex; align-items: center; justify-content: center; transition: transform 0.35s var(--ease); }
@@ -1451,7 +1451,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 
 /* round 11: phone captions sit lower and smaller so the photographs show */
 @media (max-width: 600px) {
-  .mt::after { background: linear-gradient(180deg, rgba(29, 20, 14, 0) 62%, rgba(29, 20, 14, 0.62) 100%); }
+  .mt::after { background: linear-gradient(180deg, rgba(20, 12, 6, 0) 42%, rgba(20, 12, 6, 0.4) 66%, rgba(20, 12, 6, 0.86) 100%); }
   .mt figcaption { left: 12px; right: 12px; bottom: 10px; }
   .mt figcaption b { font-size: 13px; line-height: 1.25; }
   .mt figcaption span { display: none; }
@@ -1522,6 +1522,111 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
   .sc__mtabs.seg .seg__opt { flex: 1 1 auto !important; padding: 0 16px !important; font-size: 13px !important; letter-spacing: -0.01em; }
 }
 @media (max-width: 380px) { .sc__mtabs.seg .seg__opt { padding: 0 11px !important; font-size: 12.5px !important; } }
+
+/* =========================================================
+   Round 21: motion layer. Movement only, no change to layout or colour.
+   Everything here is skipped when the visitor asks for reduced motion.
+   ========================================================= */
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero: the gold light breathes slowly; photographs lean in under the cursor */
+  .room::after { transform-origin: 50% 100%; animation: mxBreath 7s ease-in-out 3s infinite; }
+  @keyframes mxBreath { 50% { scale: 1.08 1.12; } }
+  .frame img { transition: scale 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+  .frame:hover img { scale: 1.06; }
+  .note .note__dot .icon { transition: translate 0.3s var(--ease); }
+  .note:hover .note__dot .icon { translate: 3px 0; }
+
+  /* Our work: the photograph slowly settles while you read; the route draws itself step by step */
+  .sc__img { animation: mxDrift 16s ease-in-out infinite alternate; }
+  @keyframes mxDrift { from { scale: 1; } to { scale: 1.07; } }
+  .route li::before { transform-origin: 50% 0; transition: scale 0.7s cubic-bezier(0.65, 0, 0.35, 1); }
+  .route__dot { transition: scale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s; }
+  .route li > div { transition: opacity 0.6s var(--ease), translate 0.6s var(--ease); }
+  .route li:nth-child(1)::before { transition-delay: 0.35s; } .route li:nth-child(2)::before { transition-delay: 0.75s; }
+  .route li:nth-child(1) .route__dot, .route li:nth-child(1) > div { transition-delay: 0.15s; }
+  .route li:nth-child(2) .route__dot, .route li:nth-child(2) > div { transition-delay: 0.55s; }
+  .route li:nth-child(3) .route__dot, .route li:nth-child(3) > div { transition-delay: 0.95s; }
+  html.mo .sc:not(.seen) .route li::before, html.mo .sc__panel:not(.is-on) .route li::before { scale: 1 0; transition-delay: 0s; }
+  html.mo .sc:not(.seen) .route__dot, html.mo .sc__panel:not(.is-on) .route__dot { scale: 0.3; opacity: 0; transition-delay: 0s; }
+  html.mo .sc:not(.seen) .route li > div, html.mo .sc__panel:not(.is-on) .route li > div { opacity: 0; translate: 0 10px; transition-delay: 0s; }
+
+  /* What drives us: the closing tick lands after the photographs open; chips come alive on hover */
+  .drv__chip--tick { transition: scale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.1s; }
+  .drv.is-pre .drv__chip--tick { scale: 0; }
+  .drv__chip:not(.drv__chip--tick):hover img { transform: scale(1.45); transition-delay: 0s; transition-duration: 0.8s; }
+
+  /* About: photographs lean in on hover, the corner marks turn as the box arrives */
+  .ab__ph img, .ab__portrait--photo img, .ab__strip img { transition: scale 1s cubic-bezier(0.16, 1, 0.3, 1); }
+  .ab__ph:hover img, .ab__portrait--photo:hover img { scale: 1.06; }
+  .ab__plus { transition: rotate 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.2s; }
+  html.mo .ab__box:not(.in) .ab__plus { rotate: -90deg; }
+  .ab__badge { transition: scale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s; }
+  html.mo .ab__founder:not(.in) .ab__badge { scale: 0; }
+
+  /* Media: captions lift a touch on hover */
+  .mt figcaption { transition: translate 0.4s var(--ease); }
+  .mt:hover figcaption { translate: 0 -4px; }
+
+  /* Testimonial: the person's initials pop in with each new quote */
+  .vq.is-on .voice__avatar { animation: mxPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s both; }
+  @keyframes mxPop { from { scale: 0.4; opacity: 0; } }
+
+  /* Call to action: the light under the button breathes */
+  .cta__glow { animation: mxGlow 6s ease-in-out infinite; }
+  @keyframes mxGlow { 50% { scale: 1.1; opacity: 0.85; } }
+  .cf { transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+
+  /* Footer: small nudges */
+  .ft__give span .icon { transition: translate 0.3s var(--ease); }
+  .ft__give:hover span .icon { translate: 3px 0; }
+  .ft__base a[href="#top"] span { display: inline-block; transition: translate 0.3s var(--ease); }
+  .ft__base a[href="#top"]:hover span { translate: 0 -3px; }
+
+  /* Scroll reveal: held back until in view (only when the script is running) */
+  html.mo .rv { opacity: 0; }
+}
+/* MOBILE: shared phone rhythm, loaded after every page's own CSS */
+@media (max-width: 600px) {
+  /* section rhythm: tighter, consistent vertical spacing on phones */
+  .ow, .media, .voice, .ap-do, .ap-mv, .ap-story, .cm, .ct-map, .dn-where { padding-top: 72px; padding-bottom: 72px; }
+  .ow { padding-bottom: 64px; }
+  .stx { margin-top: 0; padding-top: 72px; padding-bottom: 72px; }
+  .drv { padding-top: 72px; }
+  .ab { padding-top: 40px; padding-bottom: 72px; }
+  .ap-who { padding-top: 72px; padding-bottom: 64px; }
+  .gx { padding-bottom: 72px; }
+  .cta2 { padding-top: 88px; padding-bottom: 88px; }
+  .ft { padding-top: 56px; }
+
+  /* comfortable tap targets in the footer */
+  .ft__col { gap: 0; }
+  .ft__col > p { margin-bottom: 4px; }
+  .ft__col a { padding: 10px 0; background-position: 0 calc(100% - 8px); }
+  .ft__col span { padding: 6px 0; }
+  .ft__col--contact .ft__phone { margin-bottom: 0; }
+  .ft__social a { display: inline-flex; align-items: center; gap: 5px; min-height: 44px; }
+  .vq__dot { height: 44px; }
+
+  /* mission and vision: label, switch, photo, statement */
+  .mvt { gap: 0; }
+  .mvt__body { display: contents; }
+  .mvt__body > * { order: 1; }
+  .mvt__tabs { order: 2; margin-top: 22px; }
+  .mvt__media { order: 3; margin-top: 18px; aspect-ratio: 4 / 3; }
+  .mvt__panels { order: 4; margin-top: 26px; }
+  .mvt__next { order: 5; margin-top: 26px; }
+
+  /* media: thumbnails are too small to read on a phone */
+  .gx-album__stack { display: none; }
+  .gx-album__top { justify-content: flex-end; }
+
+  /* contact: the map does not need to fill the screen */
+  .ct-map__in { height: 360px; }
+}
+@media (max-width: 380px) {
+  .mvt__tab { font-size: 14px; padding: 0 10px 0 5px; gap: 6px; }
+  .mvt__big { font-size: 27px; }
+}
 </style>
 </head>
 <body>
@@ -1534,7 +1639,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 
   <nav class="mainnav" aria-label="Main">
     <a href="#top">Home</a>
-    <a href="#about">About us</a>
+    <a href="about.html">About us</a>
     <button type="button" aria-expanded="false" aria-controls="work-panel" data-panel>Our work <svg class="chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></button>
     <div class="panel" id="work-panel" hidden>
       <div class="panel__grid panel__grid--eq">
@@ -1543,12 +1648,12 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
         <a class="pcard" href="#families"><span class="pcard__img"><img src="img/lv-outreach.webp" alt="" style="object-position: 65% 40%"><span class="pcard__n">03</span></span><span class="pcard__t">Families in hard times</span><span class="pcard__x">Food and practical support when a crisis reaches home.</span><span class="pcard__go">View programme <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a>
       </div>
     </div>
-    <a href="#media">Media</a>
-    <a href="#contact">Contact</a>
+    <a href="media.html">Media</a>
+    <a href="contact.html">Contact</a>
   </nav>
 
   <div class="hdr__end">
-    <a class="donate" href="#donate">Donate <span class="donate__dot" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="donate" href="donate.html">Donate <span class="donate__dot" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     <button class="round menu-btn" type="button" data-menu-open aria-controls="menu" aria-expanded="false"><span class="sr-only">Open menu</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 9h16M4 15h16"/></svg></button>
   </div>
 
@@ -1561,7 +1666,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
       <h1 class="display rise" id="hero-title" style="--d:1"><span>Children belong</span> <span>in school.</span></h1>
       <p class="lede rise" style="--d:2">Across Nigeria, we help children off the street and back into a classroom, and we stay with them so they stay in school.</p>
       <div class="ctas rise" style="--d:3">
-        <a class="give" href="#donate"><span class="give__label">Make a donation</span><span class="give__chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="give" href="donate.html"><span class="give__label">Make a donation</span><span class="give__chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
       </div>
     </div>
     <div class="frames">
@@ -1652,13 +1757,23 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
   var wide = matchMedia("(min-width: 961px)");
   function onScroll() {
     if (!wide.matches) { [fl, fr, intro].forEach(function (el) { if (el) { el.style.translate = ""; el.style.opacity = ""; } }); ticking = false; return; }
-    var y = Math.min(scrollY, innerHeight);
-    if (fl) fl.style.translate = "0 " + (-y * 0.10) + "px";
-    if (fr) fr.style.translate = "0 " + (-y * 0.22) + "px";
+    var y = Math.min(scrollY, innerHeight), m = window.__heroMouse || { x: 0, y: 0 };
+    if (fl) fl.style.translate = (m.x * -10) + "px " + (-y * 0.10 + m.y * -8) + "px";
+    if (fr) fr.style.translate = (m.x * -18) + "px " + (-y * 0.22 + m.y * -12) + "px";
     if (intro) { intro.style.translate = "0 " + (y * 0.12) + "px"; intro.style.opacity = String(1 - Math.min(y / (innerHeight * 0.75), 0.6)); }
     ticking = false;
   }
   addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  // Cursor drift: the two photographs float gently against the pointer, the far one more than the near one
+  var room = document.querySelector(".room");
+  if (room && matchMedia("(hover: hover) and (pointer: fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var tx = 0, ty = 0, cur = { x: 0, y: 0 }, raf = null;
+    window.__heroMouse = cur;
+    function step() { cur.x += (tx - cur.x) * 0.08; cur.y += (ty - cur.y) * 0.08; onScroll(); if (Math.abs(tx - cur.x) > 0.002 || Math.abs(ty - cur.y) > 0.002) raf = requestAnimationFrame(step); else raf = null; }
+    function kick() { if (!raf) raf = requestAnimationFrame(step); }
+    room.addEventListener("pointermove", function (e) { var r = room.getBoundingClientRect(); tx = (e.clientX - r.left) / r.width - 0.5; ty = (e.clientY - r.top) / r.height - 0.5; kick(); });
+    room.addEventListener("pointerleave", function () { tx = 0; ty = 0; kick(); });
+  }
 })();
 </script>
 
@@ -1688,7 +1803,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
           <h3 class="ow2__leadname" id="street-to-school-t">Street to School</h3>
           <p class="ow2__leadtext">Getting children who are out of school back into a classroom near home, and keeping them there.</p>
           <ol class="route"><li><span class="route__dot" aria-hidden="true"></span><div><b>Find</b><p>We find children who are out of school.</p></div></li><li><span class="route__dot" aria-hidden="true"></span><div><b>Enrol</b><p>We place them in a classroom nearby and cover the uniform, books and fees.</p></div></li><li class="route__end"><span class="route__dot" aria-hidden="true"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M3 53 C13 57 23 68 30 83 L37 98 C50 64 69 31 98 8 C99 6 97 2 94 3 C66 20 47 45 35 66 C29 55 21 47 13 42 C8 40 1 46 3 53 Z"/></svg></span><div><b>Stay</b><p>We make sure they stay in school.</p></div></li></ol>
-          <a class="ow2__give" href="#donate">Support Street to School <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+          <a class="ow2__give" href="donate.html?for=street-to-school">Support Street to School <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         </article>
         <article class="sc__panel" id="older-people" data-i="1" aria-labelledby="older-people-t">
           <div class="sc__mimg"><img src="img/ow-elder.webp" alt="An older woman in a gold headwrap and embroidered dress, smiling softly." loading="lazy"></div>
@@ -1696,7 +1811,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
           <h3 class="ow2__leadname" id="older-people-t">Older people</h3>
           <p class="ow2__leadtext">Help with healthcare costs, so that a grandparent's treatment does not compete with a child's school fees.</p>
           
-          <a class="ow2__give" href="#donate">Support older people <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+          <a class="ow2__give" href="donate.html?for=older-people">Support older people <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         </article>
         <article class="sc__panel" id="families" data-i="2" aria-labelledby="families-t">
           <div class="sc__mimg"><img src="img/ow-mother.webp" alt="A mother combs her daughter's hair at home in warm afternoon light." loading="lazy"></div>
@@ -1704,7 +1819,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
           <h3 class="ow2__leadname" id="families-t">Families in hard times</h3>
           <p class="ow2__leadtext">Food and practical support when a crisis reaches a community, as during the 2020 lockdown in Lagos.</p>
           
-          <a class="ow2__give" href="#donate">Support families <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+          <a class="ow2__give" href="donate.html?for=families">Support families <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         </article>
       </div>
       <div class="sc__swipe" aria-hidden="true"><i class="is-on"></i><i></i><i></i></div>
@@ -1745,12 +1860,12 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
         <div class="drv__item">
           <h3 class="drv__k"><span class="drv__num">01</span>Our vision</h3>
           <p class="drv__t">To be a foundation recognised around the world for lifting people out of poverty.</p>
-          <a class="sbtn" href="#about">Who we are <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+          <a class="sbtn" href="about.html">Who we are <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         </div>
         <div class="drv__item">
           <h3 class="drv__k"><span class="drv__num">02</span>Our supporters</h3>
           <p class="drv__t">Every contribution matters to our work, and every one is gratefully received.</p>
-          <a class="sbtn" href="#donate">Make a donation <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+          <a class="sbtn" href="donate.html">Make a donation <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         </div>
       </div>
     </div>
@@ -1772,8 +1887,8 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
       <p class="ab__text">Mercy Alexander Foundation is a Nigerian charity. Our flagship programme, Street to School, launched in 2018, places out-of-school children in classrooms near home and keeps them there.</p>
       <div class="ab__founder">
         <figure class="ab__portrait ab__portrait--photo"><img src="img/mercy.webp" alt="Mercy Alexander, founder of the Foundation, in a white suit." loading="lazy"><span class="ab__badge" aria-hidden="true"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M3 53 C13 57 23 68 30 83 L37 98 C50 64 69 31 98 8 C99 6 97 2 94 3 C66 20 47 45 35 66 C29 55 21 47 13 42 C8 40 1 46 3 53 Z"/></svg></span></figure>
-        <div class="ab__fmeta"><b>Founded by Mercy Alexander</b><p>Mercy's own story, in her words, will sit here: why she started the Foundation and what keeps her going.</p>
-        <a class="sbtn" href="#about">Read Mercy's story <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+        <div class="ab__fmeta"><b>Founded by Mercy Alexander</b><p>&ldquo;A little help, given at the right moment, can change the direction of a life.&rdquo; How the Foundation began, in Mercy&rsquo;s own words.</p>
+        <a class="sbtn" href="about.html#story">Read Mercy's story <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
       </div>
     </div>
   </section>
@@ -1782,9 +1897,9 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
     <div class="media__in">
       <div class="media__head">
         <div><p class="ow__eyebrow"><span aria-hidden="true"></span>Media</p><h2 class="sec-title" id="media-title">Moments from the work.</h2></div>
-        <a class="media__all" href="#media">See all photos and videos <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="media__all" href="media.html">See all photos and videos <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
       </div>
-      <div class="media__grid media__grid--8"><figure class="mt mt--a" data-k="photo"><img src="img/lv-scholar-group.webp" alt="Children holding new school bags, with Foundation volunteers and parents behind them." loading="lazy" style="object-position: 40% 40%"><figcaption><b>Student scholarship</b><span>Street to School</span></figcaption></figure><figure class="mt mt--c" data-k="photo"><img src="img/lv-outreach.webp" alt="Volunteers in Foundation caps handing a gift bag to a market trader." loading="lazy" style="object-position: 70% 40%"><figcaption><b>Mother&rsquo;s Day outreach</b><span>Families</span></figcaption></figure><figure class="mt mt--d" data-k="photo"><img src="img/lv-elders.webp" alt="Older men and women seated outdoors at a Foundation outreach." loading="lazy" style="object-position: 60% 40%"><figcaption><b>Remembrance outreach</b><span>Older people, 2021</span></figcaption></figure><figure class="mt mt--e" data-k="photo"><img src="img/lv-mothers.webp" alt="Older women in bright wrappers standing together with Foundation volunteers in a hall." loading="lazy" style="object-position: 50% 40%"><figcaption><b>Outreach to older mothers</b><span>Older people</span></figcaption></figure><figure class="mt mt--f" data-k="photo"><img src="img/lv-scholar-clap.webp" alt="Children clapping at a student scholarship event." loading="lazy" style="object-position: 50% 35%"><figcaption><b>Scholarship day</b><span>Street to School</span></figcaption></figure><figure class="mt mt--b" data-k="photo"><img src="img/lv-school.webp" alt="Pupils in green and white uniforms gathered in a school yard." loading="lazy" style="object-position: 50% 55%"><figcaption><b>School visit</b><span>Street to School</span></figcaption></figure><figure class="mt mt--g" data-k="photo"><img src="img/lv-gifts.webp" alt="A volunteer handing a gift bag to an older woman seated outdoors." loading="lazy" style="object-position: 50% 40%"><figcaption><b>Gifts for older people</b><span>Older people, 2021</span></figcaption></figure><figure class="mt mt--h" data-k="photo"><img src="img/lv-market2.webp" alt="A volunteer handing a bag of goods to a woman at a market stall." loading="lazy" style="object-position: 50% 40%"><figcaption><b>At the market</b><span>Mother&rsquo;s Day</span></figcaption></figure></div>
+      <div class="media__grid media__grid--8"><figure class="mt mt--a" data-k="photo"><img src="img/lv-scholar-group.webp" alt="Children holding new school bags, with Foundation volunteers and parents behind them." loading="lazy" style="object-position: 40% 40%"><figcaption><b>Student scholarship</b><span>Street to School</span></figcaption></figure><figure class="mt mt--c" data-k="photo"><img src="img/lv-outreach.webp" alt="Volunteers in Foundation caps handing a gift bag to a market trader." loading="lazy" style="object-position: 70% 40%"><figcaption><b>Mother&rsquo;s Day outreach</b><span>Families</span></figcaption></figure><figure class="mt mt--d" data-k="photo"><img src="img/lv-elders.webp" alt="Older men and women seated outdoors at a Foundation outreach." loading="lazy" style="object-position: 60% 40%"><figcaption><b>Remembrance outreach</b><span>Older people</span></figcaption></figure><figure class="mt mt--e" data-k="photo"><img src="img/nw-hall-group.webp" alt="A hall full of older women gathered with the Foundation team at an outreach, holding bags of food." loading="lazy" style="object-position: 45% 55%"><figcaption><b>Outreach to older mothers</b><span>Older people</span></figcaption></figure><figure class="mt mt--f" data-k="photo"><img src="img/lv-scholar-clap.webp" alt="Children clapping at a student scholarship event." loading="lazy" style="object-position: 50% 35%"><figcaption><b>Scholarship day</b><span>Street to School</span></figcaption></figure><figure class="mt mt--b" data-k="photo"><img src="img/lv-school.webp" alt="Pupils in green and white uniforms gathered in a school yard." loading="lazy" style="object-position: 50% 55%"><figcaption><b>School visit</b><span>Street to School</span></figcaption></figure><figure class="mt mt--g" data-k="photo"><img src="img/nw-queue.webp" alt="Women queuing as a volunteer hands out bags of food at a Foundation outreach." loading="lazy" style="object-position: 60% 50%"><figcaption><b>Food for families</b><span>Families</span></figcaption></figure><figure class="mt mt--h" data-k="photo"><img src="img/nw-women-closer.webp" alt="Women in bright wrappers and headwraps standing together at a Foundation outreach." loading="lazy" style="object-position: 50% 40%"><figcaption><b>A morning with the mothers</b><span>Outreach</span></figcaption></figure></div>
     </div>
   </section>
 
@@ -1825,9 +1940,9 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
     <span class="cf cf--4" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/></svg></span>
     <span class="cf cf--6" aria-hidden="true"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M3 53 C13 57 23 68 30 83 L37 98 C50 64 69 31 98 8 C99 6 97 2 94 3 C66 20 47 45 35 66 C29 55 21 47 13 42 C8 40 1 46 3 53 Z"/></svg></span>
     <div class="cta2__in">
-      <h2 class="cta__title" id="cta-title">Help one more child<br>find their seat in class.</h2>
+      <h2 class="cta__title" id="cta-title">Help one more child <br>find their seat in class.</h2>
       <p class="cta__text">Your gift covers a uniform, books and school fees, and helps us keep children in school.</p>
-      <div class="cta__actions"><a class="give" href="#donate"><span class="give__label">Make a donation</span><span class="give__chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+      <div class="cta__actions"><a class="give" href="donate.html"><span class="give__label">Make a donation</span><span class="give__chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
     </div>
     <div class="cta__glow" aria-hidden="true"></div>
   </section>
@@ -1839,11 +1954,11 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
       <div class="ft__lead">
         <span class="logo"><span class="logo__mark" aria-hidden="true"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M3 53 C13 57 23 68 30 83 L37 98 C50 64 69 31 98 8 C99 6 97 2 94 3 C66 20 47 45 35 66 C29 55 21 47 13 42 C8 40 1 46 3 53 Z"/></svg></span><span class="logo__type"><span>Mercy Alexander</span><span>Foundation</span></span></span>
         <p class="ft__say"><span>Children belong in school.</span> <span>Help us keep them there.</span></p>
-        <a class="ft__give" href="#donate">Make a donation <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <a class="ft__give" href="donate.html">Make a donation <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
       </div>
       <nav class="ft__col" aria-label="Footer">
         <p>Explore</p>
-        <a href="#about">About us</a><a href="#work">Our work</a><a href="#media">Media</a><a href="#donate">Donate</a><a href="#contact">Contact</a>
+        <a href="about.html">About us</a><a href="#work">Our work</a><a href="media.html">Media</a><a href="donate.html">Donate</a><a href="contact.html">Contact</a>
       </nav>
       <div class="ft__col">
         <p>Programmes</p>
@@ -1893,6 +2008,88 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
   if ("IntersectionObserver" in window) { new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) play(); else stop(); }); }).observe(root); }
 })();
 </script>
+
+<script>
+(function () {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window) || !Element.prototype.animate) return;
+  var root = document.documentElement; root.classList.add("mo");
+  var EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
+  // [selector, how its children enter, stagger in ms]
+  var groups = [
+    [".ow__head", "rise", 90],
+    [".stx__head", "rise", 90],
+    [".stx__grid", "rise", 110],
+    [".drv__row", "rise", 140],
+    [".ab__box", "box", 0],
+    [".ab__founder", "rise", 120],
+    [".ab__strip", "rise", 120],
+    [".media__head", "rise", 90],
+    [".media__grid", "tile", 70],
+    [".voice__in", "rise", 100],
+    [".cta2__in", "rise", 120],
+    [".ft__top", "rise", 80],
+    [".ap-who__text", "rise", 120],
+    [".ap-who__pics", "rise", 160],
+    [".ap-facts", "rise", 120],
+    [".ap-do__list", "rise", 70],
+    [".mvt__body", "rise", 80],
+    [".gx-grid", "tile", 40],
+    [".ct-map__head", "rise", 100],
+    [".cm__head", "rise", 90],
+    [".cm-tiles", "rise", 50],
+    [".ap-story__text", "rise", 70]
+  ];
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var g = e.target, kind = g.getAttribute("data-mo"), step = +g.getAttribute("data-step");
+      io.unobserve(g); g.classList.add("in");
+      var kids = kind === "box" ? [g] : [].slice.call(g.children);
+      kids.forEach(function (k, i) {
+        k.classList.remove("rv");
+        var d = i * step;
+        if (kind === "tile") {
+          k.animate([{ clipPath: "inset(100% 0 0 0 round 18px)", opacity: 1 }, { clipPath: "inset(0 0 0 0 round 18px)", opacity: 1 }], { duration: 1000, delay: d, easing: "cubic-bezier(0.65, 0, 0.35, 1)", fill: "backwards" });
+          var im = k.querySelector("img"); if (im) im.animate([{ scale: "1.18" }, { scale: "1" }], { duration: 1500, delay: d, easing: EASE, fill: "backwards" });
+        } else {
+          k.animate([{ opacity: 0, translate: "0 26px" }, { opacity: 1, translate: "0 0" }], { duration: 900, delay: d, easing: EASE, fill: "backwards" });
+        }
+      });
+    });
+  }, { rootMargin: "0px 0px -12% 0px" });
+  groups.forEach(function (gr) {
+    document.querySelectorAll(gr[0]).forEach(function (g) {
+      if (g.getBoundingClientRect().top < innerHeight * 0.9) { g.classList.add("in"); return; } // already on screen: leave it be
+      g.setAttribute("data-mo", gr[1]); g.setAttribute("data-step", gr[2]);
+      (gr[1] === "box" ? [g] : [].slice.call(g.children)).forEach(function (k) { k.classList.add("rv"); });
+      io.observe(g);
+    });
+  });
+
+  // Our work: the route draws once the section is reached
+  var sc = document.querySelector(".sc");
+  if (sc) new IntersectionObserver(function (es, o) { es.forEach(function (e) { if (e.isIntersecting) { sc.classList.add("seen"); o.disconnect(); } }); }, { rootMargin: "0px 0px -25% 0px" }).observe(sc);
+
+  var fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  // About: the floating photographs drift at different speeds as you scroll
+  var phs = [].slice.call(document.querySelectorAll(".ab__ph")), speeds = [0.08, -0.06, 0.12];
+  function abScroll() {
+    if (innerWidth < 961) return;
+    phs.forEach(function (p, i) { var r = p.getBoundingClientRect(); var c = r.top + r.height / 2 - innerHeight / 2; p.style.translate = "0 " + (c * speeds[i % 3]).toFixed(1) + "px"; });
+  }
+  var t1 = false; addEventListener("scroll", function () { if (!t1) { t1 = true; requestAnimationFrame(function () { abScroll(); t1 = false; }); } }, { passive: true }); abScroll();
+
+  // Call to action: the four tiles drift with the cursor
+  var cta = document.querySelector(".cta2"), cfs = [].slice.call(document.querySelectorAll(".cta2 .cf"));
+  if (cta && fine && cfs.length) {
+    var base = cfs.map(function (c) { var m = (getComputedStyle(c).transform.match(/matrix\(([^)]+)\)/) || [])[1]; if (!m) return 0; var v = m.split(",").map(parseFloat); return Math.round(Math.atan2(v[1], v[0]) * 180 / Math.PI); });
+    var depth = [22, -16, 18, -26];
+    cta.addEventListener("pointermove", function (e) { var r = cta.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+      cfs.forEach(function (c, i) { c.style.transform = "translate(" + (x * depth[i]) + "px," + (y * depth[i]) + "px) rotate(" + (base[i] + x * 6) + "deg)"; }); });
+    cta.addEventListener("pointerleave", function () { cfs.forEach(function (c, i) { c.style.transform = "rotate(" + base[i] + "deg)"; }); });
+  }
+})();
+</script>
 <script>document.querySelectorAll("[data-year]").forEach(function(e){e.textContent=new Date().getFullYear();});
 (function(){var w=document.querySelector(".ft__word");if(!w)return;function fit(){w.style.fontSize="";var box=w.parentElement.clientWidth,cur=parseFloat(getComputedStyle(w).fontSize),wd=w.getBoundingClientRect().width;if(wd>0)w.style.fontSize=(cur*box/wd*0.995)+"px";}fit();if(document.fonts)document.fonts.ready.then(fit);addEventListener("resize",fit);})();</script>
 
@@ -1906,13 +2103,13 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
     <nav aria-label="Main, mobile">
       <ul class="menu__list mn__list">
         <li><a href="#top"><span class="mn__n">01</span>Home</a></li>
-        <li><a href="#about"><span class="mn__n">02</span>About us</a></li>
+        <li><a href="about.html"><span class="mn__n">02</span>About us</a></li>
         <li><a href="#work"><span class="mn__n">03</span>Our work</a></li>
-        <li><a href="#media"><span class="mn__n">04</span>Media</a></li>
-        <li><a href="#contact"><span class="mn__n">05</span>Contact</a></li>
+        <li><a href="media.html"><span class="mn__n">04</span>Media</a></li>
+        <li><a href="contact.html"><span class="mn__n">05</span>Contact</a></li>
       </ul>
     </nav>
-    <a class="btn mn__give" href="#donate"><span>Make a donation</span><span class="mn__chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    <a class="btn mn__give" href="donate.html"><span>Make a donation</span><span class="mn__chip" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     <div class="mn__foot">
       <a href="tel:+2348127777207">+234 8127 777 207</a>
       <a href="mailto:info@mercyalexanderfoundation.org">info@mercyalexanderfoundation.org</a>
@@ -2074,16 +2271,15 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 <script>
 (function () {
   /* mission statement fills in word by word as it moves up the screen */
-  var st = document.querySelector(".ab__title[data-reveal]");
-  if (st) {
+  [].slice.call(document.querySelectorAll("[data-reveal]")).forEach(function (st) {
     var words = st.textContent.trim().split(/\s+/); st.innerHTML = words.map(function (w) { return '<span class="w">' + w + '</span>'; }).join(" ");
     var ws = st.querySelectorAll(".w"), reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
     function fill() {
       var r = st.getBoundingClientRect(), p = reduce ? 1 : Math.min(1, Math.max(0, (innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.35)));
       var n = Math.round(p * ws.length); ws.forEach(function (w, i) { w.classList.toggle("on", i < n); });
     }
-    var t = false; addEventListener("scroll", function () { if (!t) { t = true; requestAnimationFrame(function () { fill(); t = false; }); } }, { passive: true }); fill();
-  }
+    var tk = false; addEventListener("scroll", function () { if (!tk) { tk = true; requestAnimationFrame(function () { fill(); tk = false; }); } }, { passive: true }); fill();
+  });
   /* media filter */
   var fb = document.querySelectorAll(".media__filter button"), tiles = document.querySelectorAll(".mt");
   fb.forEach(function (b) { b.addEventListener("click", function () {
