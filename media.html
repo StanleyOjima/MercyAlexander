@@ -761,9 +761,6 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 .route__end .route__dot svg { width: 17px; height: 17px; fill: #fff; }
 .route b { display: block; font-family: "Fraunces", Georgia, serif; font-weight: 420; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: 25px; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); }
 .route__end b { padding-top: 2px; }
-.route--list { list-style: none; padding: 0; }
-.route--list li::before { display: none; }
-.route--list li { padding-bottom: 22px; }
 .route p { margin-top: 6px; font-size: 16px; line-height: 1.5; color: var(--clay); }
 .sc__panel .ow2__give { margin-top: clamp(32px, 3.4vw, 44px); }
 @media (max-width: 600px) { .route b { font-size: 22px; } .sc__panel .ow2__leadtext { font-size: 17px; } }
@@ -1462,7 +1459,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 
 
 /* round 13: the segmented tabs, refined. A compact pill on the photograph that you can click */
-.sc__tabs.seg { left: 16px; right: 16px; bottom: 16px; max-width: none; padding: 5px; background: rgba(255, 250, 244, 0.94); backdrop-filter: blur(10px); box-shadow: 0 1px 0 rgba(29, 20, 14, 0.04), 0 14px 32px -16px rgba(30, 12, 0, 0.6); }
+.sc__tabs.seg { left: 16px; right: 16px; bottom: 16px; max-width: none; padding: 5px; background: rgba(255, 250, 244, 0.94); backdrop-filter: blur(10px); box-shadow: 0 1px 0 rgba(29, 20, 14, 0.04); }
 .seg__opt { border: 0; cursor: pointer; font-family: inherit; }
 .sc__tabs.seg .seg__opt { flex: 1 1 0; height: 42px; padding: 0 12px; font-size: 13.5px; color: var(--clay); white-space: nowrap; }
 .seg__opt em { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 999px; background: #f6e7d8; color: var(--ember-deep); opacity: 1 !important; font-size: 10.5px; transition: background-color 0.35s, color 0.35s; }
@@ -1515,9 +1512,12 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 
 .sc__tabs.seg .seg__opt.is-on, .sc__mtabs.seg .seg__opt[aria-selected="true"] { color: var(--ink); font-weight: 620; }
 
-.frame--l img { object-position: 50% 30% !important; }
+.frame--l img { object-position: 34% 50% !important; }
 .frame--r img { object-position: 50% 30% !important; }
-@media (min-width: 961px) { .frame--r { right: clamp(28px, 4.2vw, 72px) !important; width: clamp(220px, 21vw, 310px) !important; } }
+@media (min-width: 961px) {
+  .frame--l { left: clamp(28px, 4.2vw, 72px) !important; width: clamp(250px, 25vw, 372px) !important; }
+  .frame--r { right: clamp(28px, 4.2vw, 72px) !important; width: clamp(236px, 23vw, 340px) !important; }
+}
 
 /* round 16: phone tabs size to their words, so the longest label has the same breathing room as the others */
 @media (max-width: 860px) {
@@ -1830,7 +1830,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
    Newest photos go at the top of the list.
    ========================================================= */
 var GX_CATEGORIES = [
-  { id: "widows",      name: "Widows&rsquo; outreach, Akute", note: "Gifts and support for widows, in memory of Pa Alexander Akpati", cover: "wid-01" },
+  { id: "widows",      name: "Widows&rsquo; outreach, Akute", note: "Gifts and support for widows, in memory of Pa Alexander Akpati", cover: "wid-11" },
   { id: "outreach",    name: "Outreach programme",   note: "Food and gifts for mothers in Lagos", cover: "out-01" },
   { id: "scholarship", name: "Student scholarship",  note: "School bags, books and fees for children", cover: "sch-20" },
   { id: "mothers-day", name: "Mother&rsquo;s Day",   note: "Gifts for mothers in a Lagos market", cover: "mday-12" },
@@ -2064,7 +2064,7 @@ var GX_PHOTOS = [
   function n(id) { return photos.filter(function (p) { return id === "all" || p[1] === id; }).length; }
   function btn(id, label) {
     var b = document.createElement("button"); b.type = "button"; b.setAttribute("data-cat", id);
-    b.innerHTML = label + " <em>" + n(id) + "</em>"; b.setAttribute("aria-pressed", id === current ? "true" : "false");
+    b.innerHTML = id === "all" ? label : label + " <em>" + n(id) + "</em>"; b.setAttribute("aria-pressed", id === current ? "true" : "false");
     b.addEventListener("click", function () { choose(id); bar.scrollTo({ left: b.offsetLeft - (bar.clientWidth - b.offsetWidth) / 2, behavior: "smooth" }); });
     bar.appendChild(b);
   }
@@ -2089,7 +2089,7 @@ var GX_PHOTOS = [
     bar.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-cat") === id ? "true" : "false"); });
     if (id === "all") {
       list = photos.slice();
-      count.textContent = cats.length + " events, " + photos.length + " photos";
+      count.textContent = "";
       var albums = document.createElement("div"); albums.className = "gx-albums";
       cats.forEach(function (c) {
         var ps = photos.filter(function (p) { return p[1] === c.id; }); if (!ps.length) return;

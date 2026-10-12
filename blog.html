@@ -761,9 +761,6 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 .route__end .route__dot svg { width: 17px; height: 17px; fill: #fff; }
 .route b { display: block; font-family: "Fraunces", Georgia, serif; font-weight: 420; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: 25px; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); }
 .route__end b { padding-top: 2px; }
-.route--list { list-style: none; padding: 0; }
-.route--list li::before { display: none; }
-.route--list li { padding-bottom: 22px; }
 .route p { margin-top: 6px; font-size: 16px; line-height: 1.5; color: var(--clay); }
 .sc__panel .ow2__give { margin-top: clamp(32px, 3.4vw, 44px); }
 @media (max-width: 600px) { .route b { font-size: 22px; } .sc__panel .ow2__leadtext { font-size: 17px; } }
@@ -1462,7 +1459,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 
 
 /* round 13: the segmented tabs, refined. A compact pill on the photograph that you can click */
-.sc__tabs.seg { left: 16px; right: 16px; bottom: 16px; max-width: none; padding: 5px; background: rgba(255, 250, 244, 0.94); backdrop-filter: blur(10px); box-shadow: 0 1px 0 rgba(29, 20, 14, 0.04), 0 14px 32px -16px rgba(30, 12, 0, 0.6); }
+.sc__tabs.seg { left: 16px; right: 16px; bottom: 16px; max-width: none; padding: 5px; background: rgba(255, 250, 244, 0.94); backdrop-filter: blur(10px); box-shadow: 0 1px 0 rgba(29, 20, 14, 0.04); }
 .seg__opt { border: 0; cursor: pointer; font-family: inherit; }
 .sc__tabs.seg .seg__opt { flex: 1 1 0; height: 42px; padding: 0 12px; font-size: 13.5px; color: var(--clay); white-space: nowrap; }
 .seg__opt em { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 999px; background: #f6e7d8; color: var(--ember-deep); opacity: 1 !important; font-size: 10.5px; transition: background-color 0.35s, color 0.35s; }
@@ -1515,9 +1512,12 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 
 .sc__tabs.seg .seg__opt.is-on, .sc__mtabs.seg .seg__opt[aria-selected="true"] { color: var(--ink); font-weight: 620; }
 
-.frame--l img { object-position: 50% 30% !important; }
+.frame--l img { object-position: 34% 50% !important; }
 .frame--r img { object-position: 50% 30% !important; }
-@media (min-width: 961px) { .frame--r { right: clamp(28px, 4.2vw, 72px) !important; width: clamp(220px, 21vw, 310px) !important; } }
+@media (min-width: 961px) {
+  .frame--l { left: clamp(28px, 4.2vw, 72px) !important; width: clamp(250px, 25vw, 372px) !important; }
+  .frame--r { right: clamp(28px, 4.2vw, 72px) !important; width: clamp(236px, 23vw, 340px) !important; }
+}
 
 /* round 16: phone tabs size to their words, so the longest label has the same breathing room as the others */
 @media (max-width: 860px) {
@@ -1717,69 +1717,88 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 @media (max-width: 960px) { .gx-albums { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 600px) { .gx-albums { grid-template-columns: 1fr; gap: 28px; } .gx-group__head { flex-direction: column; align-items: flex-start; } }
 /* =========================================================
-   BLOG PAGE
+   BLOG PAGE: a featured card for each event, then a grid of article cards
    ========================================================= */
-
-/* Who has written about the work: one quiet line of publication names */
-.bp-wall { padding: clamp(56px, 6vw, 88px) var(--margin) 0; text-align: center; }
-.bp-wall__k { font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ember-deep); }
-.bp-wall__list { max-width: 1080px; margin: 18px auto 0; font-family: "Fraunces", Georgia, serif; font-weight: 400; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: clamp(20px, 1.9vw, 27px); line-height: 1.55; letter-spacing: -0.015em; color: var(--ink); text-wrap: balance; }
-.bp-wall__list { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px clamp(18px, 2.2vw, 34px); }
-.bp-wall__list > span { white-space: nowrap; }
-
-/* Each event: photographs, what happened, then where it was reported */
 .bp { padding: clamp(64px, 7vw, 112px) var(--margin) clamp(96px, 10vw, 148px); }
-.bp-story { max-width: 1360px; margin: 0 auto; }
-.bp-story + .bp-story { margin-top: clamp(72px, 8vw, 120px); padding-top: clamp(72px, 8vw, 120px); border-top: 1px solid var(--sand); }
-.bp-story__top { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 88px); align-items: end; }
-.bp-story--text .bp-story__top { grid-template-columns: minmax(0, 1fr); max-width: 820px; }
-
-.bp-mosaic { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); grid-template-rows: 1fr 1fr; gap: 12px; height: clamp(380px, 40vw, 580px); }
-.bp-mosaic figure { margin: 0; overflow: hidden; border-radius: 22px; background: #e9d7c4; }
-.bp-mosaic img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.bp-mosaic__a { grid-row: 1 / span 2; }
+.bp > * { max-width: 1360px; margin-left: auto; margin-right: auto; }
 
 .bp-date { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
 .bp-date span:first-child { font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ember-deep); }
 .bp-date span + span { font-size: 15px; color: var(--clay); }
-.bp-story__t { margin-top: 18px; font-family: "Fraunces", Georgia, serif; font-weight: 400; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: clamp(32px, 3.4vw, 52px); line-height: 1.04; letter-spacing: -0.03em; color: var(--ink); text-wrap: balance; }
-.bp-story__p { margin-top: 18px; max-width: 32em; font-size: clamp(16.5px, 1.3vw, 19px); line-height: 1.6; color: var(--clay); }
-.bp-story__text .sbtn { margin-top: 28px; }
 
-/* Coverage: the headline once, then the publications that carried it */
-.bp-cov { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 5vw, 88px); margin-top: clamp(48px, 5vw, 72px); padding-top: clamp(28px, 3vw, 40px); border-top: 1.5px solid var(--ink); }
-.bp-cov__q { margin: 0; }
-.bp-cov__q blockquote { margin: 0; font-family: "Fraunces", Georgia, serif; font-weight: 400; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: clamp(22px, 2vw, 29px); line-height: 1.28; letter-spacing: -0.018em; color: var(--ink); text-wrap: pretty; }
-.bp-cov__q figcaption { margin-top: 14px; font-size: 14px; color: var(--clay); }
-.bp-cov__k { font-size: 15px; font-weight: 600; color: var(--ink); }
-.bp-cov__k span { font-weight: 400; color: var(--clay); margin-left: 6px; }
-.bp-outs { list-style: none; margin: 10px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(24px, 3vw, 44px); }
-.bp-outs li { border-bottom: 1px solid var(--sand); }
-.bp-out { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; padding: 10px 0; color: var(--ink); text-decoration: none; }
-.bp-out__n { font-family: "Fraunces", Georgia, serif; font-weight: 400; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: clamp(19px, 1.5vw, 22px); line-height: 1.15; letter-spacing: -0.015em; }
-.bp-out__d { display: block; margin-top: 3px; font-family: "Inter", sans-serif; font-size: 13px; letter-spacing: 0; color: var(--clay); }
-.bp-out__go { flex: none; width: 36px; height: 36px; border-radius: 999px; background: #f8ede1; color: var(--ember-deep); display: inline-flex; align-items: center; justify-content: center; transition: background-color 0.25s, color 0.25s, transform 0.3s var(--ease); }
-.bp-out__go svg { width: 15px; height: 15px; }
-.bp-out:hover .bp-out__n { color: var(--ember-deep); }
-.bp-out:hover .bp-out__go { background: #ec6836; color: #fff; transform: translate(2px, -2px); }
-.bp-out:focus-visible { outline: 2px solid var(--ember-deep); outline-offset: 4px; border-radius: 8px; }
+/* Featured event card */
+.bf { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); overflow: hidden; border-radius: 28px; background: #fff; border: 1px solid #ead9c6; box-shadow: 0 1px 0 rgba(60, 30, 10, 0.06), 0 30px 60px -40px rgba(90, 40, 10, 0.35); }
+.bf__ph { margin: 0; min-height: clamp(340px, 36vw, 520px); background: #e9d7c4; }
+.bf__ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bf__body { display: flex; flex-direction: column; justify-content: center; padding: clamp(32px, 4vw, 64px); }
+.bf__t { margin-top: 18px; font-family: "Fraunces", Georgia, serif; font-weight: 400; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: clamp(30px, 3vw, 46px); line-height: 1.05; letter-spacing: -0.03em; color: var(--ink); text-wrap: balance; }
+.bf__p { margin-top: 16px; font-size: clamp(16px, 1.25vw, 18px); line-height: 1.6; color: var(--clay); }
+.bf__acts { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; margin-top: 28px; }
+.bf__n { font-size: 15px; color: var(--clay); }
 
+/* Article cards: a masthead with the publication's name, then the headline */
+.bgrid { list-style: none; padding: 0; margin-top: clamp(20px, 2vw, 28px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 1.6vw, 24px); }
+.bgrid li { display: flex; }
+.bc { flex: 1; display: flex; flex-direction: column; overflow: hidden; border-radius: 22px; background: #fff; border: 1px solid #ead9c6; color: var(--ink); text-decoration: none; box-shadow: 0 2px 4px rgba(60, 30, 10, 0.04), 0 14px 30px -22px rgba(90, 40, 10, 0.35); transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s; }
+.bc:hover { transform: translateY(-4px); border-color: #e2c6aa; box-shadow: 0 2px 4px rgba(60, 30, 10, 0.05), 0 28px 50px -28px rgba(90, 40, 10, 0.45); }
+.bc:focus-visible { outline: 2px solid var(--ember-deep); outline-offset: 4px; }
+
+.bc__top { position: relative; display: flex; align-items: center; justify-content: center; height: 196px; padding: 24px; overflow: hidden; text-align: center; }
+.bc__name { position: relative; z-index: 1; display: inline-block; max-width: 92%; padding: 12px 4px; border-top: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; font-family: "Fraunces", Georgia, serif; font-weight: 420; font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0; font-size: clamp(23px, 1.9vw, 28px); line-height: 1.08; letter-spacing: -0.015em; text-wrap: balance; }
+.bc__top--ph { color: #fff; background: #3a2a20; }
+.bc__top--ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease); }
+.bc__top--ph::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(30, 14, 4, 0.35), rgba(30, 14, 4, 0.62)); }
+.bc:hover .bc__top--ph img { transform: scale(1.05); }
+.bc__top--ink { background: #2b1d14; color: #fbefe2; }
+.bc__top--ember { background: #ec6836; color: #fff; }
+.bc__top--sand { background: #f6e4d1; color: var(--ink); }
+.bc__top--ink::before, .bc__top--ember::before, .bc__top--sand::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle, currentColor 1px, transparent 1.5px) 0 0 / 10px 10px; opacity: 0.12; }
+
+.bc__body { flex: 1; display: flex; flex-direction: column; padding: 20px 24px 22px; }
+.bc__h { font-family: "Fraunces", Georgia, serif; font-weight: 400; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: clamp(19px, 1.45vw, 22px); line-height: 1.22; letter-spacing: -0.015em; color: var(--ink); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.bc__foot { margin-top: auto; padding-top: 18px; border-top: 1px solid #f1e3d4; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.bc__h + .bc__foot { margin-top: auto; }
+.bc__body .bc__h { margin-bottom: 20px; }
+.bc__d { font-size: 14px; color: var(--clay); }
+.bc__go { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--ink); }
+.bc__go span { display: inline-flex; width: 30px; height: 30px; border-radius: 999px; background: #f8ede1; color: var(--ember-deep); align-items: center; justify-content: center; transition: background-color 0.25s, color 0.25s; }
+.bc__go svg { width: 14px; height: 14px; }
+.bc:hover .bc__go span { background: #ec6836; color: #fff; }
+
+/* Second event heading */
+.bsec { margin-top: clamp(80px, 9vw, 128px); padding-top: clamp(40px, 4vw, 56px); border-top: 1px solid var(--sand); }
+.bsec__t { margin-top: 16px; max-width: 18em; font-family: "Fraunces", Georgia, serif; font-weight: 400; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: clamp(30px, 3vw, 46px); line-height: 1.05; letter-spacing: -0.03em; color: var(--ink); }
+.bsec__p { margin-top: 14px; max-width: 36em; font-size: clamp(16px, 1.25vw, 18px); line-height: 1.6; color: var(--clay); }
+
+/* Publications, as a closing line */
+.bp-wall { margin-top: clamp(80px, 9vw, 120px); padding-top: clamp(40px, 4vw, 56px); border-top: 1px solid var(--sand); text-align: center; }
+.bp-wall__k { font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ember-deep); }
+.bp-wall__list { max-width: 1080px; margin: 18px auto 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px clamp(18px, 2.2vw, 34px); font-family: "Fraunces", Georgia, serif; font-weight: 400; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: clamp(19px, 1.7vw, 24px); line-height: 1.55; letter-spacing: -0.015em; color: var(--ink); }
+.bp-wall__list > span { white-space: nowrap; }
+
+@media (max-width: 1100px) {
+  .bgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 960px) {
-  .bp-story__top, .bp-cov { grid-template-columns: minmax(0, 1fr); }
-  .bp-mosaic { height: clamp(320px, 62vw, 480px); }
-  .bp-cov { gap: 28px; }
+  .bf { grid-template-columns: minmax(0, 1fr); }
+  .bf__ph { min-height: 0; aspect-ratio: 16 / 10; }
 }
 @media (max-width: 600px) {
-  .bp-wall { padding-top: 44px; }
-  .bp-wall__list { font-size: 18px; line-height: 1.5; gap: 2px 16px; }
-  .bp { padding-top: 48px; padding-bottom: 72px; }
-  .bp-mosaic { height: auto; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 8px; }
-  .bp-mosaic__a { grid-row: auto; grid-column: 1 / span 2; aspect-ratio: 4 / 3; }
-  .bp-mosaic__b, .bp-mosaic__c { aspect-ratio: 1; }
-  .bp-mosaic figure { border-radius: 18px; }
-  .bp-story__t { font-size: 30px; }
-  .bp-outs { grid-template-columns: minmax(0, 1fr); }
-  .bp-out { min-height: 58px; }
+  .bp { padding-top: 40px; padding-bottom: 72px; }
+  .bf { border-radius: 22px; }
+  .bf__ph { aspect-ratio: 4 / 3; }
+  .bf__body { padding: 24px 20px 26px; }
+  .bf__t { font-size: 29px; }
+  .bgrid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .bc { border-radius: 20px; }
+  .bc__top { height: 156px; }
+  .bc__body { padding: 18px 20px 20px; }
+  .bp-wall__list { font-size: 18px; gap: 2px 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bc, .bc__top--ph img { transition: none; }
+  .bc:hover { transform: none; }
+  .bc:hover .bc__top--ph img { transform: none; }
 }
 /* MOBILE: shared phone rhythm, loaded after every page's own CSS */
 @media (max-width: 600px) {
@@ -1865,82 +1884,54 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
     </div>
   </section>
 
-  <section class="bp-wall" aria-labelledby="wall-k">
-    <p class="bp-wall__k" id="wall-k">Covered by 13 publications</p>
-    <p class="bp-wall__list"><span>Solid News NG</span> <span>The Blade NG</span> <span>News Now Online</span> <span>Classic International Magazine</span> <span>Society Herald</span> <span>Bethnews Media</span> <span>Applesbite</span> <span>Famous People Magazine</span> <span>TM News Magazine</span> <span>Daily News Cover</span> <span>Omo Naija Blog</span> <span>High Celebrity Squad</span> <span>The Moment NG</span></p>
-  </section>
-
   <!--
     BLOG
-    Each event is one <article class="bp-story">, newest first. To add an article, copy one <li> line
-    and change the publisher name and link. To add a new event, copy a whole <article>.
+    Each event has a featured card and a grid of article cards, newest first.
+    To add an article, copy one <li> in that event's grid and change the link, publisher, headline and date.
   -->
   <section class="bp" aria-label="Press coverage">
-    <article class="bp-story" id="widows-outreach-2026" aria-labelledby="st1-title">
-      <div class="bp-story__top">
-        <div class="bp-mosaic">
-          <figure class="bp-mosaic__a"><img src="/img/ev-praise.webp" alt="Women sing and pray together at the Foundation&rsquo;s widows&rsquo; outreach in Akute." loading="lazy" style="object-position: 50% 35%"></figure>
-          <figure class="bp-mosaic__b"><img src="/img/ev-handover.webp" alt="A member of the Foundation team hands support to a woman at the outreach." loading="lazy" style="object-position: 30% 35%"></figure>
-          <figure class="bp-mosaic__c"><img src="/img/ev-older-pair.webp" alt="Two older women sit with the gifts they received at the outreach." loading="lazy" style="object-position: 50% 35%"></figure>
-        </div>
-        <div class="bp-story__text">
-          <p class="bp-date"><span>October 2026</span><span>Land of Flourish Tabernacle, Akute</span></p>
-          <h2 class="bp-story__t" id="st1-title">Nine years on, a day for widows in memory of Pa Alexander Akpati.</h2>
-          <p class="bp-story__p">Widows from Akute and the surrounding area gathered for worship, gifts and support, at the outreach the Foundation holds in memory of Mercy&rsquo;s late father.</p>
-          <a class="sbtn" href="/media#widows">See the photos <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-        </div>
-      </div>
-      <div class="bp-cov">
-        <figure class="bp-cov__q">
-          <blockquote>&ldquo;Mercy Alexander empowers over 200 widows in honour of late father, Pa Alexander Akpati, nine years after&rdquo;</blockquote>
-          <figcaption>The headline as it ran in the press</figcaption>
-        </figure>
-        <div class="bp-cov__list">
-          <p class="bp-cov__k">Read it on <span>6 websites</span></p>
-          <ul class="bp-outs">
-          <li><a class="bp-out" href="https://solidnewsng.com/2026/10/10/nine-years-after-mercy-alexander-empowers-over-200-widows-in-honour-of-late-father-pa-alexander-akpati/" target="_blank" rel="noopener" title="Nine years after: Mercy Alexander empowers over 200 widows in honour of late father, Pa Alexander Akpati"><span class="bp-out__n">Solid News NG</span><span class="bp-out__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="sr-only"> (opens Solid News NG in a new tab)</span></a></li>
-          <li><a class="bp-out" href="https://thebladengr.com/2026/10/09/mercy-alexander-empowers-over-200-widows-in-honour-of-late-father-pa-alexander-akpati-nine-years-after/" target="_blank" rel="noopener" title="Mercy Alexander empowers over 200 widows in honour of late father, Pa Alexander Akpati, nine years after"><span class="bp-out__n">The Blade NG</span><span class="bp-out__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="sr-only"> (opens The Blade NG in a new tab)</span></a></li>
-          <li><a class="bp-out" href="https://newsnowonline.com.ng/2026/10/09/mercy-alexander-empowers-over-200-widows-in-honour-of-late-father-pa-alexander-akpati-nine-years-after/" target="_blank" rel="noopener" title="Mercy Alexander empowers over 200 widows in honour of late father, Pa Alexander Akpati, nine years after"><span class="bp-out__n">News Now Online</span><span class="bp-out__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="sr-only"> (opens News Now Online in a new tab)</span></a></li>
-          <li><a class="bp-out" href="https://classicmagazine.com.ng/2026/10/09/mercy-alexander-empowers-over-200-widows-in-honour-of-late-father-pa-alexander-akpati-nine-years-after/" target="_blank" rel="noopener" title="Mercy Alexander empowers over 200 widows in honour of late father, Pa Alexander Akpati, nine years after"><span class="bp-out__n">Classic International Magazine</span><span class="bp-out__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="sr-only"> (opens Classic International Magazine in a new tab)</span></a></li>
-          <li><a class="bp-out" href="https://societyherald.com.ng/mercy-alexander-empowers-over-200-widows-in-honour-of-late-father-pa-alexander-akpati-nine-years-after/" target="_blank" rel="noopener" title="Mercy Alexander empowers over 200 widows in honour of late father, Pa Alexander Akpati, nine years after"><span class="bp-out__n">Society Herald</span><span class="bp-out__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="sr-only"> (opens Society Herald in a new tab)</span></a></li>
-          <li><a class="bp-out" href="https://bethnewsmedia.com.ng/mercy-alexander-empowers-over-200-widows-in-honour-of-late-father-pa-alexander-akpati-nine-years-after/" target="_blank" rel="noopener" title="Mercy Alexander empowers over 200 widows in honour of late father, Pa Alexander Akpati, nine years after"><span class="bp-out__n">Bethnews Media</span><span class="bp-out__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="sr-only"> (opens Bethnews Media in a new tab)</span></a></li>
-          </ul>
-        </div>
+    <article class="bf" id="widows-outreach-2026" aria-labelledby="st1-title">
+      <figure class="bf__ph"><img src="/img/ev-praise.webp" alt="Women sing and pray together at the Foundation&rsquo;s widows&rsquo; outreach in Akute." loading="lazy" style="object-position: 50% 35%"></figure>
+      <div class="bf__body">
+        <p class="bp-date"><span>October 2026</span><span>Land of Flourish Tabernacle, Akute</span></p>
+        <h2 class="bf__t" id="st1-title">Nine years on, a day for widows in memory of Pa Alexander Akpati.</h2>
+        <p class="bf__p">Widows from Akute and the surrounding area gathered for worship, gifts and support, at the outreach the Foundation holds in memory of Mercy&rsquo;s late father.</p>
+        <div class="bf__acts"><a class="sbtn" href="/media#widows">See the photos <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><span class="bf__n">6 articles below</span></div>
       </div>
     </article>
+    <ul class="bgrid" aria-label="Articles about the 2026 outreach">
+        <li><a class="bc" href="https://solidnewsng.com/2026/10/10/nine-years-after-mercy-alexander-empowers-over-200-widows-in-honour-of-late-father-pa-alexander-akpati/" target="_blank" rel="noopener"><span class="bc__top bc__top--ph"><img src="/img/ev-dancing.webp" alt="" loading="lazy" style="object-position: 50% 30%"><span class="bc__name">Solid News NG</span></span><span class="bc__body"><span class="bc__h">Nine years after: Mercy Alexander empowers over 200 widows in honour of late father, Pa Alexander Akpati</span><span class="bc__foot"><span class="bc__d">October 2026</span><span class="bc__go">Read article <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span></span></span><span class="sr-only"> (opens Solid News NG in a new tab)</span></a></li>
+        <li><a class="bc" href="https://thebladengr.com/2026/10/09/mercy-alexander-empowers-over-200-widows-in-honour-of-late-father-pa-alexander-akpati-nine-years-after/" target="_blank" rel="noopener"><span class="bc__top bc__top--ph"><img src="/img/ev-handover.webp" alt="" loading="lazy" style="object-position: 30% 35%"><span class="bc__name">The Blade NG</span></span><span class="bc__body"><span class="bc__h">Mercy Alexander empowers over 200 widows in honour of late father, Pa Alexander Akpati, nine years after</span><span class="bc__foot"><span class="bc__d">October 2026</span><span class="bc__go">Read article <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span></span></span><span class="sr-only"> (opens The Blade NG in a new tab)</span></a></li>
+        <li><a class="bc" href="https://newsnowonline.com.ng/2026/10/09/mercy-alexander-empowers-over-200-widows-in-honour-of-late-father-pa-alexander-akpati-nine-years-after/" target="_blank" rel="noopener"><span class="bc__top bc__top--ph"><img src="/img/ev-bags.webp" alt="" loading="lazy" style="object-position: 55% 40%"><span class="bc__name">News Now Online</span></span><span class="bc__body"><span class="bc__h">Mercy Alexander empowers over 200 widows in honour of late father, Pa Alexander Akpati, nine years after</span><span class="bc__foot"><span class="bc__d">October 2026</span><span class="bc__go">Read article <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span></span></span><span class="sr-only"> (opens News Now Online in a new tab)</span></a></li>
+        <li><a class="bc" href="https://classicmagazine.com.ng/2026/10/09/mercy-alexander-empowers-over-200-widows-in-honour-of-late-father-pa-alexander-akpati-nine-years-after/" target="_blank" rel="noopener"><span class="bc__top bc__top--ph"><img src="/img/ev-support.webp" alt="" loading="lazy" style="object-position: 50% 35%"><span class="bc__name">Classic International Magazine</span></span><span class="bc__body"><span class="bc__h">Mercy Alexander empowers over 200 widows in honour of late father, Pa Alexander Akpati, nine years after</span><span class="bc__foot"><span class="bc__d">October 2026</span><span class="bc__go">Read article <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span></span></span><span class="sr-only"> (opens Classic International Magazine in a new tab)</span></a></li>
+        <li><a class="bc" href="https://societyherald.com.ng/mercy-alexander-empowers-over-200-widows-in-honour-of-late-father-pa-alexander-akpati-nine-years-after/" target="_blank" rel="noopener"><span class="bc__top bc__top--ph"><img src="/img/ev-widows-gifts.webp" alt="" loading="lazy" style="object-position: 45% 35%"><span class="bc__name">Society Herald</span></span><span class="bc__body"><span class="bc__h">Mercy Alexander empowers over 200 widows in honour of late father, Pa Alexander Akpati, nine years after</span><span class="bc__foot"><span class="bc__d">October 2026</span><span class="bc__go">Read article <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span></span></span><span class="sr-only"> (opens Society Herald in a new tab)</span></a></li>
+        <li><a class="bc" href="https://bethnewsmedia.com.ng/mercy-alexander-empowers-over-200-widows-in-honour-of-late-father-pa-alexander-akpati-nine-years-after/" target="_blank" rel="noopener"><span class="bc__top bc__top--ph"><img src="/img/ev-sing.webp" alt="" loading="lazy" style="object-position: 40% 25%"><span class="bc__name">Bethnews Media</span></span><span class="bc__body"><span class="bc__h">Mercy Alexander empowers over 200 widows in honour of late father, Pa Alexander Akpati, nine years after</span><span class="bc__foot"><span class="bc__d">October 2026</span><span class="bc__go">Read article <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span></span></span><span class="sr-only"> (opens Bethnews Media in a new tab)</span></a></li>
+    </ul>
 
-    <article class="bp-story bp-story--text" id="outreach-2025" aria-labelledby="st2-title">
-      <div class="bp-story__top">
-        <div class="bp-story__text">
-          <p class="bp-date"><span>October 2025</span><span>Land of Flourish Tabernacle, Akute</span></p>
-          <h2 class="bp-story__t" id="st2-title">Gifts for women, widows and street hawkers.</h2>
-          <p class="bp-story__p">The year before, the press covered the Foundation&rsquo;s outreach at the same church, which reached women and widows, and street hawkers working nearby.</p>
-        </div>
-      </div>
-      <div class="bp-cov">
-        <figure class="bp-cov__q">
-          <blockquote>&ldquo;Unending joy at Land of Flourish Tabernacle as Mercy Alexander Foundation empowers women, widows and street hawkers&rdquo;</blockquote>
-          <figcaption>The headline as it ran in the press</figcaption>
-        </figure>
-        <div class="bp-cov__list">
-          <p class="bp-cov__k">Read it on <span>12 websites</span></p>
-          <ul class="bp-outs">
-          <li><a class="bp-out" href="https://applesbite.com/mercy-alexander-foundation-empowers-women-widows-and-street-hawkers/" target="_blank" rel="noopener" title="Mercy Alexander Foundation empowers women, widows and street hawkers"><span class="bp-out__n">Applesbite</span><span class="bp-out__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="sr-only"> (opens Applesbite in a new tab)</span></a></li>
-          <li><a class="bp-out" href="https://thebladengr.com/2025/10/10/unending-joy-at-land-of-flourish-tabernacle-as-mercy-alexander-foundation-empowers-women-widows-and-street-hawkers/" target="_blank" rel="noopener" title="Unending joy at Land of Flourish Tabernacle as Mercy Alexander Foundation empowers women, widows and street hawkers"><span class="bp-out__n">The Blade NG</span><span class="bp-out__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="sr-only"> (opens The Blade NG in a new tab)</span></a></li>
-          <li><a class="bp-out" href="https://www.famouspeople.com.ng/joy-as-mercy-alexander-foundation-empowers-women-widows-and-street-hawkers.html" target="_blank" rel="noopener" title="Joy as Mercy Alexander Foundation empowers women, widows and street hawkers"><span class="bp-out__n">Famous People Magazine</span><span class="bp-out__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="sr-only"> (opens Famous People Magazine in a new tab)</span></a></li>
-          <li><a class="bp-out" href="https://www.tmnewsmagazine.com/2025/10/mercy-alexander-foundation-empowers.html?m=1" target="_blank" rel="noopener" title="Mercy Alexander Foundation empowers widows, women and street hawkers"><span class="bp-out__n">TM News Magazine</span><span class="bp-out__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="sr-only"> (opens TM News Magazine in a new tab)</span></a></li>
-          <li><a class="bp-out" href="https://classicmagazine.com.ng/2025/10/10/unending-joy-at-land-of-flourish-tabernacle-as-alexander-mercy-foundation-empowers-women-widows-and-street-hawkers/" target="_blank" rel="noopener" title="Unending joy at Land of Flourish Tabernacle as Alexander Mercy Foundation empowers women, widows and street hawkers"><span class="bp-out__n">Classic International Magazine <span class="bp-out__d">10 October</span></span><span class="bp-out__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="sr-only"> (opens Classic International Magazine in a new tab)</span></a></li>
-          <li><a class="bp-out" href="https://classicmagazine.com.ng/2025/10/09/unending-joy-at-land-of-flourish-tabernacle-as-mercy-alexander-foundation-empowers-women-widows/" target="_blank" rel="noopener" title="Unending joy at Land of Flourish Tabernacle as Mercy Alexander Foundation empowers women, widows"><span class="bp-out__n">Classic International Magazine <span class="bp-out__d">9 October</span></span><span class="bp-out__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="sr-only"> (opens Classic International Magazine in a new tab)</span></a></li>
-          <li><a class="bp-out" href="https://dailynewscover.com/unending-joy-at-land-of-flourish-tabernacle-as-mercy-alexander-foundation-empowers-women-widows-and-street-hawkers/" target="_blank" rel="noopener" title="Unending joy at Land of Flourish Tabernacle as Mercy Alexander Foundation empowers women, widows and street hawkers"><span class="bp-out__n">Daily News Cover</span><span class="bp-out__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="sr-only"> (opens Daily News Cover in a new tab)</span></a></li>
-          <li><a class="bp-out" href="https://omonaijablog.com.ng/2025/10/10/unending-joy-at-land-of-flourish-tabernacle-as-mercy-alexander-foundation-empowers-women-widows-and-street-hawkers/" target="_blank" rel="noopener" title="Unending joy at Land of Flourish Tabernacle as Mercy Alexander Foundation empowers women, widows and street hawkers"><span class="bp-out__n">Omo Naija Blog</span><span class="bp-out__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="sr-only"> (opens Omo Naija Blog in a new tab)</span></a></li>
-          <li><a class="bp-out" href="https://societyherald.com.ng/unending-joy-at-land-of-flourish-tabernacle-as-alexander-mercy-foundation-empowers-women-widows-and-street-hawkers/" target="_blank" rel="noopener" title="Unending joy at Land of Flourish Tabernacle as Alexander Mercy Foundation empowers women, widows and street hawkers"><span class="bp-out__n">Society Herald</span><span class="bp-out__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="sr-only"> (opens Society Herald in a new tab)</span></a></li>
-          <li><a class="bp-out" href="https://bethnewsmedia.com.ng/unending-joy-at-land-of-flourish-tabernacle-as-alexander-mercy-foundation-empowers-women-widows-and-street-hawkers/" target="_blank" rel="noopener" title="Unending joy at Land of Flourish Tabernacle as Alexander Mercy Foundation empowers women, widows and street hawkers"><span class="bp-out__n">Bethnews Media</span><span class="bp-out__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="sr-only"> (opens Bethnews Media in a new tab)</span></a></li>
-          <li><a class="bp-out" href="https://highcelebritysquard.com/unending-joy-at-land-of-flourish-tabernacle-as-alexander-mercy-foundation-empowers-women-widows-and-street-hawkers/" target="_blank" rel="noopener" title="Unending joy at Land of Flourish Tabernacle as Alexander Mercy Foundation empowers women, widows and street hawkers"><span class="bp-out__n">High Celebrity Squad</span><span class="bp-out__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="sr-only"> (opens High Celebrity Squad in a new tab)</span></a></li>
-          <li><a class="bp-out" href="https://themomentng.com/2025/10/10/unending-joy-at-land-of-flourish-tabernacle-as-alexander-mercy-as-alexander-mercy-foundation-empowers-women-widows-and-street-hawkers/" target="_blank" rel="noopener" title="Unending joy at Land of Flourish Tabernacle as Alexander Mercy Foundation empowers women, widows and street hawkers"><span class="bp-out__n">The Moment NG</span><span class="bp-out__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span><span class="sr-only"> (opens The Moment NG in a new tab)</span></a></li>
-          </ul>
-        </div>
-      </div>
-    </article>
+    <header class="bsec" id="outreach-2025">
+      <p class="bp-date"><span>October 2025</span><span>Land of Flourish Tabernacle, Akute</span></p>
+      <h2 class="bsec__t">Gifts for women, widows and street hawkers.</h2>
+      <p class="bsec__p">The year before, the press covered the Foundation&rsquo;s outreach at the same church, which reached women and widows, and street hawkers working nearby.</p>
+    </header>
+    <ul class="bgrid bgrid--text" aria-label="Articles about the 2025 outreach">
+        <li><a class="bc" href="https://applesbite.com/mercy-alexander-foundation-empowers-women-widows-and-street-hawkers/" target="_blank" rel="noopener"><span class="bc__top bc__top--ink" aria-hidden="true"><span class="bc__name">Applesbite</span></span><span class="bc__body"><span class="bc__h">Mercy Alexander Foundation empowers women, widows and street hawkers</span><span class="bc__foot"><span class="bc__d">October 2025</span><span class="bc__go">Read article <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span></span></span><span class="sr-only"> (opens Applesbite in a new tab)</span></a></li>
+        <li><a class="bc" href="https://thebladengr.com/2025/10/10/unending-joy-at-land-of-flourish-tabernacle-as-mercy-alexander-foundation-empowers-women-widows-and-street-hawkers/" target="_blank" rel="noopener"><span class="bc__top bc__top--ember" aria-hidden="true"><span class="bc__name">The Blade NG</span></span><span class="bc__body"><span class="bc__h">Unending joy at Land of Flourish Tabernacle as Mercy Alexander Foundation empowers women, widows and street hawkers</span><span class="bc__foot"><span class="bc__d">October 2025</span><span class="bc__go">Read article <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span></span></span><span class="sr-only"> (opens The Blade NG in a new tab)</span></a></li>
+        <li><a class="bc" href="https://www.famouspeople.com.ng/joy-as-mercy-alexander-foundation-empowers-women-widows-and-street-hawkers.html" target="_blank" rel="noopener"><span class="bc__top bc__top--sand" aria-hidden="true"><span class="bc__name">Famous People Magazine</span></span><span class="bc__body"><span class="bc__h">Joy as Mercy Alexander Foundation empowers women, widows and street hawkers</span><span class="bc__foot"><span class="bc__d">October 2025</span><span class="bc__go">Read article <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span></span></span><span class="sr-only"> (opens Famous People Magazine in a new tab)</span></a></li>
+        <li><a class="bc" href="https://www.tmnewsmagazine.com/2025/10/mercy-alexander-foundation-empowers.html?m=1" target="_blank" rel="noopener"><span class="bc__top bc__top--ink" aria-hidden="true"><span class="bc__name">TM News Magazine</span></span><span class="bc__body"><span class="bc__h">Mercy Alexander Foundation empowers widows, women and street hawkers</span><span class="bc__foot"><span class="bc__d">October 2025</span><span class="bc__go">Read article <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span></span></span><span class="sr-only"> (opens TM News Magazine in a new tab)</span></a></li>
+        <li><a class="bc" href="https://classicmagazine.com.ng/2025/10/10/unending-joy-at-land-of-flourish-tabernacle-as-alexander-mercy-foundation-empowers-women-widows-and-street-hawkers/" target="_blank" rel="noopener"><span class="bc__top bc__top--ember" aria-hidden="true"><span class="bc__name">Classic International Magazine</span></span><span class="bc__body"><span class="bc__h">Unending joy at Land of Flourish Tabernacle as Alexander Mercy Foundation empowers women, widows and street hawkers</span><span class="bc__foot"><span class="bc__d">October 2025</span><span class="bc__go">Read article <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span></span></span><span class="sr-only"> (opens Classic International Magazine in a new tab)</span></a></li>
+        <li><a class="bc" href="https://classicmagazine.com.ng/2025/10/09/unending-joy-at-land-of-flourish-tabernacle-as-mercy-alexander-foundation-empowers-women-widows/" target="_blank" rel="noopener"><span class="bc__top bc__top--sand" aria-hidden="true"><span class="bc__name">Classic International Magazine</span></span><span class="bc__body"><span class="bc__h">Unending joy at Land of Flourish Tabernacle as Mercy Alexander Foundation empowers women, widows</span><span class="bc__foot"><span class="bc__d">October 2025</span><span class="bc__go">Read article <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span></span></span><span class="sr-only"> (opens Classic International Magazine in a new tab)</span></a></li>
+        <li><a class="bc" href="https://dailynewscover.com/unending-joy-at-land-of-flourish-tabernacle-as-mercy-alexander-foundation-empowers-women-widows-and-street-hawkers/" target="_blank" rel="noopener"><span class="bc__top bc__top--ink" aria-hidden="true"><span class="bc__name">Daily News Cover</span></span><span class="bc__body"><span class="bc__h">Unending joy at Land of Flourish Tabernacle as Mercy Alexander Foundation empowers women, widows and street hawkers</span><span class="bc__foot"><span class="bc__d">October 2025</span><span class="bc__go">Read article <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span></span></span><span class="sr-only"> (opens Daily News Cover in a new tab)</span></a></li>
+        <li><a class="bc" href="https://omonaijablog.com.ng/2025/10/10/unending-joy-at-land-of-flourish-tabernacle-as-mercy-alexander-foundation-empowers-women-widows-and-street-hawkers/" target="_blank" rel="noopener"><span class="bc__top bc__top--ember" aria-hidden="true"><span class="bc__name">Omo Naija Blog</span></span><span class="bc__body"><span class="bc__h">Unending joy at Land of Flourish Tabernacle as Mercy Alexander Foundation empowers women, widows and street hawkers</span><span class="bc__foot"><span class="bc__d">October 2025</span><span class="bc__go">Read article <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span></span></span><span class="sr-only"> (opens Omo Naija Blog in a new tab)</span></a></li>
+        <li><a class="bc" href="https://societyherald.com.ng/unending-joy-at-land-of-flourish-tabernacle-as-alexander-mercy-foundation-empowers-women-widows-and-street-hawkers/" target="_blank" rel="noopener"><span class="bc__top bc__top--sand" aria-hidden="true"><span class="bc__name">Society Herald</span></span><span class="bc__body"><span class="bc__h">Unending joy at Land of Flourish Tabernacle as Alexander Mercy Foundation empowers women, widows and street hawkers</span><span class="bc__foot"><span class="bc__d">October 2025</span><span class="bc__go">Read article <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span></span></span><span class="sr-only"> (opens Society Herald in a new tab)</span></a></li>
+        <li><a class="bc" href="https://bethnewsmedia.com.ng/unending-joy-at-land-of-flourish-tabernacle-as-alexander-mercy-foundation-empowers-women-widows-and-street-hawkers/" target="_blank" rel="noopener"><span class="bc__top bc__top--ink" aria-hidden="true"><span class="bc__name">Bethnews Media</span></span><span class="bc__body"><span class="bc__h">Unending joy at Land of Flourish Tabernacle as Alexander Mercy Foundation empowers women, widows and street hawkers</span><span class="bc__foot"><span class="bc__d">October 2025</span><span class="bc__go">Read article <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span></span></span><span class="sr-only"> (opens Bethnews Media in a new tab)</span></a></li>
+        <li><a class="bc" href="https://highcelebritysquard.com/unending-joy-at-land-of-flourish-tabernacle-as-alexander-mercy-foundation-empowers-women-widows-and-street-hawkers/" target="_blank" rel="noopener"><span class="bc__top bc__top--ember" aria-hidden="true"><span class="bc__name">High Celebrity Squad</span></span><span class="bc__body"><span class="bc__h">Unending joy at Land of Flourish Tabernacle as Alexander Mercy Foundation empowers women, widows and street hawkers</span><span class="bc__foot"><span class="bc__d">October 2025</span><span class="bc__go">Read article <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span></span></span><span class="sr-only"> (opens High Celebrity Squad in a new tab)</span></a></li>
+        <li><a class="bc" href="https://themomentng.com/2025/10/10/unending-joy-at-land-of-flourish-tabernacle-as-alexander-mercy-as-alexander-mercy-foundation-empowers-women-widows-and-street-hawkers/" target="_blank" rel="noopener"><span class="bc__top bc__top--sand" aria-hidden="true"><span class="bc__name">The Moment NG</span></span><span class="bc__body"><span class="bc__h">Unending joy at Land of Flourish Tabernacle as Alexander Mercy Foundation empowers women, widows and street hawkers</span><span class="bc__foot"><span class="bc__d">October 2025</span><span class="bc__go">Read article <span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></span></span></span><span class="sr-only"> (opens The Moment NG in a new tab)</span></a></li>
+    </ul>
+
+    <aside class="bp-wall" aria-labelledby="wall-k">
+      <p class="bp-wall__k" id="wall-k">Covered by 13 publications</p>
+      <p class="bp-wall__list"><span>Solid News NG</span> <span>The Blade NG</span> <span>News Now Online</span> <span>Classic International Magazine</span> <span>Society Herald</span> <span>Bethnews Media</span> <span>Applesbite</span> <span>Famous People Magazine</span> <span>TM News Magazine</span> <span>Daily News Cover</span> <span>Omo Naija Blog</span> <span>High Celebrity Squad</span> <span>The Moment NG</span></p>
+    </aside>
   </section>
 
   <div id="get-involved" aria-hidden="true"></div>

@@ -763,9 +763,6 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 .route__end .route__dot svg { width: 17px; height: 17px; fill: #fff; }
 .route b { display: block; font-family: "Fraunces", Georgia, serif; font-weight: 420; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: 25px; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); }
 .route__end b { padding-top: 2px; }
-.route--list { list-style: none; padding: 0; }
-.route--list li::before { display: none; }
-.route--list li { padding-bottom: 22px; }
 .route p { margin-top: 6px; font-size: 16px; line-height: 1.5; color: var(--clay); }
 .sc__panel .ow2__give { margin-top: clamp(32px, 3.4vw, 44px); }
 @media (max-width: 600px) { .route b { font-size: 22px; } .sc__panel .ow2__leadtext { font-size: 17px; } }
@@ -1464,7 +1461,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 
 
 /* round 13: the segmented tabs, refined. A compact pill on the photograph that you can click */
-.sc__tabs.seg { left: 16px; right: 16px; bottom: 16px; max-width: none; padding: 5px; background: rgba(255, 250, 244, 0.94); backdrop-filter: blur(10px); box-shadow: 0 1px 0 rgba(29, 20, 14, 0.04), 0 14px 32px -16px rgba(30, 12, 0, 0.6); }
+.sc__tabs.seg { left: 16px; right: 16px; bottom: 16px; max-width: none; padding: 5px; background: rgba(255, 250, 244, 0.94); backdrop-filter: blur(10px); box-shadow: 0 1px 0 rgba(29, 20, 14, 0.04); }
 .seg__opt { border: 0; cursor: pointer; font-family: inherit; }
 .sc__tabs.seg .seg__opt { flex: 1 1 0; height: 42px; padding: 0 12px; font-size: 13.5px; color: var(--clay); white-space: nowrap; }
 .seg__opt em { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 999px; background: #f6e7d8; color: var(--ember-deep); opacity: 1 !important; font-size: 10.5px; transition: background-color 0.35s, color 0.35s; }
@@ -1517,9 +1514,12 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 
 .sc__tabs.seg .seg__opt.is-on, .sc__mtabs.seg .seg__opt[aria-selected="true"] { color: var(--ink); font-weight: 620; }
 
-.frame--l img { object-position: 50% 30% !important; }
+.frame--l img { object-position: 34% 50% !important; }
 .frame--r img { object-position: 50% 30% !important; }
-@media (min-width: 961px) { .frame--r { right: clamp(28px, 4.2vw, 72px) !important; width: clamp(220px, 21vw, 310px) !important; } }
+@media (min-width: 961px) {
+  .frame--l { left: clamp(28px, 4.2vw, 72px) !important; width: clamp(250px, 25vw, 372px) !important; }
+  .frame--r { right: clamp(28px, 4.2vw, 72px) !important; width: clamp(236px, 23vw, 340px) !important; }
+}
 
 /* round 16: phone tabs size to their words, so the longest label has the same breathing room as the others */
 @media (max-width: 860px) {
@@ -1676,8 +1676,8 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
       </div>
     </div>
     <div class="frames">
-      <figure class="frame frame--l"><img src="/img/own-hero-l.webp" alt="An older woman carries her gift bag on her shoulder at the Foundation&rsquo;s widows&rsquo; outreach in Akute." fetchpriority="high"></figure>
-      <figure class="frame frame--r"><img src="/img/own-hero-r.webp" fetchpriority="high" alt="Children hold up their new school bags at a Foundation scholarship day."></figure>
+      <figure class="frame frame--l"><img src="/img/own-hero-l.webp" alt="Women collect bags of food from the Foundation team at an outreach programme in Lagos." fetchpriority="high"></figure>
+      <figure class="frame frame--r"><img src="/img/own-hero-r.webp" fetchpriority="high" alt="A member of the Foundation team hands a gift to a widow at the outreach in Akute."></figure>
     </div>
   </section>
 <script>
@@ -1792,7 +1792,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 
     <div class="sc">
       <div class="sc__stage">
-        <div class="sc__frame"><img class="sc__img is-on" src="/img/own-sts.webp" alt="Pupils in green school uniforms sitting together outside their classrooms." loading="lazy"><img class="sc__img" src="/img/ev-older.webp" alt="An older woman smiles as she carries her gift bag at the Foundation&rsquo;s widows&rsquo; outreach in Akute." loading="lazy"><img class="sc__img" src="/img/ev-families.webp" alt="Women look through the gifts they received at the Foundation&rsquo;s outreach in Akute." loading="lazy">
+        <div class="sc__frame"><img class="sc__img is-on" src="/img/own-sts.webp" alt="Pupils in green school uniforms sitting together outside their classrooms." loading="lazy"><img class="sc__img" src="/img/ev-older-pair.webp" alt="Two older women sit with the gifts they received at the Foundation&rsquo;s widows&rsquo; outreach in Akute." loading="lazy"><img class="sc__img" src="/img/ev-families.webp" alt="Women look through the gifts they received at the Foundation&rsquo;s outreach in Akute." loading="lazy">
           <div class="sc__tabs seg" role="group" aria-label="Programmes"><span class="seg__thumb" aria-hidden="true"></span><button type="button" class="seg__opt is-on" data-go="0">Street to School</button><button type="button" class="seg__opt" data-go="1">Older people &amp; hospital bills</button><button type="button" class="seg__opt" data-go="2">Families in hard times</button></div>
         </div>
       </div>
@@ -1812,11 +1812,11 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
           <a class="ow2__give" href="/donate?for=street-to-school">Support Street to School <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         </article>
         <article class="sc__panel" id="older-people" data-i="1" aria-labelledby="older-people-t">
-          <div class="sc__mimg"><img src="/img/ev-older.webp" alt="An older woman smiles as she carries her gift bag at the Foundation&rsquo;s widows&rsquo; outreach in Akute." loading="lazy"></div>
+          <div class="sc__mimg"><img src="/img/ev-older-pair.webp" alt="Two older women sit with the gifts they received at the Foundation&rsquo;s widows&rsquo; outreach in Akute." loading="lazy"></div>
           <p class="ow2__tag">Programme two</p>
           <h3 class="ow2__leadname" id="older-people-t">Older people and hospital bills</h3>
           <p class="ow2__leadtext">Care for the older mothers and fathers in our communities, and help with hospital bills for anyone who cannot pay them.</p>
-          <ul class="route route--list"><li><span class="route__dot" aria-hidden="true"></span><div><b>Outreach</b><p>Days of worship, gifts and food for older people and widows.</p></div></li><li><span class="route__dot" aria-hidden="true"></span><div><b>Care</b><p>Help with the cost of healthcare in later life.</p></div></li><li><span class="route__dot" aria-hidden="true"></span><div><b>Hospital visits</b><p>At set times in the year, our team visits hospitals and helps patients and their families settle bills they cannot meet.</p></div></li></ul>
+          <ol class="route"><li><span class="route__dot" aria-hidden="true"></span><div><b>Visit</b><p>At set times in the year, we visit hospitals and gather older people for outreach days.</p></div></li><li><span class="route__dot" aria-hidden="true"></span><div><b>Settle</b><p>We pay hospital bills that patients and families cannot meet, and help with the cost of care.</p></div></li><li class="route__end"><span class="route__dot" aria-hidden="true"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M3 53 C13 57 23 68 30 83 L37 98 C50 64 69 31 98 8 C99 6 97 2 94 3 C66 20 47 45 35 66 C29 55 21 47 13 42 C8 40 1 46 3 53 Z"/></svg></span><div><b>Stay</b><p>We keep in touch afterwards, so no one faces it alone.</p></div></li></ol>
           <a class="ow2__give" href="/donate?for=older-people">Support this programme <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         </article>
         <article class="sc__panel" id="families" data-i="2" aria-labelledby="families-t">
@@ -1824,7 +1824,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
           <p class="ow2__tag">Programme three</p>
           <h3 class="ow2__leadname" id="families-t">Families in hard times</h3>
           <p class="ow2__leadtext">When a crisis reaches a family, we step in with what they need most to get through it.</p>
-          <ul class="route route--list"><li><span class="route__dot" aria-hidden="true"></span><div><b>Food</b><p>Food and essentials for a family on a hard week.</p></div></li><li><span class="route__dot" aria-hidden="true"></span><div><b>Shelter</b><p>Help with a safe place to live when a family has nowhere to turn.</p></div></li><li><span class="route__dot" aria-hidden="true"></span><div><b>Debts and urgent costs</b><p>Help clearing debts and meeting urgent costs, so a family can start again.</p></div></li></ul>
+          <ol class="route"><li><span class="route__dot" aria-hidden="true"></span><div><b>Hear</b><p>A family tells us what they are facing, or someone tells us about them.</p></div></li><li><span class="route__dot" aria-hidden="true"></span><div><b>Step in</b><p>Food, shelter, or help clearing debts and urgent costs.</p></div></li><li class="route__end"><span class="route__dot" aria-hidden="true"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M3 53 C13 57 23 68 30 83 L37 98 C50 64 69 31 98 8 C99 6 97 2 94 3 C66 20 47 45 35 66 C29 55 21 47 13 42 C8 40 1 46 3 53 Z"/></svg></span><div><b>Stay</b><p>We stay with them until they are back on their feet.</p></div></li></ol>
           <a class="ow2__give" href="/donate?for=families">Support families <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         </article>
       </div>
@@ -1879,13 +1879,13 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 
   <section class="ab" id="about" aria-labelledby="about-title">
     <figure class="ab__ph ab__ph--1"><img src="/img/lv-scholar-boy.webp" alt="A schoolboy receiving a new school bag from the Foundation at a student scholarship event." loading="lazy" style="object-position: 70% 40%"></figure>
-    <figure class="ab__ph ab__ph--2"><img src="/img/lv-scholar-girl.webp" alt="A schoolgirl speaking into a microphone at a student scholarship event." loading="lazy" style="object-position: 22% 40%"></figure>
-    <figure class="ab__ph ab__ph--3"><img src="/img/ev-older-pair.webp" alt="Two older women sit with the gifts they received at the Foundation&rsquo;s widows&rsquo; outreach in Akute." loading="lazy" style="object-position: 50% 35%"></figure>
+    <figure class="ab__ph ab__ph--2"><img src="/img/ev-gift-smile.webp" alt="A woman smiles as the Foundation team hands her a gift at the widows&rsquo; outreach in Akute." loading="lazy" style="object-position: 50% 30%"></figure>
+    <figure class="ab__ph ab__ph--3"><img src="/img/ev-praise-woman.webp" alt="A woman lifts her hands in praise at the Foundation&rsquo;s widows&rsquo; outreach in Akute." loading="lazy" style="object-position: 50% 30%"></figure>
     <div class="ab__top">
       <p class="ab__eyebrow">About Mercy Alexander Foundation</p>
       <h2 class="ab__title" id="about-title" data-reveal>Standing with people at the point of need, whatever their age.</h2>
     </div>
-    <div class="ab__strip" aria-hidden="true"><img src="/img/lv-scholar-boy.webp" alt="" loading="lazy" style="object-position: 70% 40%"><img src="/img/ev-older-pair.webp" alt="" loading="lazy" style="object-position: 50% 35%"></div>
+    <div class="ab__strip" aria-hidden="true"><img src="/img/lv-scholar-boy.webp" alt="" loading="lazy" style="object-position: 70% 40%"><img src="/img/ev-gift-smile.webp" alt="" loading="lazy" style="object-position: 50% 30%"></div>
     <div class="ab__box">
       <span class="ab__plus ab__plus--l" aria-hidden="true"></span><span class="ab__plus ab__plus--r" aria-hidden="true"></span><span class="ab__plus ab__plus--l ab__plus--b" aria-hidden="true"></span><span class="ab__plus ab__plus--r ab__plus--b" aria-hidden="true"></span>
       <p class="ab__kicker">Who we are</p>
@@ -1905,7 +1905,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
         <div><p class="ow__eyebrow"><span aria-hidden="true"></span>Media</p><h2 class="sec-title" id="media-title">Moments from the work.</h2></div>
         <a class="media__all" href="/media">See all photos and videos <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
       </div>
-      <div class="media__grid media__grid--8"><figure class="mt mt--a" data-k="photo"><img src="/img/lv-scholar-group.webp" alt="Children holding new school bags, with Foundation volunteers and parents behind them." loading="lazy" style="object-position: 40% 40%"><figcaption><b>Student scholarship</b><span>Street to School</span></figcaption></figure><figure class="mt mt--c" data-k="photo"><img src="/img/lv-outreach.webp" alt="Volunteers in Foundation caps handing a gift bag to a market trader." loading="lazy" style="object-position: 70% 40%"><figcaption><b>Mother&rsquo;s Day outreach</b><span>Families</span></figcaption></figure><figure class="mt mt--d" data-k="photo"><img src="/img/lv-elders.webp" alt="Older men and women seated outdoors at a Foundation outreach." loading="lazy" style="object-position: 60% 40%"><figcaption><b>Remembrance outreach</b><span>Older people</span></figcaption></figure><figure class="mt mt--e" data-k="photo"><img src="/img/nw-hall-group.webp" alt="A hall full of older women gathered with the Foundation team at an outreach, holding bags of food." loading="lazy" style="object-position: 45% 55%"><figcaption><b>Outreach to older mothers</b><span>Older people</span></figcaption></figure><figure class="mt mt--f" data-k="photo"><img src="/img/ev-dancing.webp" alt="Women dance together at the Foundation&rsquo;s widows&rsquo; outreach in Akute." loading="lazy" style="object-position: 50% 30%"><figcaption><b>Widows&rsquo; outreach, Akute</b><span>Older people</span></figcaption></figure><figure class="mt mt--b" data-k="photo"><img src="/img/lv-school.webp" alt="Pupils in green and white uniforms gathered in a school yard." loading="lazy" style="object-position: 50% 55%"><figcaption><b>School visit</b><span>Street to School</span></figcaption></figure><figure class="mt mt--g" data-k="photo"><img src="/img/nw-queue.webp" alt="Women queuing as a volunteer hands out bags of food at a Foundation outreach." loading="lazy" style="object-position: 60% 50%"><figcaption><b>Food for families</b><span>Families</span></figcaption></figure><figure class="mt mt--h" data-k="photo"><img src="/img/ev-bags.webp" alt="Widows look through the gifts they received at the Foundation&rsquo;s outreach in Akute." loading="lazy" style="object-position: 55% 40%"><figcaption><b>Gifts for widows</b><span>Older people</span></figcaption></figure></div>
+      <div class="media__grid media__grid--8"><figure class="mt mt--a" data-k="photo"><img src="/img/ev-dancing.webp" alt="Women dance together at the Foundation&rsquo;s widows&rsquo; outreach in Akute." loading="lazy" style="object-position: 50% 28%"><figcaption><b>Widows&rsquo; outreach, Akute</b><span>Older people</span></figcaption></figure><figure class="mt mt--c" data-k="photo"><img src="/img/lv-outreach.webp" alt="Volunteers in Foundation caps handing a gift bag to a market trader." loading="lazy" style="object-position: 70% 40%"><figcaption><b>Mother&rsquo;s Day outreach</b><span>Families</span></figcaption></figure><figure class="mt mt--d" data-k="photo"><img src="/img/lv-elders.webp" alt="Older men and women seated outdoors at a Foundation outreach." loading="lazy" style="object-position: 60% 40%"><figcaption><b>Remembrance outreach</b><span>Older people</span></figcaption></figure><figure class="mt mt--e" data-k="photo"><img src="/img/nw-hall-group.webp" alt="A hall full of older women gathered with the Foundation team at an outreach, holding bags of food." loading="lazy" style="object-position: 45% 55%"><figcaption><b>Outreach to older mothers</b><span>Older people</span></figcaption></figure><figure class="mt mt--f" data-k="photo"><img src="/img/sch-group-sharp.webp" alt="Children holding new school bags, with Foundation volunteers and parents behind them." loading="lazy" style="object-position: 40% 40%"><figcaption><b>Student scholarship</b><span>Street to School</span></figcaption></figure><figure class="mt mt--b" data-k="photo"><img src="/img/lv-school.webp" alt="Pupils in green and white uniforms gathered in a school yard." loading="lazy" style="object-position: 50% 55%"><figcaption><b>School visit</b><span>Street to School</span></figcaption></figure><figure class="mt mt--g" data-k="photo"><img src="/img/nw-queue.webp" alt="Women queuing as a volunteer hands out bags of food at a Foundation outreach." loading="lazy" style="object-position: 60% 50%"><figcaption><b>Food for families</b><span>Families</span></figcaption></figure><figure class="mt mt--h" data-k="photo"><img src="/img/ev-bags.webp" alt="Widows look through the gifts they received at the Foundation&rsquo;s outreach in Akute." loading="lazy" style="object-position: 55% 40%"><figcaption><b>Gifts for widows</b><span>Older people</span></figcaption></figure></div>
     </div>
   </section>
 

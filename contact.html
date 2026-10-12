@@ -765,9 +765,6 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 .route__end .route__dot svg { width: 17px; height: 17px; fill: #fff; }
 .route b { display: block; font-family: "Fraunces", Georgia, serif; font-weight: 420; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: 25px; line-height: 1.1; letter-spacing: -0.02em; color: var(--ink); }
 .route__end b { padding-top: 2px; }
-.route--list { list-style: none; padding: 0; }
-.route--list li::before { display: none; }
-.route--list li { padding-bottom: 22px; }
 .route p { margin-top: 6px; font-size: 16px; line-height: 1.5; color: var(--clay); }
 .sc__panel .ow2__give { margin-top: clamp(32px, 3.4vw, 44px); }
 @media (max-width: 600px) { .route b { font-size: 22px; } .sc__panel .ow2__leadtext { font-size: 17px; } }
@@ -1466,7 +1463,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 
 
 /* round 13: the segmented tabs, refined. A compact pill on the photograph that you can click */
-.sc__tabs.seg { left: 16px; right: 16px; bottom: 16px; max-width: none; padding: 5px; background: rgba(255, 250, 244, 0.94); backdrop-filter: blur(10px); box-shadow: 0 1px 0 rgba(29, 20, 14, 0.04), 0 14px 32px -16px rgba(30, 12, 0, 0.6); }
+.sc__tabs.seg { left: 16px; right: 16px; bottom: 16px; max-width: none; padding: 5px; background: rgba(255, 250, 244, 0.94); backdrop-filter: blur(10px); box-shadow: 0 1px 0 rgba(29, 20, 14, 0.04); }
 .seg__opt { border: 0; cursor: pointer; font-family: inherit; }
 .sc__tabs.seg .seg__opt { flex: 1 1 0; height: 42px; padding: 0 12px; font-size: 13.5px; color: var(--clay); white-space: nowrap; }
 .seg__opt em { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 999px; background: #f6e7d8; color: var(--ember-deep); opacity: 1 !important; font-size: 10.5px; transition: background-color 0.35s, color 0.35s; }
@@ -1519,9 +1516,12 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 
 .sc__tabs.seg .seg__opt.is-on, .sc__mtabs.seg .seg__opt[aria-selected="true"] { color: var(--ink); font-weight: 620; }
 
-.frame--l img { object-position: 50% 30% !important; }
+.frame--l img { object-position: 34% 50% !important; }
 .frame--r img { object-position: 50% 30% !important; }
-@media (min-width: 961px) { .frame--r { right: clamp(28px, 4.2vw, 72px) !important; width: clamp(220px, 21vw, 310px) !important; } }
+@media (min-width: 961px) {
+  .frame--l { left: clamp(28px, 4.2vw, 72px) !important; width: clamp(250px, 25vw, 372px) !important; }
+  .frame--r { right: clamp(28px, 4.2vw, 72px) !important; width: clamp(236px, 23vw, 340px) !important; }
+}
 
 /* round 16: phone tabs size to their words, so the longest label has the same breathing room as the others */
 @media (max-width: 860px) {
@@ -1874,7 +1874,7 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
     <div class="ap-hero__photos">
       <figure class="ap-ph ap-ph--1"><img src="/img/lv-outreach.webp" alt="Volunteers in Foundation caps handing a gift bag to a market trader." style="object-position: 65% 40%"></figure>
       <figure class="ap-ph ap-ph--2"><img src="/img/ev-widows-gifts.webp" alt="Older women look through the gifts they received at the Foundation&rsquo;s widows&rsquo; outreach in Akute." style="object-position: 45% 35%"></figure>
-      <figure class="ap-ph ap-ph--3"><img src="/img/lv-scholar-clap.webp" alt="Children clapping at a student scholarship event." style="object-position: 50% 35%"></figure>
+      <figure class="ap-ph ap-ph--3"><img src="/img/ev-sing2.webp" alt="Women sing together at the Foundation&rsquo;s widows&rsquo; outreach in Akute." style="object-position: 40% 30%"></figure>
     </div>
   </section>
 
