@@ -425,7 +425,7 @@ ul, ol { list-style: none; }
 /* Warm light rising from the floor, centred under the button */
 .room::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 1; mix-blend-mode: normal;
   background:
-    radial-gradient(30% 24% at 50% 103%, rgba(252, 226, 160, 1) 0%, rgba(248, 190, 120, 0.7) 38%, rgba(236, 104, 54, 0) 100%),
+    radial-gradient(30% 24% at 50% 103%, rgba(252, 226, 160, 0.82) 0%, rgba(248, 190, 120, 0.7) 38%, rgba(236, 104, 54, 0) 100%),
     radial-gradient(60% 40% at 50% 110%, rgba(244, 150, 90, 0.35) 0%, rgba(236, 104, 54, 0) 100%); }
 
 /* The announcement pill, Cloudflare-style, carrying the programme name and the second action */
@@ -439,7 +439,7 @@ ul, ol { list-style: none; }
 .intro { top: clamp(44px, 8vh, 88px); transform: translateX(-50%); width: min(100% - var(--margin) * 2, 980px); }
 .display { margin-top: 30px; font-size: clamp(44px, 6.2vw, 92px); font-weight: 530; line-height: 1.0; letter-spacing: -0.035em; color: #fff; }
 .display span { display: block; }
-.lede { margin: 26px auto 0; max-width: 27em; text-wrap: balance; color: #fff; font-size: clamp(17px, 1.45vw, 21px); line-height: 1.45; font-weight: 400; letter-spacing: -0.012em; }
+.lede { margin: 26px auto 0; max-width: 27em; text-wrap: balance; color: #fff; font-size: clamp(17px, 1.45vw, 21px); line-height: 1.45; font-weight: 500; letter-spacing: -0.012em; text-shadow: 0 1px 12px rgba(70, 22, 0, 0.32); }
 .ctas { margin-top: 36px; }
 .ctas .donate { height: 60px; padding: 0 36px; background: var(--cream-btn); color: var(--btn-ink); font-size: 18px; font-weight: 520; box-shadow: none; }
 .ctas .donate:hover { background: #fff; }
