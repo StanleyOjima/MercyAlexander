@@ -1329,7 +1329,9 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 .ft__mail { font-size: 15px; color: var(--ink); overflow-wrap: anywhere; }
 .ft__social { display: inline-flex; gap: 24px; flex-wrap: wrap; }
 .ft__map { font-size: 14.5px; font-weight: 600; }
-.ft__col--contact .ft__phone { margin-bottom: 4px; }
+.ft__col--contact .ft__phone { display: flex; flex-wrap: wrap; gap: 2px 18px; margin-bottom: 2px; }
+.ft__col--contact .ft__phone a { font-family: "Geist", "Inter", system-ui, sans-serif; font-size: 15px; color: var(--ink); text-decoration: none; }
+.ft__col--contact .ft__phone a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .ft__top { padding-bottom: clamp(40px, 4vw, 56px); border-bottom: 1px solid var(--sand); }
 .ft__word { display: flex; align-items: flex-start; }
 .ft__ln { display: block; }
@@ -1980,8 +1982,9 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
         <a href="/#street-to-school">Street to School</a><a href="/#older-people">Older people and hospital bills</a><a href="/#families">Families in hard times</a>
       </div>
       <div class="ft__col ft__col--contact">
-        <p>Visit or write</p>
+        <p>Visit, call or write</p>
         <span>No 100 Bola Ahmed Tinubu Rd, Wayobawole, Omonile, KFarm, Iju, Lagos</span>
+        <span class="ft__phone"><a href="tel:+2348057733424">0805 773 3424</a><a href="tel:+2348133657572">0813 365 7572</a></span>
         <a class="ft__mail" href="mailto:info@mercyalexanderfoundation.org">info@<wbr>mercyalexanderfoundation.org</a>
         <a class="ft__map" href="https://www.google.com/maps/search/?api=1&amp;query=100+Bola+Ahmed+Tinubu+Road+Iju+Lagos" target="_blank" rel="noopener">Get directions <span aria-hidden="true">&nearr;</span><span class="sr-only"> (opens Google Maps in a new tab)</span></a>
       </div>
