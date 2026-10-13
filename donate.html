@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="preconnect" href="https://formsubmit.co">
+<link rel="preconnect" href="https://api.web3forms.com">
 <title>Donate | Mercy Alexander Foundation</title>
 <meta name="description" content="Give to Mercy Alexander Foundation by bank transfer, then tell us about your gift so we can thank you and use it where you asked.">
 <link rel="canonical" href="https://www.mercyalexanderfoundation.org/donate">
@@ -2294,16 +2294,18 @@ html:root .ow__title { font-size: clamp(40px, 4.3vw, 64px); }
 </script>
 <script>
 /* FORMS: where messages go.
-   Messages are delivered to this inbox through FormSubmit (formsubmit.co), with no app to open.
-   The very first message triggers a one-time "Activate form" email to this address. Click it once,
-   and every message after that arrives normally. */
-window.MAF_FORMS = { to: "info@mercyalexanderfoundation.org" };
+   Contact and donation messages are delivered to the info@mercyalexanderfoundation.org
+   inbox through Web3Forms (web3forms.com). The access key below is a public,
+   client-side key tied to that inbox, so it is safe to ship in the page. */
+window.MAF_FORMS = { key: "4e19e577-2b50-468e-9722-b2fcb6992e85" };
 window.mafSend = function (fields) {
-  fields._template = "table"; fields._captcha = "false";
-  return fetch("https://formsubmit.co/ajax/" + window.MAF_FORMS.to, {
-    method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(fields)
+  var payload = Object.assign({ access_key: window.MAF_FORMS.key }, fields);
+  if (payload._subject) { payload.subject = payload._subject; delete payload._subject; }
+  delete payload._template; delete payload._captcha;
+  return fetch("https://api.web3forms.com/submit", {
+    method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(payload)
   }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) {
-    if (!r.ok || String(d.success) === "false") throw new Error(d.message || "Not sent"); return d; }); });
+    if (!r.ok || d.success !== true) throw new Error(d.message || "Not sent"); return d; }); });
 };
 </script>
 <script>
