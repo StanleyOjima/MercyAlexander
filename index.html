@@ -1745,20 +1745,6 @@ iframe:focus, iframe:focus-visible { outline: 2px solid var(--ember-deep); outli
 @media (max-width: 340px) { .hdr__end { gap: 4px; } .hdr .donate { padding: 0 13px !important; } .sc__mtabs.seg .seg__opt { padding: 0 8px !important; } }
 
 /* ===== Our work, four programmes (Oct 2026): Hospital bills is its own programme ===== */
-/* The figure tile follows the 175 tile: plain MAF Orange, white Geist figure, Paper label, white caption only at 24px and over */
-.figt {position: absolute; inset: 0; z-index: 0; display: flex; flex-direction: column; padding: clamp(28px, 3vw, 44px); background: var(--orange); color: #fff; overflow: hidden;}
-.figt__tag {align-self: flex-start; display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: 999px; background: rgba(255, 252, 247, 0.95); color: var(--ink); font-size: 12.5px; font-weight: 600;}
-.figt__n {display: block; margin-top: auto; font-family: "Geist", "Inter", sans-serif; font-weight: 500; font-size: clamp(180px, 21vw, 330px); line-height: 0.82; letter-spacing: -0.055em; font-variant-numeric: lining-nums tabular-nums;}
-.figt__t {display: block; max-width: 11em; text-wrap: balance; margin-top: 20px; font-family: "Fraunces", Georgia, serif; font-weight: 400; font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0; font-size: clamp(24px, 2.1vw, 30px); line-height: 1.2; letter-spacing: -0.012em; text-shadow: 0 1px 2px rgba(120, 40, 0, 0.18);}
-.figt--sm {padding: 12px 14px; justify-content: flex-end;}
-.figt--sm .figt__n {margin-top: 0; font-size: 72px;}
-.figt__pill {align-self: flex-start; margin-top: 8px; display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 999px; background: rgba(255, 252, 247, 0.95); color: var(--ink); font-size: 11.5px; font-weight: 600; white-space: nowrap;}
-.sc__frame .figt {padding-bottom: 104px;}
-.sc__img--fig {animation: none !important;}
-.sc__mimg--fig {position: relative; background: var(--orange);}
-.pcard__img--fig {background: var(--orange);}
-.pcard__img--fig .pcard__n {z-index: 1;}
-.dn-where__list figure.dn-where__fig {position: relative; background: var(--orange);}
 /* The dropdown now holds four programmes */
 .panel__grid--eq {grid-template-columns: repeat(4, minmax(0, 1fr));}
 .panel__grid--eq .pcard__t {font-size: 20px;}
@@ -1773,9 +1759,6 @@ iframe:focus, iframe:focus-visible { outline: 2px solid var(--ember-deep); outli
   .dn-tiles {grid-template-columns: repeat(3, minmax(0, 1fr));}
 }
 @media (max-width: 860px) {
-  .sc__mimg .figt {padding: 22px 24px 24px;}
-  .sc__mimg .figt__n {font-size: 140px;}
-  .sc__mimg .figt__t {margin-top: 14px; font-size: 24px;}
   /* Phone tabs: four programmes in a row that scrolls sideways, with a soft edge where more are waiting */
   .sc__mtabs.seg {display: flex; overflow: hidden;}
   .sc__mtabs.seg > .seg__track {position: relative; isolation: isolate; flex: 1 1 auto; min-width: 0; display: flex; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; border-radius: 999px; scroll-behavior: smooth;}
@@ -1791,11 +1774,6 @@ iframe:focus, iframe:focus-visible { outline: 2px solid var(--ember-deep); outli
 @media (max-width: 600px) {
   .dn-tiles {grid-template-columns: 1fr 1fr;}
   .dn-tiles .cm-t:last-child {grid-column: 1 / -1;}
-  .dn-where__fig .figt__pill {display: none;}
-  .dn-where__fig .figt--sm .figt__n {font-size: 56px;}
-}
-@media (max-width: 380px) {
-  .sc__mimg .figt__n {font-size: 116px;}
 }
 @media (max-width: 360px) {
   .dn-tiles {grid-template-columns: 1fr;}
@@ -1822,7 +1800,7 @@ iframe:focus, iframe:focus-visible { outline: 2px solid var(--ember-deep); outli
     <div class="panel" id="work-panel" hidden>
       <div class="panel__grid panel__grid--eq">
         <a class="pcard" href="#street-to-school"><span class="pcard__img"><img src="/img/lv-scholar-group.webp" alt="" style="object-position: 40% 45%"><span class="pcard__n">01</span></span><span class="pcard__t">Street to School</span><span class="pcard__x">Children out of school, back in a classroom near home, and kept there.</span><span class="pcard__go">View programme <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a>
-        <a class="pcard" href="#hospital-bills"><span class="pcard__img pcard__img--fig"><span class="figt figt--sm" aria-hidden="true"><b class="figt__n">3</b><span class="figt__pill">hospital days a year</span></span><span class="pcard__n">02</span></span><span class="pcard__t">Hospital bills</span><span class="pcard__x">At least three hospital days a year, settling bills that patients and families cannot pay.</span><span class="pcard__go">View programme <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a>
+        <a class="pcard" href="#hospital-bills"><span class="pcard__img"><img src="/img/own-hospital-wide.webp" alt="" style="object-position: 50% 50%"><span class="pcard__n">02</span></span><span class="pcard__t">Hospital bills</span><span class="pcard__x">At least three hospital days a year, settling bills that patients and families cannot pay.</span><span class="pcard__go">View programme <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a>
         <a class="pcard" href="#older-people"><span class="pcard__img"><img src="/img/lv-elders.webp" alt="" style="object-position: 60% 40%"><span class="pcard__n">03</span></span><span class="pcard__t">Older people</span><span class="pcard__x">Care and outreach days for the older mothers and fathers in our communities.</span><span class="pcard__go">View programme <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a>
         <a class="pcard" href="#families"><span class="pcard__img"><img src="/img/lv-outreach.webp" alt="" style="object-position: 65% 40%"><span class="pcard__n">04</span></span><span class="pcard__t">Families in hard times</span><span class="pcard__x">Food, shelter and help with debts when a crisis reaches home.</span><span class="pcard__go">View programme <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a>
       </div>
@@ -1977,7 +1955,7 @@ iframe:focus, iframe:focus-visible { outline: 2px solid var(--ember-deep); outli
 
     <div class="sc">
       <div class="sc__stage">
-        <div class="sc__frame"><img class="sc__img is-on" src="/img/own-sts.webp" alt="Pupils in green school uniforms sitting together outside their classrooms." loading="lazy"><div class="sc__img sc__img--fig" role="img" aria-label="At least three hospital days every year."><span class="figt"><span class="figt__tag">Hospital bills</span><b class="figt__n">3</b><span class="figt__t">hospital days every year, at least.</span></span></div><img class="sc__img" src="/img/ev-older-pair.webp" alt="Two older women sit with the gifts they received at the Foundation&rsquo;s widows&rsquo; outreach in Akute." loading="lazy"><img class="sc__img" src="/img/ev-families.webp" alt="Women look through the gifts they received at the Foundation&rsquo;s outreach in Akute." loading="lazy">
+        <div class="sc__frame"><img class="sc__img is-on" src="/img/own-sts.webp" alt="Pupils in green school uniforms sitting together outside their classrooms." loading="lazy"><img class="sc__img" src="/img/own-hospital.webp" alt="A woman leans in to help another with her bag at one of the Foundation&rsquo;s outreach days." loading="lazy"><img class="sc__img" src="/img/ev-older-pair.webp" alt="Two older women sit with the gifts they received at the Foundation&rsquo;s widows&rsquo; outreach in Akute." loading="lazy"><img class="sc__img" src="/img/ev-families.webp" alt="Women look through the gifts they received at the Foundation&rsquo;s outreach in Akute." loading="lazy">
           <div class="sc__tabs seg" role="group" aria-label="Programmes"><span class="seg__thumb" aria-hidden="true"></span><button type="button" class="seg__opt is-on" data-go="0">Street to School</button><button type="button" class="seg__opt" data-go="1">Hospital bills</button><button type="button" class="seg__opt" data-go="2">Older people</button><button type="button" class="seg__opt" data-go="3">Families</button></div>
         </div>
       </div>
@@ -2000,7 +1978,7 @@ iframe:focus, iframe:focus-visible { outline: 2px solid var(--ember-deep); outli
           <a class="ow2__give" href="/donate?for=street-to-school">Support Street to School <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         </article>
         <article class="sc__panel" id="hospital-bills" data-i="1" aria-labelledby="hospital-bills-t">
-          <div class="sc__mimg sc__mimg--fig" aria-hidden="true"><span class="figt"><span class="figt__tag">Hospital bills</span><b class="figt__n">3</b><span class="figt__t">hospital days every year, at least.</span></span></div>
+          <div class="sc__mimg"><img src="/img/own-hospital-wide.webp" alt="A woman leans in to help another with her bag at one of the Foundation&rsquo;s outreach days." loading="lazy"></div>
           <p class="ow2__tag">Programme two</p>
           <h3 class="ow2__leadname" id="hospital-bills-t">Hospital bills</h3>
           <p class="ow2__leadtext">Help with hospital bills for patients and families who cannot pay them. It is built into how we are run.</p>
