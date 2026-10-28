@@ -63,7 +63,7 @@ button { font: inherit; color: inherit; }
 .d1 { font-size: clamp(48px, 7.2vw, 108px); line-height: .96; letter-spacing: -0.03em; }
 .d2 { font-size: clamp(36px, 4.8vw, 68px); line-height: 1.02; letter-spacing: -0.025em; }
 .d3 { font-size: clamp(26px, 2.6vw, 36px); line-height: 1.1; }
-.label { display: inline-flex; align-items: center; gap: 9px; margin: 0 0 clamp(16px, 1.8vw, 22px); font-size: 14px; font-weight: 600; letter-spacing: .005em; color: var(--btn); }
+.label { display: inline-flex; align-items: center; gap: 9px; margin: 0 0 clamp(16px, 1.8vw, 22px); font-size: 14px; font-weight: 600; letter-spacing: .005em; color: var(--ink-2); }
 .label::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--orange); }
 .lede { margin: 0; max-width: 32em; font-size: clamp(17px, 1.35vw, 20px); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
 
@@ -268,7 +268,8 @@ button { font: inherit; color: inherit; }
 .tx__in > .rv:last-child { width: 100%; max-width: 920px; }
 .tx__slides { display: grid; min-height: 280px; align-items: center; }
 .tq { margin: 0; }
-.tq[hidden] { display: none; }
+.tx__slides > .tq { grid-area: 1 / 1; }
+.tq[hidden] { display: block; visibility: hidden; }
 .tq blockquote { margin: 0; }
 .tq p { margin: 0; font-family: var(--display); font-variation-settings: "opsz" 144, "SOFT" 100; font-size: clamp(25px, 2.8vw, 40px); line-height: 1.2; letter-spacing: -0.015em; text-wrap: balance; }
 .tq.tq--long p { font-size: clamp(22px, 2.3vw, 34px); }
@@ -308,13 +309,13 @@ button { font: inherit; color: inherit; }
 .ft { padding: clamp(64px, 8vw, 104px) 0 0; overflow: hidden; }
 .ft__top { display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 64px); }
 .ft__say { margin: 24px 0 22px; font-family: var(--display); font-variation-settings: "opsz" 144, "SOFT" 100; font-size: clamp(24px, 2.2vw, 30px); line-height: 1.15; letter-spacing: -0.015em; }
-.ft__say span { display: block; color: var(--btn); font-style: italic; }
-.ft__h { margin: 4px 0 16px; font-size: 14px; font-weight: 600; color: var(--btn); }
+.ft__say span { display: block; color: var(--clay); }
+.ft__h { margin: 4px 0 16px; font-size: 14px; font-weight: 600; color: var(--clay); }
 .ft__col ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
-.ft__col a { font-size: 15.5px; color: var(--ink); overflow-wrap: anywhere; }
+.ft__col a { font-size: 15.5px; color: var(--ink); overflow-wrap: break-word; }
 .ft__col a:hover { color: var(--btn); }
 .ft address { margin: 0 0 14px; font-style: normal; font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
-.ft__word { margin: clamp(48px, 6vw, 88px) 0 0; padding: clamp(28px, 3vw, 44px) 0 .12em; border-top: 1px solid var(--sand); font-family: var(--display); font-variation-settings: "opsz" 144, "SOFT" 100; font-size: 160px; line-height: .86; letter-spacing: -0.035em; white-space: nowrap; color: var(--btn); user-select: none; }
+.ft__word { margin: clamp(48px, 6vw, 88px) 0 0; padding: clamp(28px, 3vw, 44px) 0 .12em; border-top: 1px solid var(--sand); font-family: var(--display); font-variation-settings: "opsz" 144, "SOFT" 100; font-size: 160px; line-height: .86; letter-spacing: -0.035em; white-space: nowrap; color: #e0cfb9; user-select: none; }
 .ft__bot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; padding: 22px 0 28px; border-top: 1px solid var(--sand); font-size: 14px; color: var(--ink-2); }
 .ft__bot p { margin: 0; }
 .ft__social { display: flex; flex-wrap: wrap; gap: 6px 24px; margin: 0; padding: 0; list-style: none; }
@@ -359,7 +360,7 @@ button { font: inherit; color: inherit; }
 .nudge__x svg { width: 12px; height: 12px; }
 
 /* reveal on scroll */
-.rv { opacity: 0; transform: translateY(18px); transition: opacity .9s ease, transform 1s var(--out); }
+.rv { opacity: 0; transform: translateY(14px); transition: opacity .45s ease, transform .6s var(--out); }
 .rv.is-in { opacity: 1; transform: none; }
 
 @media (min-width: 901px) and (max-width: 1200px) {
@@ -701,10 +702,15 @@ a.kr__v:hover, .kr__v a:hover { text-decoration-color: #fff; }
   .cx__copy .btn { width: 100%; justify-content: space-between; }
   .cx__ph { margin: 0 10px 10px; aspect-ratio: 16 / 11; }
   .cx__ph img { object-position: 50% 22%; }
-  .ft__top { gap: 36px 18px; }
+  .ft { padding-top: 56px; }
+  .ft__top { gap: 28px 18px; }
+  .ft__say { margin: 18px 0 18px; font-size: 22px; }
+  .ft__h { margin-bottom: 12px; }
+  .ft__col ul { gap: 8px; }
+  .ft__col a, .ft address { font-size: 15px; }
   .ft__brand .btn { width: 100%; justify-content: space-between; }
-  .ft__col--c { padding: 22px; border-radius: 18px; background: var(--paper); }
-  .ft__word { margin-top: 40px; padding-top: 0; border-top: 0; }
+  .ft__col--c { padding: 20px 0 0; border-top: 1px solid var(--sand); }
+  .ft__word { margin-top: 28px; padding-top: 0; border-top: 0; }
   .ft__bot { flex-direction: column; align-items: flex-start; gap: 14px; border-top: 0; padding: 14px 0 calc(28px + env(safe-area-inset-bottom)); }
   .ft__social { gap: 8px 22px; }
   .gd__stage { height: 360px; }
@@ -752,7 +758,7 @@ a.kr__v:hover, .kr__v a:hover { text-decoration-color: #fff; }
         <a class="btn" href="/donate" data-give>Make a donation <span class="btn__chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         <p class="mnav__k">Call or write</p>
         <p><a href="tel:+2348057733424">0805 773 3424</a> · <a href="tel:+2348133657572">0813 365 7572</a></p>
-        <p><a href="mailto:info@mercyalexanderfoundation.org">info@mercyalexanderfoundation.org</a></p>
+        <p><a href="mailto:info@mercyalexanderfoundation.org">info@<wbr>mercyalexanderfoundation.org</a></p>
         <p class="mnav__soc"><a href="https://www.facebook.com/alexrmercyfoundation" target="_blank" rel="noopener">Facebook<span class="sr"> (opens in a new tab)</span></a><a href="https://www.instagram.com/mercyalexanderfoundation1/" target="_blank" rel="noopener">Instagram<span class="sr"> (opens in a new tab)</span></a></p>
       </div>
     </div>
@@ -793,7 +799,7 @@ a.kr__v:hover, .kr__v a:hover { text-decoration-color: #fff; }
     <div class="in fs__wrap">
       <div class="fs__head">
         <p class="label rv">Send a message</p>
-        <h2 class="d d2 rv" id="form-title">Tell us how <em>we can help.</em></h2>
+        <h2 class="d d2 rv" id="form-title">Tell us how we can help.</h2>
         <p class="fs__sub rv">Three quick steps. We read every message and reply as soon as we can.</p>
       </div>
       <div class="fs__main">
@@ -836,7 +842,7 @@ a.kr__v:hover, .kr__v a:hover { text-decoration-color: #fff; }
       <div class="km__box">
         <div class="km__info">
           <p class="label rv">Find us</p>
-          <h2 class="d d2 rv" id="map-title">Come and see us <em>in Iju.</em></h2>
+          <h2 class="d d2 rv" id="map-title">Come and see us in Iju.</h2>
           <address class="km__addr rv">No 100 Bola Ahmed Tinubu Rd,<br>Wayobawole, Omonile, KFarm,<br>Iju, Lagos</address>
           <div class="km__acts rv">
             <a class="btn btn--plain btn--sm" href="https://www.google.com/maps/search/?api=1&amp;query=100+Bola+Ahmed+Tinubu+Road+Iju+Lagos" target="_blank" rel="noopener">Get directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg><span class="sr"> (opens Google Maps in a new tab)</span></a>
@@ -876,7 +882,7 @@ a.kr__v:hover, .kr__v a:hover { text-decoration-color: #fff; }
     <nav class="ft__col" aria-label="Programmes"><p class="ft__h">Programmes</p><ul><li><a href="/#street-to-school">Street to School</a></li><li><a href="/#hospital-bills">Hospital bills</a></li><li><a href="/#older-people">Older people</a></li><li><a href="/#families">Families in hard times</a></li></ul></nav>
     <div class="ft__col ft__col--c"><p class="ft__h">Visit, call or write</p>
       <address>No 100 Bola Ahmed Tinubu Rd, Wayobawole, Omonile, KFarm, Iju, Lagos</address>
-      <ul><li><a href="tel:+2348057733424">0805 773 3424</a></li><li><a href="tel:+2348133657572">0813 365 7572</a></li><li><a href="mailto:info@mercyalexanderfoundation.org">info@mercyalexanderfoundation.org</a></li>
+      <ul><li><a href="tel:+2348057733424">0805 773 3424</a></li><li><a href="tel:+2348133657572">0813 365 7572</a></li><li><a href="mailto:info@mercyalexanderfoundation.org">info@<wbr>mercyalexanderfoundation.org</a></li>
       <li><a href="https://www.google.com/maps/search/?api=1&amp;query=100+Bola+Ahmed+Tinubu+Road+Iju+Lagos" target="_blank" rel="noopener">Get directions <span aria-hidden="true">↗</span><span class="sr"> (opens Google Maps in a new tab)</span></a></li></ul>
     </div>
   </div>
@@ -1008,7 +1014,7 @@ a.kr__v:hover, .kr__v a:hover { text-decoration-color: #fff; }
       if (shown) return;
       var p = scrollY / Math.max(1, document.body.scrollHeight - innerHeight), g = give.getBoundingClientRect();
       var f = document.querySelector(".ft").getBoundingClientRect(), near = (g.top < innerHeight && g.bottom > 0) || f.top < innerHeight;
-      if (p > .45 && !near) n.classList.add("is-on"); else n.classList.remove("is-on");
+      if (p > .5 && !near) { if (!n.classList.contains("is-on")) { n.classList.add("is-on"); clearTimeout(n._t); n._t = setTimeout(function () { hideNudge(true); }, 7000); } } else n.classList.remove("is-on");
     }, { passive: true });
   }
 })();
@@ -1073,9 +1079,9 @@ a.kr__v:hover, .kr__v a:hover { text-decoration-color: #fff; }
   }
   var els = [].slice.call(document.querySelectorAll(".rv"));
   if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) { els.forEach(function (e) { e.classList.add("is-in"); }); return; }
-  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
-  els.forEach(function (e, i) { e.style.transitionDelay = (i % 4) * 70 + "ms"; io.observe(e); });
-  function check() { els.forEach(function (e) { if (!e.classList.contains("is-in") && e.getBoundingClientRect().top < innerHeight * .96) e.classList.add("is-in"); }); }
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } }); }, { rootMargin: "0px 0px -2% 0px" });
+  els.forEach(function (e, i) { e.style.transitionDelay = (i % 4) * 50 + "ms"; io.observe(e); });
+  function check() { els.forEach(function (e) { if (!e.classList.contains("is-in") && e.getBoundingClientRect().top < innerHeight) e.classList.add("is-in"); }); }
   addEventListener("scroll", check, { passive: true }); check();
 })();
 
