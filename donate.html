@@ -63,7 +63,7 @@ button { font: inherit; color: inherit; }
 .d1 { font-size: clamp(48px, 7.2vw, 108px); line-height: .96; letter-spacing: -0.03em; }
 .d2 { font-size: clamp(36px, 4.8vw, 68px); line-height: 1.02; letter-spacing: -0.025em; }
 .d3 { font-size: clamp(26px, 2.6vw, 36px); line-height: 1.1; }
-.label { display: inline-flex; align-items: center; gap: 9px; margin: 0 0 clamp(16px, 1.8vw, 22px); font-size: 14px; font-weight: 600; letter-spacing: .005em; color: var(--btn); }
+.label { display: inline-flex; align-items: center; gap: 9px; margin: 0 0 clamp(16px, 1.8vw, 22px); font-size: 14px; font-weight: 600; letter-spacing: .005em; color: var(--ink-2); }
 .label::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--orange); }
 .lede { margin: 0; max-width: 32em; font-size: clamp(17px, 1.35vw, 20px); line-height: 1.55; color: var(--ink-2); text-wrap: pretty; }
 
@@ -268,7 +268,8 @@ button { font: inherit; color: inherit; }
 .tx__in > .rv:last-child { width: 100%; max-width: 920px; }
 .tx__slides { display: grid; min-height: 280px; align-items: center; }
 .tq { margin: 0; }
-.tq[hidden] { display: none; }
+.tx__slides > .tq { grid-area: 1 / 1; }
+.tq[hidden] { display: block; visibility: hidden; }
 .tq blockquote { margin: 0; }
 .tq p { margin: 0; font-family: var(--display); font-variation-settings: "opsz" 144, "SOFT" 100; font-size: clamp(25px, 2.8vw, 40px); line-height: 1.2; letter-spacing: -0.015em; text-wrap: balance; }
 .tq.tq--long p { font-size: clamp(22px, 2.3vw, 34px); }
@@ -308,13 +309,13 @@ button { font: inherit; color: inherit; }
 .ft { padding: clamp(64px, 8vw, 104px) 0 0; overflow: hidden; }
 .ft__top { display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 64px); }
 .ft__say { margin: 24px 0 22px; font-family: var(--display); font-variation-settings: "opsz" 144, "SOFT" 100; font-size: clamp(24px, 2.2vw, 30px); line-height: 1.15; letter-spacing: -0.015em; }
-.ft__say span { display: block; color: var(--btn); font-style: italic; }
-.ft__h { margin: 4px 0 16px; font-size: 14px; font-weight: 600; color: var(--btn); }
+.ft__say span { display: block; color: var(--clay); }
+.ft__h { margin: 4px 0 16px; font-size: 14px; font-weight: 600; color: var(--clay); }
 .ft__col ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
-.ft__col a { font-size: 15.5px; color: var(--ink); overflow-wrap: anywhere; }
+.ft__col a { font-size: 15.5px; color: var(--ink); overflow-wrap: break-word; }
 .ft__col a:hover { color: var(--btn); }
 .ft address { margin: 0 0 14px; font-style: normal; font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
-.ft__word { margin: clamp(48px, 6vw, 88px) 0 0; padding: clamp(28px, 3vw, 44px) 0 .12em; border-top: 1px solid var(--sand); font-family: var(--display); font-variation-settings: "opsz" 144, "SOFT" 100; font-size: 160px; line-height: .86; letter-spacing: -0.035em; white-space: nowrap; color: var(--btn); user-select: none; }
+.ft__word { margin: clamp(48px, 6vw, 88px) 0 0; padding: clamp(28px, 3vw, 44px) 0 .12em; border-top: 1px solid var(--sand); font-family: var(--display); font-variation-settings: "opsz" 144, "SOFT" 100; font-size: 160px; line-height: .86; letter-spacing: -0.035em; white-space: nowrap; color: #e0cfb9; user-select: none; }
 .ft__bot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px; padding: 22px 0 28px; border-top: 1px solid var(--sand); font-size: 14px; color: var(--ink-2); }
 .ft__bot p { margin: 0; }
 .ft__social { display: flex; flex-wrap: wrap; gap: 6px 24px; margin: 0; padding: 0; list-style: none; }
@@ -359,13 +360,84 @@ button { font: inherit; color: inherit; }
 .nudge__x svg { width: 12px; height: 12px; }
 
 /* reveal on scroll */
-.rv { opacity: 0; transform: translateY(18px); transition: opacity .9s ease, transform 1s var(--out); }
+.rv { opacity: 0; transform: translateY(14px); transition: opacity .45s ease, transform .6s var(--out); }
 .rv.is-in { opacity: 1; transform: none; }
 
 @media (min-width: 901px) and (max-width: 1200px) {
   .hero { padding-bottom: 150px; }
   .hero .give { width: 320px; bottom: -96px; }
 }
+
+/* ===== Give dialog, refined: clear choices, numbered steps, calmer type ===== */
+.gv { width: min(480px, calc(100vw - 24px)); border-radius: 26px; }
+.gv__top { height: 136px; }
+.gv__body { padding: 24px 26px 26px; }
+.gv .give__t, .gv__done .d { font-weight: 400; font-size: 28px; letter-spacing: -0.02em; }
+.gv .give__s { margin-bottom: 20px; font-size: 15px; }
+.gv .gv__f { margin: 0 0 20px; }
+.gv .gv__f legend { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 15px; font-weight: 600; color: var(--ink); }
+.gv__n { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--btn); font-size: 12.5px; font-weight: 600; color: #fff; }
+.wts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.wt { position: relative; display: block; cursor: pointer; }
+.wt input { position: absolute; opacity: 0; pointer-events: none; }
+.wt__box { display: flex; flex-direction: column; justify-content: center; gap: 1px; min-height: 58px; padding-left: 54px !important; position: relative; height: 100%; padding: 10px 12px 10px 10px; border-radius: 14px; background: var(--cream); box-shadow: inset 0 0 0 1.5px transparent; transition: background-color .2s, box-shadow .2s; }
+.wt__ic { position: absolute; left: 10px; top: 50%; margin-top: -17px; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: #fff; color: var(--btn); transition: background-color .2s, color .2s; }
+.wt__ic svg { width: 17px; height: 17px; }
+.wt__l { font-size: 14px; font-weight: 600; line-height: 1.25; color: var(--ink); }
+.wt__h { font-size: 12.5px; line-height: 1.3; color: var(--clay); }
+.wt:hover .wt__box { box-shadow: inset 0 0 0 1.5px var(--sand); }
+.wt input:checked + .wt__box { background: var(--blush); box-shadow: inset 0 0 0 2px var(--btn); }
+.wt input:checked + .wt__box .wt__ic { background: var(--btn); color: #fff; }
+.wt input:focus-visible + .wt__box { outline: 2px solid var(--btn-hover); outline-offset: 2px; }
+.wt--wide { grid-column: 1 / -1; }
+/* the four programmes need only their names; the subtext stays on "Where it’s needed most" */
+.wt:not(.wt--wide) .wt__h { display: none; }
+.wt:not(.wt--wide) .wt__box { min-height: 54px; }
+.wt__l { white-space: nowrap; }
+@media (max-width: 420px) { .wt__l { white-space: normal; } }
+.gv .chips--amt { gap: 8px; }
+.gv .chip span { min-height: 46px; border-radius: 12px; font-size: 15px; font-weight: 600; transition: background-color .2s, box-shadow .2s, color .2s; }
+.gv .chip:hover span { box-shadow: inset 0 0 0 1.5px var(--sand); }
+.gv .chip input:checked + span { background: var(--blush); box-shadow: inset 0 0 0 2px var(--btn); color: var(--btn); }
+.gv .give__other { height: 48px; border-radius: 12px; }
+.gv .give .btn { margin-top: 4px; }
+.gv .give__note { margin-top: 12px; font-size: 13px; }
+.gv__sum { margin: 0 0 18px; max-width: 30em; font-size: 15.5px; line-height: 1.55; }
+.gv .bank { margin: 0 0 18px; border-radius: 16px; }
+.gv .bank > div { padding: 14px 16px; }
+.gv .bank dt { font-size: 13px; font-weight: 600; color: var(--clay); }
+.gv .bank dd { margin-top: 3px; font-size: 16px; }
+.gv .bank .acct { font-size: 28px; font-weight: 500; letter-spacing: -0.01em; }
+.gv .copy { height: 36px; padding: 0 14px; border-radius: 10px; font-size: 13.5px; }
+.gv .copy.is-done { background: var(--btn); box-shadow: none; }
+.gv__sent { width: 100%; justify-content: space-between; }
+.gv__done { padding-top: 6px; }
+.gv__done p { max-width: 24em; margin-left: auto; margin-right: auto; line-height: 1.55; }
+.gv__done .btn { justify-content: space-between; }
+@media (max-width: 600px) {
+  .gv { width: calc(100vw - 16px); border-radius: 22px; }
+  .gv__top { height: 104px; }
+  .gv__body { padding: 20px 18px 20px; }
+  .gv .give__t, .gv__done .d { font-size: 25px; }
+  .wt__box { min-height: 52px; padding: 9px 10px 9px 48px !important; }
+  .wt__ic { left: 9px; width: 30px; height: 30px; margin-top: -15px; border-radius: 9px; }
+  .wt__h { display: none; }
+  .wt--wide .wt__h { display: block; }
+  .gv .chip span { min-height: 44px; font-size: 14.5px; }
+}
+
+/* ===== Our work on phones: the photograph takes only the room left, so the whole card always shows ===== */
+@media (max-width: 900px) {
+  body .hs.is-on .hs__card { grid-template-rows: clamp(140px, calc(100svh - 548px), 380px) auto; }
+}
+@media (max-width: 900px) and (max-height: 780px) {
+  body .hs.is-on .pg__steps { display: none; }
+  body .hs.is-on .hs__card { grid-template-rows: clamp(130px, calc(100svh - 500px), 380px) auto; }
+  body .hs.is-on .hs__foot { margin-top: 12px; }
+  body .hs.is-on .hs__pin { padding-top: 76px; }
+  body .hs.is-on .hs__line { margin-bottom: 10px; }
+}
+
 
 /* ===================== Forms (Contact and Donate) ===================== */
 [hidden] { display: none !important; }
@@ -643,10 +715,15 @@ button { font: inherit; color: inherit; }
   .cx__copy .btn { width: 100%; justify-content: space-between; }
   .cx__ph { margin: 0 10px 10px; aspect-ratio: 16 / 11; }
   .cx__ph img { object-position: 50% 22%; }
-  .ft__top { gap: 36px 18px; }
+  .ft { padding-top: 56px; }
+  .ft__top { gap: 28px 18px; }
+  .ft__say { margin: 18px 0 18px; font-size: 22px; }
+  .ft__h { margin-bottom: 12px; }
+  .ft__col ul { gap: 8px; }
+  .ft__col a, .ft address { font-size: 15px; }
   .ft__brand .btn { width: 100%; justify-content: space-between; }
-  .ft__col--c { padding: 22px; border-radius: 18px; background: var(--paper); }
-  .ft__word { margin-top: 40px; padding-top: 0; border-top: 0; }
+  .ft__col--c { padding: 20px 0 0; border-top: 1px solid var(--sand); }
+  .ft__word { margin-top: 28px; padding-top: 0; border-top: 0; }
   .ft__bot { flex-direction: column; align-items: flex-start; gap: 14px; border-top: 0; padding: 14px 0 calc(28px + env(safe-area-inset-bottom)); }
   .ft__social { gap: 8px 22px; }
   .gd__stage { height: 360px; }
@@ -694,7 +771,7 @@ button { font: inherit; color: inherit; }
         <a class="btn" href="#bank">Make a donation <span class="btn__chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         <p class="mnav__k">Call or write</p>
         <p><a href="tel:+2348057733424">0805 773 3424</a> · <a href="tel:+2348133657572">0813 365 7572</a></p>
-        <p><a href="mailto:info@mercyalexanderfoundation.org">info@mercyalexanderfoundation.org</a></p>
+        <p><a href="mailto:info@mercyalexanderfoundation.org">info@<wbr>mercyalexanderfoundation.org</a></p>
         <p class="mnav__soc"><a href="https://www.facebook.com/alexrmercyfoundation" target="_blank" rel="noopener">Facebook<span class="sr"> (opens in a new tab)</span></a><a href="https://www.instagram.com/mercyalexanderfoundation1/" target="_blank" rel="noopener">Instagram<span class="sr"> (opens in a new tab)</span></a></p>
       </div>
     </div>
@@ -735,7 +812,7 @@ button { font: inherit; color: inherit; }
     <div class="in fs__wrap">
       <div class="fs__head">
         <p class="label rv">After you give</p>
-        <h2 class="d d2 rv" id="tell-title">Tell us <em>it was you.</em></h2>
+        <h2 class="d d2 rv" id="tell-title">Tell us it was you.</h2>
         <p class="fs__sub rv">A transfer reaches us with very little detail. Three quick steps tell us who to thank and where your gift should go.</p>
       </div>
       <div class="fs__main">
@@ -811,7 +888,7 @@ button { font: inherit; color: inherit; }
     <nav class="ft__col" aria-label="Programmes"><p class="ft__h">Programmes</p><ul><li><a href="/#street-to-school">Street to School</a></li><li><a href="/#hospital-bills">Hospital bills</a></li><li><a href="/#older-people">Older people</a></li><li><a href="/#families">Families in hard times</a></li></ul></nav>
     <div class="ft__col ft__col--c"><p class="ft__h">Visit, call or write</p>
       <address>No 100 Bola Ahmed Tinubu Rd, Wayobawole, Omonile, KFarm, Iju, Lagos</address>
-      <ul><li><a href="tel:+2348057733424">0805 773 3424</a></li><li><a href="tel:+2348133657572">0813 365 7572</a></li><li><a href="mailto:info@mercyalexanderfoundation.org">info@mercyalexanderfoundation.org</a></li>
+      <ul><li><a href="tel:+2348057733424">0805 773 3424</a></li><li><a href="tel:+2348133657572">0813 365 7572</a></li><li><a href="mailto:info@mercyalexanderfoundation.org">info@<wbr>mercyalexanderfoundation.org</a></li>
       <li><a href="https://www.google.com/maps/search/?api=1&amp;query=100+Bola+Ahmed+Tinubu+Road+Iju+Lagos" target="_blank" rel="noopener">Get directions <span aria-hidden="true">↗</span><span class="sr"> (opens Google Maps in a new tab)</span></a></li></ul>
     </div>
   </div>
@@ -832,8 +909,8 @@ button { font: inherit; color: inherit; }
   <div class="gv__body">
     <form class="give" data-givebox="gv" aria-labelledby="gv-title" novalidate>
       <h2 class="give__t" id="gv-title">Give today</h2><p class="give__s">Any amount, by bank transfer.</p>
-      <fieldset><legend>Where should it go?</legend><div class="chips"><label class="chip"><input type="radio" name="gv-for" value="street-to-school"><span>Street to School</span></label><label class="chip"><input type="radio" name="gv-for" value="hospital-bills"><span>Hospital bills</span></label><label class="chip"><input type="radio" name="gv-for" value="older-people"><span>Older people</span></label><label class="chip"><input type="radio" name="gv-for" value="families"><span>Families in hard times</span></label><label class="chip chip--wide"><input type="radio" name="gv-for" value="anywhere" checked><span>Where it’s needed most</span></label></div></fieldset>
-      <fieldset><legend>Amount</legend><div class="chips chips--amt"><label class="chip"><input type="radio" name="gv-amt" value="5000"><span>₦5,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="10000" checked><span>₦10,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="25000"><span>₦25,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="50000"><span>₦50,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="100000"><span>₦100,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="other"><span>Other</span></label></div>
+      <fieldset class="gv__f"><legend><span class="gv__n">1</span>Where should it go?</legend><div class="wts"><label class="wt"><input type="radio" name="gv-for" value="street-to-school"><span class="wt__box"><span class="wt__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v15H5.5A1.5 1.5 0 0 0 4 20.5zM20 5.5A1.5 1.5 0 0 0 18.5 4H13v15h5.5a1.5 1.5 0 0 1 1.5 1.5z"/></svg></span><span class="wt__l">Street to School</span><span class="wt__h">Fees, uniform and books</span></span></label><label class="wt"><input type="radio" name="gv-for" value="hospital-bills"><span class="wt__box"><span class="wt__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8.5v7M8.5 12h7"/></svg></span><span class="wt__l">Hospital bills</span><span class="wt__h">Bills patients cannot pay</span></span></label><label class="wt"><input type="radio" name="gv-for" value="older-people"><span class="wt__box"><span class="wt__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 5.8a3 3 0 0 1 0 5.6M17.5 14.2a5.5 5.5 0 0 1 3 4.8"/></svg></span><span class="wt__l">Older people</span><span class="wt__h">Care and outreach days</span></span></label><label class="wt"><input type="radio" name="gv-for" value="families"><span class="wt__box"><span class="wt__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 12 4.5l8 6.5"/><path d="M6 9.5V20h12V9.5"/><path d="M12 17.2s-2.6-1.6-2.6-3.3a1.4 1.4 0 0 1 2.6-.7 1.4 1.4 0 0 1 2.6.7c0 1.7-2.6 3.3-2.6 3.3z"/></svg></span><span class="wt__l">Families in hard times</span><span class="wt__h">Shelter, food and support</span></span></label><label class="wt wt--wide"><input type="radio" name="gv-for" value="anywhere" checked><span class="wt__box"><span class="wt__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 4 2.3 4.9 5.2.6-3.9 3.6 1.1 5.2L12 15.6l-4.7 2.7 1.1-5.2-3.9-3.6 5.2-.6z"/></svg></span><span class="wt__l">Where it’s needed most</span><span class="wt__h">We decide with care</span></span></label></div></fieldset>
+      <fieldset class="gv__f"><legend><span class="gv__n">2</span>Amount</legend><div class="chips chips--amt"><label class="chip"><input type="radio" name="gv-amt" value="5000"><span>₦5,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="10000" checked><span>₦10,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="25000"><span>₦25,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="50000"><span>₦50,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="100000"><span>₦100,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="other"><span>Other</span></label></div>
         <label class="give__other" data-other><span aria-hidden="true">₦</span><input type="text" inputmode="numeric" name="gv-other" placeholder="Enter an amount" aria-label="Other amount in naira"></label></fieldset>
       <button class="btn" type="submit"><span data-cta>Give ₦10,000</span> <span class="btn__chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
       <p class="give__note">Next, you’ll see our bank details to copy into your banking app.</p>
@@ -846,7 +923,7 @@ button { font: inherit; color: inherit; }
         <div><div><dt>Account name</dt><dd>Alexander Mercy Foundation</dd></div></div>
         <div><div><dt>Bank</dt><dd>Zenith Bank</dd></div><button type="button" class="copy" data-copy-all>Copy all</button></div>
       </dl>
-      <button class="btn" type="button" data-sent style="width:100%;justify-content:space-between">I’ve sent it <span class="btn__chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+      <button class="btn gv__sent" type="button" data-sent>I’ve sent it <span class="btn__chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
       <button class="gv__back" type="button" data-back>Change the amount</button>
     </div>
     <div class="gv__step gv__done" data-step="3" hidden>
@@ -937,7 +1014,7 @@ button { font: inherit; color: inherit; }
       if (shown) return;
       var p = scrollY / Math.max(1, document.body.scrollHeight - innerHeight), g = give.getBoundingClientRect();
       var f = document.querySelector(".ft").getBoundingClientRect(), near = (g.top < innerHeight && g.bottom > 0) || f.top < innerHeight;
-      if (p > .45 && !near) n.classList.add("is-on"); else n.classList.remove("is-on");
+      if (p > .5 && !near) { if (!n.classList.contains("is-on")) { n.classList.add("is-on"); clearTimeout(n._t); n._t = setTimeout(function () { hideNudge(true); }, 7000); } } else n.classList.remove("is-on");
     }, { passive: true });
   }
 })();
@@ -1002,9 +1079,9 @@ button { font: inherit; color: inherit; }
   }
   var els = [].slice.call(document.querySelectorAll(".rv"));
   if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) { els.forEach(function (e) { e.classList.add("is-in"); }); return; }
-  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
-  els.forEach(function (e, i) { e.style.transitionDelay = (i % 4) * 70 + "ms"; io.observe(e); });
-  function check() { els.forEach(function (e) { if (!e.classList.contains("is-in") && e.getBoundingClientRect().top < innerHeight * .96) e.classList.add("is-in"); }); }
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } }); }, { rootMargin: "0px 0px -2% 0px" });
+  els.forEach(function (e, i) { e.style.transitionDelay = (i % 4) * 50 + "ms"; io.observe(e); });
+  function check() { els.forEach(function (e) { if (!e.classList.contains("is-in") && e.getBoundingClientRect().top < innerHeight) e.classList.add("is-in"); }); }
   addEventListener("scroll", check, { passive: true }); check();
 })();
 
