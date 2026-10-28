@@ -367,6 +367,77 @@ button { font: inherit; color: inherit; }
   .hero .give { width: 320px; bottom: -96px; }
 }
 
+/* ===== Give dialog, refined: clear choices, numbered steps, calmer type ===== */
+.gv { width: min(480px, calc(100vw - 24px)); border-radius: 26px; }
+.gv__top { height: 136px; }
+.gv__body { padding: 24px 26px 26px; }
+.gv .give__t, .gv__done .d { font-weight: 400; font-size: 28px; letter-spacing: -0.02em; }
+.gv .give__s { margin-bottom: 20px; font-size: 15px; }
+.gv .gv__f { margin: 0 0 20px; }
+.gv .gv__f legend { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 15px; font-weight: 600; color: var(--ink); }
+.gv__n { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--btn); font-size: 12.5px; font-weight: 600; color: #fff; }
+.wts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.wt { position: relative; display: block; cursor: pointer; }
+.wt input { position: absolute; opacity: 0; pointer-events: none; }
+.wt__box { display: flex; flex-direction: column; justify-content: center; gap: 1px; min-height: 58px; padding-left: 54px !important; position: relative; height: 100%; padding: 10px 12px 10px 10px; border-radius: 14px; background: var(--cream); box-shadow: inset 0 0 0 1.5px transparent; transition: background-color .2s, box-shadow .2s; }
+.wt__ic { position: absolute; left: 10px; top: 50%; margin-top: -17px; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: #fff; color: var(--btn); transition: background-color .2s, color .2s; }
+.wt__ic svg { width: 17px; height: 17px; }
+.wt__l { font-size: 14px; font-weight: 600; line-height: 1.25; color: var(--ink); }
+.wt__h { font-size: 12.5px; line-height: 1.3; color: var(--clay); }
+.wt:hover .wt__box { box-shadow: inset 0 0 0 1.5px var(--sand); }
+.wt input:checked + .wt__box { background: var(--blush); box-shadow: inset 0 0 0 2px var(--btn); }
+.wt input:checked + .wt__box .wt__ic { background: var(--btn); color: #fff; }
+.wt input:focus-visible + .wt__box { outline: 2px solid var(--btn-hover); outline-offset: 2px; }
+.wt--wide { grid-column: 1 / -1; }
+/* the four programmes need only their names; the subtext stays on "Where it’s needed most" */
+.wt:not(.wt--wide) .wt__h { display: none; }
+.wt:not(.wt--wide) .wt__box { min-height: 54px; }
+.wt__l { white-space: nowrap; }
+@media (max-width: 420px) { .wt__l { white-space: normal; } }
+.gv .chips--amt { gap: 8px; }
+.gv .chip span { min-height: 46px; border-radius: 12px; font-size: 15px; font-weight: 600; transition: background-color .2s, box-shadow .2s, color .2s; }
+.gv .chip:hover span { box-shadow: inset 0 0 0 1.5px var(--sand); }
+.gv .chip input:checked + span { background: var(--blush); box-shadow: inset 0 0 0 2px var(--btn); color: var(--btn); }
+.gv .give__other { height: 48px; border-radius: 12px; }
+.gv .give .btn { margin-top: 4px; }
+.gv .give__note { margin-top: 12px; font-size: 13px; }
+.gv__sum { margin: 0 0 18px; max-width: 30em; font-size: 15.5px; line-height: 1.55; }
+.gv .bank { margin: 0 0 18px; border-radius: 16px; }
+.gv .bank > div { padding: 14px 16px; }
+.gv .bank dt { font-size: 13px; font-weight: 600; color: var(--clay); }
+.gv .bank dd { margin-top: 3px; font-size: 16px; }
+.gv .bank .acct { font-size: 28px; font-weight: 500; letter-spacing: -0.01em; }
+.gv .copy { height: 36px; padding: 0 14px; border-radius: 10px; font-size: 13.5px; }
+.gv .copy.is-done { background: var(--btn); box-shadow: none; }
+.gv__sent { width: 100%; justify-content: space-between; }
+.gv__done { padding-top: 6px; }
+.gv__done p { max-width: 24em; margin-left: auto; margin-right: auto; line-height: 1.55; }
+.gv__done .btn { justify-content: space-between; }
+@media (max-width: 600px) {
+  .gv { width: calc(100vw - 16px); border-radius: 22px; }
+  .gv__top { height: 104px; }
+  .gv__body { padding: 20px 18px 20px; }
+  .gv .give__t, .gv__done .d { font-size: 25px; }
+  .wt__box { min-height: 52px; padding: 9px 10px 9px 48px !important; }
+  .wt__ic { left: 9px; width: 30px; height: 30px; margin-top: -15px; border-radius: 9px; }
+  .wt__h { display: none; }
+  .wt--wide .wt__h { display: block; }
+  .gv .chip span { min-height: 44px; font-size: 14.5px; }
+}
+
+/* ===== Our work on phones: the photograph takes only the room left, so the whole card always shows ===== */
+@media (max-width: 900px) {
+  body .hs.is-on .hs__card { grid-template-rows: clamp(140px, calc(100svh - 548px), 380px) auto; }
+}
+@media (max-width: 900px) and (max-height: 780px) {
+  body .hs.is-on .pg__steps { display: none; }
+  body .hs.is-on .hs__card { grid-template-rows: clamp(130px, calc(100svh - 500px), 380px) auto; }
+  body .hs.is-on .hs__foot { margin-top: 12px; }
+  body .hs.is-on .hs__pin { padding-top: 76px; }
+  body .hs.is-on .hs__line { margin-bottom: 10px; }
+}
+
+
 /* ===================== About (Direction 2) ===================== */
 :root { --orange-ink: var(--btn); --mono: var(--sans); --muted: var(--clay); --line: var(--sand); --tint: var(--cream); }
 .ah__k { gap: 9px; }
@@ -583,6 +654,61 @@ button { font: inherit; color: inherit; }
 }
 @media (prefers-reduced-motion: reduce) { .mvp__ph { opacity: 1; transition: none !important; } }
 
+
+/* ===== What we do: one pinned screen; scroll moves through the seven ways ===== */
+.wd { position: relative; background: var(--cream); }
+.wd__pin { padding: clamp(72px, 9vw, 130px) 0; }
+.wd__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); grid-template-areas: "head media" "body media"; column-gap: clamp(32px, 6vw, 110px); row-gap: 0; align-items: start; }
+.wd__head { grid-area: head; }
+.wd__h { font-size: clamp(36px, 4vw, 58px); }
+.wd__media { grid-area: media; position: relative; height: min(68svh, 640px); overflow: hidden; border-radius: 24px; background: var(--sand); align-self: center; }
+.wd__ph { position: absolute; inset: 0; margin: 0; opacity: 0; transform: scale(1.06); transition: opacity .9s ease, transform 1.6s var(--out); }
+.wd__ph.is-on { opacity: 1; transform: none; }
+.wd__ph img { width: 100%; height: 100%; object-fit: cover; }
+.wd__body { grid-area: body; align-self: end; padding-top: clamp(28px, 4vh, 48px); }
+.wd__count { margin: 0 0 14px; font-size: 15px; font-weight: 600; color: var(--clay); }
+.wd__count b { font-weight: 600; color: var(--btn); }
+.wd__items { position: relative; display: grid; }
+.wd__it { grid-area: 1 / 1; opacity: 0; transform: translateY(26px); transition: opacity .55s ease, transform .8s var(--out); pointer-events: none; }
+.wd__it.is-on { opacity: 1; transform: none; transition-delay: .12s; pointer-events: auto; }
+.wd__it.was { transform: translateY(-26px); }
+.wd__t { margin: 0 0 12px; font-family: var(--display); font-weight: 400; font-variation-settings: "opsz" 144, "SOFT" 100; font-size: clamp(32px, 3.3vw, 50px); line-height: 1.04; letter-spacing: -0.025em; color: var(--ink); }
+.wd__d { margin: 0; max-width: 26em; font-size: clamp(16.5px, 1.25vw, 18.5px); line-height: 1.55; color: var(--ink-2); }
+.wd__foot { margin-top: clamp(22px, 3vh, 32px); }
+.wd__bar { position: relative; display: block; height: 2px; border-radius: 2px; background: var(--sand); overflow: hidden; }
+.wd__bar b { position: absolute; inset: 0; background: var(--orange); transform: scaleX(var(--p, .14)); transform-origin: left; }
+.wd__index { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 18px 0 0; padding: 0; list-style: none; font-size: 13.5px; font-weight: 500; color: #a8988a; }
+.wd__index li { transition: color .3s; }
+.wd__index li.is-on { color: var(--ink); }
+/* pinned: the section is tall, the screen inside it holds still */
+.wd.is-on { height: calc(100svh + (var(--n) - 1) * 52svh); }
+.wd.is-on .wd__pin { position: sticky; top: 0; height: 100svh; display: flex; align-items: center; padding: 96px 0 40px; overflow: hidden; }
+.wd.is-on .wd__grid { width: 100%; }
+/* not pinned (reduced motion, very short screens): every way listed */
+.wd:not(.is-on) .wd__it { position: static; grid-area: auto; opacity: 1; transform: none; padding: 18px 0; border-top: 1px solid var(--sand); }
+.wd:not(.is-on) .wd__count, .wd:not(.is-on) .wd__foot, .wd:not(.is-on) .wd__index { display: none; }
+.wd:not(.is-on) .wd__ph:not(:first-child) { display: none; }
+.wd:not(.is-on) .wd__media { align-self: start; position: sticky; top: 110px; }
+@media (max-width: 900px) {
+  .wd__grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "media" "body"; }
+  .wd__h { font-size: clamp(30px, 8vw, 40px); }
+  .wd__media { height: auto; aspect-ratio: 4 / 3; margin-top: 22px; border-radius: 18px; }
+  .wd__index { display: none; }
+  .wd.is-on { height: calc(100svh + (var(--n) - 1) * 46svh); }
+  .wd.is-on .wd__pin { align-items: flex-start; padding: 76px 0 20px; }
+  .wd.is-on .wd__head .label { margin-bottom: 10px; }
+  .wd.is-on .wd__media { aspect-ratio: auto; height: clamp(170px, calc(100svh - 470px), 420px); margin-top: 18px; }
+  .wd.is-on .wd__body { padding-top: 20px; }
+  .wd__count { margin-bottom: 8px; font-size: 14px; }
+  .wd__t { margin-bottom: 8px; font-size: 28px; }
+  .wd__d { font-size: 16px; }
+  .wd__foot { margin-top: 18px; }
+  .wd:not(.is-on) .wd__media { position: relative; top: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wd__ph, .wd__it { transition: none; }
+}
+
 /* ===== Phone menu ===== */
 @media (max-width: 900px) {
   .nav { display: none; }
@@ -775,70 +901,57 @@ button { font: inherit; color: inherit; }
       </div>
     </section>
 
-    <section class="ad" id="do" aria-labelledby="ad-title">
-      <div class="in">
-        <div class="ad__head rv">
-          <p class="label">What we do</p>
-          <h2 class="d d2" id="ad-title"><span class="bl">Seven ways we</span> <span class="bl a">stand with people.</span></h2>
-        </div>
-        <div class="ad__grid" data-do>
-          <div class="ad__stage" aria-hidden="true">
-            <div class="ad__frame">
-            <img class="ad__img is-on" src="/img/nw-queue2.webp" alt="" style="object-position: 55% 50%">
-            <img class="ad__img" src="/img/ev-support.webp" alt="" style="object-position: 50% 35%" loading="lazy">
-            <img class="ad__img" src="/img/lv-scholar-boy.webp" alt="" style="object-position: 50% 35%" loading="lazy">
-            <img class="ad__img" src="/img/ev-handover.webp" alt="" style="object-position: 30% 35%" loading="lazy">
-            <img class="ad__img" src="/img/own-sts.webp" alt="" style="object-position: 40% 50%" loading="lazy">
-            <img class="ad__img" src="/img/nw-women-mid.webp" alt="" style="object-position: 50% 45%" loading="lazy">
-            <img class="ad__img" src="/img/lv-gifts.webp" alt="" style="object-position: 55% 40%" loading="lazy">
-              <div class="ad__bars"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
-              <p class="ad__count"><span class="ad__z">0</span><span class="ad__now"><span class="ad__roll"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></span></span><span class="ad__of">/ 07</span></p>
-            </div>
+    <section class="wd" id="do" aria-labelledby="ad-title" style="--n: 7" data-wd>
+      <div class="wd__pin">
+        <div class="in wd__grid">
+          <div class="wd__head">
+            <p class="label">What we do</p>
+            <h2 class="d d2 wd__h" id="ad-title">Seven ways we <em>stand with people.</em></h2>
           </div>
-          <ol class="ad__list">
-          <li class="ad__it" data-k="0">
-            <img class="ad__thumb" src="/img/nw-queue2.webp" alt="Women queuing for bags of food at a Foundation outreach." loading="lazy" style="object-position: 55% 50%">
-            <span class="ad__n">01</span>
-            <h3 class="ad__t">Feeding the vulnerable</h3>
-            <p class="ad__d">Food for families and older people when times are hard.</p>
-          </li>
-          <li class="ad__it" data-k="1">
-            <img class="ad__thumb" src="/img/ev-support.webp" alt="Foundation volunteers hand support to a young woman at the outreach in Akute." loading="lazy" style="object-position: 50% 35%">
-            <span class="ad__n">02</span>
-            <h3 class="ad__t">Financial assistance</h3>
-            <p class="ad__d">Support with urgent costs that a family cannot meet alone.</p>
-          </li>
-          <li class="ad__it" data-k="2">
-            <img class="ad__thumb" src="/img/lv-scholar-boy.webp" alt="A schoolboy receives a new school bag from the Foundation at a student scholarship event." loading="lazy" style="object-position: 50% 35%">
-            <span class="ad__n">03</span>
-            <h3 class="ad__t">Scholarships</h3>
-            <p class="ad__d">School fees, uniforms and books, so children can learn and stay in class.</p>
-          </li>
-          <li class="ad__it" data-k="3">
-            <img class="ad__thumb" src="/img/ev-handover.webp" alt="A member of the Foundation team hands support to a woman at an outreach in Akute." loading="lazy" style="object-position: 30% 35%">
-            <span class="ad__n">04</span>
-            <h3 class="ad__t">Hospital bills</h3>
-            <p class="ad__d">At set times in the year, we visit hospitals and help patients and their families settle bills they cannot meet.</p>
-          </li>
-          <li class="ad__it" data-k="4">
-            <img class="ad__thumb" src="/img/own-sts.webp" alt="Pupils in green school uniforms sitting together outside their classrooms." loading="lazy" style="object-position: 40% 50%">
-            <span class="ad__n">05</span>
-            <h3 class="ad__t">Children’s rights</h3>
-            <p class="ad__d">Community development and advocacy, so every child is safe and in school.</p>
-          </li>
-          <li class="ad__it" data-k="5">
-            <img class="ad__thumb" src="/img/nw-women-mid.webp" alt="Women gathered together with the Foundation team at an outreach." loading="lazy" style="object-position: 50% 45%">
-            <span class="ad__n">06</span>
-            <h3 class="ad__t">Shelter</h3>
-            <p class="ad__d">Help with a safe place to live when a family has nowhere to turn.</p>
-          </li>
-          <li class="ad__it" data-k="6">
-            <img class="ad__thumb" src="/img/lv-gifts.webp" alt="A volunteer handing a gift to an older woman at a Foundation outreach." loading="lazy" style="object-position: 55% 40%">
-            <span class="ad__n">07</span>
-            <h3 class="ad__t">Debt settlement</h3>
-            <p class="ad__d">Clearing debts that have trapped a family, so they can start again.</p>
-          </li>
-          </ol>
+          <div class="wd__media">
+          <figure class="wd__ph is-on"><img src="/img/nw-queue2.webp" alt="Women queuing for bags of food at a Foundation outreach." style="object-position: 55% 50%"></figure>
+          <figure class="wd__ph"><img src="/img/ev-support.webp" alt="Foundation volunteers hand support to a young woman at the outreach in Akute." style="object-position: 50% 35%" loading="lazy"></figure>
+          <figure class="wd__ph"><img src="/img/lv-scholar-boy.webp" alt="A schoolboy receives a new school bag from the Foundation at a student scholarship event." style="object-position: 50% 35%" loading="lazy"></figure>
+          <figure class="wd__ph"><img src="/img/ev-handover.webp" alt="A member of the Foundation team hands support to a woman at an outreach in Akute." style="object-position: 30% 35%" loading="lazy"></figure>
+          <figure class="wd__ph"><img src="/img/own-sts.webp" alt="Pupils in green school uniforms sitting together outside their classrooms." style="object-position: 40% 50%" loading="lazy"></figure>
+          <figure class="wd__ph"><img src="/img/nw-women-mid.webp" alt="Women gathered together with the Foundation team at an outreach." style="object-position: 50% 45%" loading="lazy"></figure>
+          <figure class="wd__ph"><img src="/img/lv-gifts.webp" alt="A volunteer handing a gift to an older woman at a Foundation outreach." style="object-position: 55% 40%" loading="lazy"></figure>
+          </div>
+          <div class="wd__body">
+            <p class="wd__count" aria-hidden="true"><b data-wd-now>01</b> / 07</p>
+            <div class="wd__items">
+            <article class="wd__it is-on" data-k="0">
+              <h3 class="wd__t">Feeding the vulnerable</h3>
+              <p class="wd__d">Food for families and older people when times are hard.</p>
+            </article>
+            <article class="wd__it" data-k="1">
+              <h3 class="wd__t">Financial assistance</h3>
+              <p class="wd__d">Support with urgent costs that a family cannot meet alone.</p>
+            </article>
+            <article class="wd__it" data-k="2">
+              <h3 class="wd__t">Scholarships</h3>
+              <p class="wd__d">School fees, uniforms and books, so children can learn and stay in class.</p>
+            </article>
+            <article class="wd__it" data-k="3">
+              <h3 class="wd__t">Hospital bills</h3>
+              <p class="wd__d">At set times in the year, we visit hospitals and help patients and their families settle bills they cannot meet.</p>
+            </article>
+            <article class="wd__it" data-k="4">
+              <h3 class="wd__t">Children’s rights</h3>
+              <p class="wd__d">Community development and advocacy, so every child is safe and in school.</p>
+            </article>
+            <article class="wd__it" data-k="5">
+              <h3 class="wd__t">Shelter</h3>
+              <p class="wd__d">Help with a safe place to live when a family has nowhere to turn.</p>
+            </article>
+            <article class="wd__it" data-k="6">
+              <h3 class="wd__t">Debt settlement</h3>
+              <p class="wd__d">Clearing debts that have trapped a family, so they can start again.</p>
+            </article>
+            </div>
+            <div class="wd__foot" aria-hidden="true"><span class="wd__bar"><b></b></span></div>
+            <ol class="wd__index" aria-hidden="true"><li class="is-on">Feeding the vulnerable</li><li>Financial assistance</li><li>Scholarships</li><li>Hospital bills</li><li>Children’s rights</li><li>Shelter</li><li>Debt settlement</li></ol>
+          </div>
         </div>
       </div>
     </section>
@@ -930,8 +1043,8 @@ button { font: inherit; color: inherit; }
   <div class="gv__body">
     <form class="give" data-givebox="gv" aria-labelledby="gv-title" novalidate>
       <h2 class="give__t" id="gv-title">Give today</h2><p class="give__s">Any amount, by bank transfer.</p>
-      <fieldset><legend>Where should it go?</legend><div class="chips"><label class="chip"><input type="radio" name="gv-for" value="street-to-school"><span>Street to School</span></label><label class="chip"><input type="radio" name="gv-for" value="hospital-bills"><span>Hospital bills</span></label><label class="chip"><input type="radio" name="gv-for" value="older-people"><span>Older people</span></label><label class="chip"><input type="radio" name="gv-for" value="families"><span>Families in hard times</span></label><label class="chip chip--wide"><input type="radio" name="gv-for" value="anywhere" checked><span>Where it’s needed most</span></label></div></fieldset>
-      <fieldset><legend>Amount</legend><div class="chips chips--amt"><label class="chip"><input type="radio" name="gv-amt" value="5000"><span>₦5,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="10000" checked><span>₦10,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="25000"><span>₦25,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="50000"><span>₦50,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="100000"><span>₦100,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="other"><span>Other</span></label></div>
+      <fieldset class="gv__f"><legend><span class="gv__n">1</span>Where should it go?</legend><div class="wts"><label class="wt"><input type="radio" name="gv-for" value="street-to-school"><span class="wt__box"><span class="wt__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v15H5.5A1.5 1.5 0 0 0 4 20.5zM20 5.5A1.5 1.5 0 0 0 18.5 4H13v15h5.5a1.5 1.5 0 0 1 1.5 1.5z"/></svg></span><span class="wt__l">Street to School</span><span class="wt__h">Fees, uniform and books</span></span></label><label class="wt"><input type="radio" name="gv-for" value="hospital-bills"><span class="wt__box"><span class="wt__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8.5v7M8.5 12h7"/></svg></span><span class="wt__l">Hospital bills</span><span class="wt__h">Bills patients cannot pay</span></span></label><label class="wt"><input type="radio" name="gv-for" value="older-people"><span class="wt__box"><span class="wt__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 5.8a3 3 0 0 1 0 5.6M17.5 14.2a5.5 5.5 0 0 1 3 4.8"/></svg></span><span class="wt__l">Older people</span><span class="wt__h">Care and outreach days</span></span></label><label class="wt"><input type="radio" name="gv-for" value="families"><span class="wt__box"><span class="wt__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 12 4.5l8 6.5"/><path d="M6 9.5V20h12V9.5"/><path d="M12 17.2s-2.6-1.6-2.6-3.3a1.4 1.4 0 0 1 2.6-.7 1.4 1.4 0 0 1 2.6.7c0 1.7-2.6 3.3-2.6 3.3z"/></svg></span><span class="wt__l">Families in hard times</span><span class="wt__h">Shelter, food and support</span></span></label><label class="wt wt--wide"><input type="radio" name="gv-for" value="anywhere" checked><span class="wt__box"><span class="wt__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 4 2.3 4.9 5.2.6-3.9 3.6 1.1 5.2L12 15.6l-4.7 2.7 1.1-5.2-3.9-3.6 5.2-.6z"/></svg></span><span class="wt__l">Where it’s needed most</span><span class="wt__h">We decide with care</span></span></label></div></fieldset>
+      <fieldset class="gv__f"><legend><span class="gv__n">2</span>Amount</legend><div class="chips chips--amt"><label class="chip"><input type="radio" name="gv-amt" value="5000"><span>₦5,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="10000" checked><span>₦10,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="25000"><span>₦25,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="50000"><span>₦50,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="100000"><span>₦100,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="other"><span>Other</span></label></div>
         <label class="give__other" data-other><span aria-hidden="true">₦</span><input type="text" inputmode="numeric" name="gv-other" placeholder="Enter an amount" aria-label="Other amount in naira"></label></fieldset>
       <button class="btn" type="submit"><span data-cta>Give ₦10,000</span> <span class="btn__chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
       <p class="give__note">Next, you’ll see our bank details to copy into your banking app.</p>
@@ -944,7 +1057,7 @@ button { font: inherit; color: inherit; }
         <div><div><dt>Account name</dt><dd>Alexander Mercy Foundation</dd></div></div>
         <div><div><dt>Bank</dt><dd>Zenith Bank</dd></div><button type="button" class="copy" data-copy-all>Copy all</button></div>
       </dl>
-      <button class="btn" type="button" data-sent style="width:100%;justify-content:space-between">I’ve sent it <span class="btn__chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+      <button class="btn gv__sent" type="button" data-sent>I’ve sent it <span class="btn__chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
       <button class="gv__back" type="button" data-back>Change the amount</button>
     </div>
     <div class="gv__step gv__done" data-step="3" hidden>
@@ -1357,6 +1470,40 @@ button { font: inherit; color: inherit; }
   if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) { ps.forEach(function (p) { p.classList.add("is-in"); }); return; }
   var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } }); }, { threshold: .25 });
   ps.forEach(function (p) { io.observe(p); });
+})();
+
+</script>
+<script>
+
+/* ===== What we do: one pinned screen; scroll moves through the seven ways ===== */
+(function () {
+  var s = document.querySelector("[data-wd]"); if (!s) return;
+  var its = [].slice.call(s.querySelectorAll(".wd__it")), phs = [].slice.call(s.querySelectorAll(".wd__ph")), idx = [].slice.call(s.querySelectorAll(".wd__index li"));
+  var now = s.querySelector("[data-wd-now]"), bar = s.querySelector(".wd__bar"), n = its.length, cur = 0, tick = false;
+  var mq = matchMedia("(prefers-reduced-motion: no-preference) and (min-height: 560px)");
+  function lazy() { phs.forEach(function (f) { var i = f.querySelector("img"); if (i.loading === "lazy") i.loading = "eager"; }); }
+  function show(k) {
+    if (k === cur) return;
+    its.forEach(function (it, i) { it.classList.toggle("is-on", i === k); it.classList.toggle("was", i < k); it.setAttribute("aria-hidden", i === k ? "false" : "true"); });
+    phs.forEach(function (f, i) { f.classList.toggle("is-on", i === k); });
+    idx.forEach(function (li, i) { li.classList.toggle("is-on", i === k); });
+    now.textContent = (k < 9 ? "0" : "") + (k + 1); cur = k;
+  }
+  function on() {
+    tick = false; if (!s.classList.contains("is-on")) return;
+    var r = s.getBoundingClientRect(), span = r.height - innerHeight, p = Math.min(1, Math.max(0, -r.top / Math.max(1, span)));
+    show(Math.min(n - 1, Math.floor(p * n * 0.999)));
+    bar.style.setProperty("--p", ((cur + 1) / n).toFixed(3));
+  }
+  function mode() {
+    var pin = mq.matches; s.classList.toggle("is-on", pin);
+    if (pin) { lazy(); its.forEach(function (it, i) { it.setAttribute("aria-hidden", i === cur ? "false" : "true"); }); on(); }
+    else its.forEach(function (it) { it.removeAttribute("aria-hidden"); });
+  }
+  addEventListener("scroll", function () { if (!tick) { tick = true; requestAnimationFrame(on); } }, { passive: true });
+  addEventListener("resize", function () { if (!tick) { tick = true; requestAnimationFrame(on); } });
+  if (mq.addEventListener) mq.addEventListener("change", mode);
+  mode();
 })();
 
 </script>
