@@ -426,6 +426,35 @@ button { font: inherit; color: inherit; }
   .gv .chip span { min-height: 44px; font-size: 14.5px; }
 }
 
+
+/* ===== Give dialog v3: everything on one screen; programmes as simple choices ===== */
+.gv__top { height: 112px; }
+.gv__body { padding: 20px 24px 22px; }
+.gv .give__t { margin-bottom: 2px; }
+.gv .give__s { margin-bottom: 16px; font-size: 14.5px; }
+.gv .gv__f { margin: 0 0 16px; }
+.gv .gv__f legend { margin-bottom: 10px; font-size: 14px; font-weight: 600; color: var(--ink-2); }
+.wcs { display: flex; flex-wrap: wrap; gap: 6px; }
+.wc { position: relative; cursor: pointer; }
+.wc input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.wc span { display: inline-flex; align-items: center; height: 38px; padding: 0 14px; border-radius: 10px; background: var(--cream); font-size: 14.5px; font-weight: 400; color: var(--ink); white-space: nowrap; transition: background-color .2s, box-shadow .2s, color .2s; }
+.wc:hover span { box-shadow: inset 0 0 0 1.5px var(--sand); }
+.wc input:checked + span { background: var(--blush); box-shadow: inset 0 0 0 1.5px var(--btn); color: var(--btn); }
+.wc input:focus-visible + span { outline: 2px solid var(--btn-hover); outline-offset: 2px; }
+.gv .chips--amt { gap: 6px; }
+.gv .chip span { min-height: 42px; }
+.gv .give .btn { margin-top: 2px; }
+.gv .give__note { margin-top: 10px; }
+@media (max-width: 600px) {
+  .gv__top { height: 84px; }
+  .gv__body { padding: 18px 16px 18px; }
+  .gv .give__t { font-size: 24px; }
+  .gv .give__s { margin-bottom: 14px; }
+  .wc span { height: 36px; padding: 0 12px; font-size: 14px; }
+  .gv .chip span { min-height: 40px; font-size: 14.5px; }
+}
+@media (max-height: 700px) { .gv__top { display: none; } }
+
 /* ===== Our work on phones: the photograph takes only the room left, so the whole card always shows ===== */
 @media (max-width: 900px) {
   body .hs.is-on .hs__card { grid-template-rows: clamp(140px, calc(100svh - 548px), 380px) auto; }
@@ -839,8 +868,8 @@ button { font: inherit; color: inherit; }
   <div class="gv__body">
     <form class="give" data-givebox="gv" aria-labelledby="gv-title" novalidate>
       <h2 class="give__t" id="gv-title">Give today</h2><p class="give__s">Any amount, by bank transfer.</p>
-      <fieldset class="gv__f"><legend><span class="gv__n">1</span>Where should it go?</legend><div class="wts"><label class="wt"><input type="radio" name="gv-for" value="street-to-school"><span class="wt__box"><span class="wt__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v15H5.5A1.5 1.5 0 0 0 4 20.5zM20 5.5A1.5 1.5 0 0 0 18.5 4H13v15h5.5a1.5 1.5 0 0 1 1.5 1.5z"/></svg></span><span class="wt__l">Street to School</span><span class="wt__h">Fees, uniform and books</span></span></label><label class="wt"><input type="radio" name="gv-for" value="hospital-bills"><span class="wt__box"><span class="wt__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8.5v7M8.5 12h7"/></svg></span><span class="wt__l">Hospital bills</span><span class="wt__h">Bills patients cannot pay</span></span></label><label class="wt"><input type="radio" name="gv-for" value="older-people"><span class="wt__box"><span class="wt__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 5.8a3 3 0 0 1 0 5.6M17.5 14.2a5.5 5.5 0 0 1 3 4.8"/></svg></span><span class="wt__l">Older people</span><span class="wt__h">Care and outreach days</span></span></label><label class="wt"><input type="radio" name="gv-for" value="families"><span class="wt__box"><span class="wt__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 12 4.5l8 6.5"/><path d="M6 9.5V20h12V9.5"/><path d="M12 17.2s-2.6-1.6-2.6-3.3a1.4 1.4 0 0 1 2.6-.7 1.4 1.4 0 0 1 2.6.7c0 1.7-2.6 3.3-2.6 3.3z"/></svg></span><span class="wt__l">Families in hard times</span><span class="wt__h">Shelter, food and support</span></span></label><label class="wt wt--wide"><input type="radio" name="gv-for" value="anywhere" checked><span class="wt__box"><span class="wt__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 4 2.3 4.9 5.2.6-3.9 3.6 1.1 5.2L12 15.6l-4.7 2.7 1.1-5.2-3.9-3.6 5.2-.6z"/></svg></span><span class="wt__l">Where it’s needed most</span><span class="wt__h">We decide with care</span></span></label></div></fieldset>
-      <fieldset class="gv__f"><legend><span class="gv__n">2</span>Amount</legend><div class="chips chips--amt"><label class="chip"><input type="radio" name="gv-amt" value="5000"><span>₦5,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="10000" checked><span>₦10,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="25000"><span>₦25,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="50000"><span>₦50,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="100000"><span>₦100,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="other"><span>Other</span></label></div>
+      <fieldset class="gv__f"><legend>Where should it go?</legend><div class="wcs"><label class="wc"><input type="radio" name="gv-for" value="street-to-school"><span>Street to School</span></label><label class="wc"><input type="radio" name="gv-for" value="hospital-bills"><span>Hospital bills</span></label><label class="wc"><input type="radio" name="gv-for" value="older-people"><span>Older people</span></label><label class="wc"><input type="radio" name="gv-for" value="families"><span>Families in hard times</span></label><label class="wc"><input type="radio" name="gv-for" value="anywhere" checked><span>Where it’s needed most</span></label></div></fieldset>
+      <fieldset class="gv__f"><legend>Amount</legend><div class="chips chips--amt"><label class="chip"><input type="radio" name="gv-amt" value="5000"><span>₦5,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="10000" checked><span>₦10,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="25000"><span>₦25,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="50000"><span>₦50,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="100000"><span>₦100,000</span></label><label class="chip"><input type="radio" name="gv-amt" value="other"><span>Other</span></label></div>
         <label class="give__other" data-other><span aria-hidden="true">₦</span><input type="text" inputmode="numeric" name="gv-other" placeholder="Enter an amount" aria-label="Other amount in naira"></label></fieldset>
       <button class="btn" type="submit"><span data-cta>Give ₦10,000</span> <span class="btn__chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
       <p class="give__note">Next, you’ll see our bank details to copy into your banking app.</p>
