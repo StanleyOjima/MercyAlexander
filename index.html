@@ -432,6 +432,12 @@ button { font: inherit; color: inherit; }
 
 
 
+/* ===== Figures on narrow screens: reveal upward like every other block, not sideways (so cards never poke past the edge) ===== */
+@media (max-width: 900px) {
+  .fy__row .fy__item.rv { transform: translateY(14px); }
+  .fy__row .fy__item.rv.is-in { transform: none; }
+}
+
 /* ===== Steady on scroll: numbers keep their width while they count; touch screens say swipe ===== */
 [data-count], .fy__num, .fy__n, .hs__count, .hs__n, .wd__count, .lb__c { font-variant-numeric: tabular-nums; }
 .gd__hint-t { display: none; }
